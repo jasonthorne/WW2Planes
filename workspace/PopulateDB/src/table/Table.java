@@ -3,16 +3,16 @@ package table;
 public enum Table {
 	
 	//database tables:
-	AIRFORCES("airforces"),
-	IMAGES("images"),
-	EVENTS("events"),
 	YEARS("years"),
 	PERIODS("periods"),
+	EVENTS("events"),
+	AIRFORCES("airforces"),
 	PLANES("planes"),
+	IMAGES("images"),
 	AIRFORCE_IMAGES("airforce_images"),
 	AIRFORCE_PLANES("airforce_planes"),
-	EVENT_AIRFORCES("event_airforces"),
 	EVENT_PERIODS("event_periods"),
+	EVENT_AIRFORCES("event_airforces"),
 	PLANE_AVAILABILITIES("plane_availabilities");
 	
 	private final String table; //name of chosen table
