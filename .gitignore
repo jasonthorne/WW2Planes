@@ -1,0 +1,3 @@
+
+# ignore db configs file:
+db_configs.properties
