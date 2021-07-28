@@ -5,14 +5,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public final class ConnectDB {
+final class ConnectDB {
 	
 	private Connection connection = null; //holds an established connection
 	
 	//constructor connects to DB using properties file:
 	private ConnectDB() { 
 		
-		try { 
+		try {
 			//load properties:
 			Properties properties = new Properties();	
 			properties.load(new FileInputStream("./configs/mysql/db_configs/db_configs.properties"));

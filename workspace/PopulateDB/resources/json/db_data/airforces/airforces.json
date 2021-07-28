@@ -1,0 +1,4209 @@
+[
+	{
+		"airforce": {
+			"name": "RAF",
+			"images": [
+				{
+					"image": {
+						"name": "Logo",
+						"path": "resources/img/airforces/logos/raf_logo.png"
+					}
+				}
+		 	],
+			"planes": [
+				{
+					"plane": {
+						"name": "Hurricane I",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Hurricane II",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Mosquito II",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Mosquito VI",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Spitfire II",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Spitfire V",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Spitfire IX",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Spitfire XIV",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Tempest V",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Typhoon Ib",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				}	
+			]
+		}
+	},
+	{
+		"airforce": {
+			"name": "Luftwaffe",
+			"images": [
+				{
+					"image": {
+						"name": "Logo",
+						"path": "resources/img/airforces/logos/luftwaffe_logo.png"
+					}
+				}
+		 	],
+			"planes": [
+				{
+					"plane": {
+						"name": "Bf109 E",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Bf109 F",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Bf109 G",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Bf109 K",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Bf110 C",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Bf110 G",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Fw190 A",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Fw190 D",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Me 262 A",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Me 262 B",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				}	
+			]
+		}
+	},
+	{
+		"airforce": {
+			"name": "Soviet",
+			"images": [
+				{
+					"image": {
+						"name": "Logo",
+						"path": "resources/img/airforces/logos/soviet_logo.png"
+					}
+				}
+		 	],
+			"planes": [
+				{
+					"plane": {
+						"name": "Hurricane II",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Il-2m3 Sturmovik",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "LaGG-3",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Lavochkin La-5FN",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "MiG-3",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-39 Airacobra",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-63 Kingcobra",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Polikarpov I-15",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Polikarpov I-16",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Polikarpov I-153",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Yak-1",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Yak-3",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Yak-7B",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Yak-9D",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Yak-9U",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				}	
+			]
+		}
+	},
+	{
+		"airforce": {
+			"name": "USAAF",
+			"images": [
+				{
+					"image": {
+						"name": "Logo",
+						"path": "resources/img/airforces/logos/usaaf_logo.png"
+					}
+				}
+		 	],
+			"planes": [
+				{
+					"plane": {
+						"name": "F4F Wildcat",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "F4U Corsair",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "F6F Hellcat",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-38E Lightning",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-38J Lightning",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-39 Airacobra",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-40B Warhawk",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-40E Tomahawk",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-40N Kittyhawk",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-47C Thunderbolt",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-47D Thunderbolt",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-51B Mustang", 
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "P-51D Mustang",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				}	
+			]
+		}
+	},
+	{
+		"airforce": {
+			"name": "Japan",
+			"images": [
+				{
+					"image": {
+						"name": "Logo",
+						"path": "resources/img/airforces/logos/japan_logo.png"
+					}
+				}
+		 	],
+			"planes": [
+				{
+					"plane": {
+						"name": "A6-M2 Zero",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "A6-M5 Zero",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "J2M Raiden",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "N1K1-J Shiden",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "N1K2-J Shiden-Kai",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "KI-43 Hayabusa",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "KI-44 Shoki",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "KI-61 Hien",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "KI-84 Hayate",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "KI-100 Hien",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				}	
+			]
+		}
+	}
+]

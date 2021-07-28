@@ -1,0 +1,52 @@
+[
+	{
+		"event": {
+			"name": "Battle of Britain",
+			"airforces": [
+				{
+					"airforce": {
+						"name": "RAF"
+					}
+				},
+				{
+					"airforce": {
+						"name": "Luftwaffe"
+					}
+				}
+			],
+			"start_period": {
+				"block": "Mid",
+				"year": "1940"
+			},
+			"end_period": {
+				"block": "Early",
+				"year": "1941"
+			}
+		}
+	},
+	{
+		"event": {
+			"name": "Operation Barbarossa",
+			"airforces": [
+				{
+					"airforce": {
+						"name": "Soviet"
+					}
+				},
+				{
+					"airforce": {
+						"name": "Luftwaffe"
+					}
+				}
+			],
+			"start_period": {
+				"block": "Mid",
+				"year": "1941"
+			},
+			"end_period": {
+				"block": "Late",
+				"year": "1941"
+			}
+		}
+	}
+]
