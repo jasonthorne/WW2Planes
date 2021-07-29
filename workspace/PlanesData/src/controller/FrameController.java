@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import model.Event;
 
-public class FrameController {
+public class FrameController implements Rootable {
 
 	//root fxml element & children:
     @FXML private StackPane rootSP;
@@ -28,5 +28,13 @@ public class FrameController {
     @FXML
     void initialize() {
    
+    }
+    
+    FrameController(){
+    	System.out.println("yo");
+    }
+    
+    void loadData(){
+    	
     }
 }
