@@ -144,15 +144,18 @@ DELIMITER ;
 CREATE TABLE planes(
 	planeID INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64) DEFAULT NULL,
+    type ENUM ('Fighter','Bomber','Fighter-bomber') NOT NULL,
+    speed VARCHAR(3) DEFAULT NULL,
 	PRIMARY KEY (planeID),
 	UNIQUE (name) /* prevent duplicate inserts */
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 
 DELIMITER $$
-CREATE PROCEDURE insert_plane (IN plane_name VARCHAR(64))
+CREATE PROCEDURE insert_plane (IN plane_name VARCHAR(64), IN plane_type VARCHAR(14), IN plane_speed VARCHAR(3))
 BEGIN
-	INSERT IGNORE INTO planes (name) VALUES (plane_name); 
+	INSERT IGNORE INTO planes (name, type, speed) VALUES (
+		plane_name, plane_type, plane_speed); 
 END $$
 DELIMITER ;
 
@@ -171,10 +174,11 @@ CREATE TABLE airforce_planes(
 
 
 DELIMITER $$
-CREATE PROCEDURE insert_airforce_plane (IN airforce_name VARCHAR(64), IN plane_name VARCHAR(64))
+CREATE PROCEDURE insert_airforce_plane (IN airforce_name VARCHAR(64), IN plane_name VARCHAR(64), 
+IN plane_type VARCHAR(14), IN plane_speed VARCHAR(3))
 BEGIN
 	/* insert plane_name to planes if not present: */
-	CALL insert_plane (plane_name);
+	CALL insert_plane (plane_name, plane_type, plane_speed);
 	
 	/* error thrown here on duplicate airforce_plane insert: */ 
 	INSERT INTO airforce_planes (airforceID, planeID) VALUES ( 
@@ -287,7 +291,6 @@ CREATE TABLE event_airforces (
 	event_airforceID INT NOT NULL AUTO_INCREMENT,
 	eventID INT,
 	airforceID INT,
-	/*has_home_advantage BOOLEAN DEFAULT FALSE,+++++++++++++++++++++++++++++++*/
 	PRIMARY KEY (event_airforceID),
 	FOREIGN KEY (eventID) REFERENCES events(eventID),
 	FOREIGN KEY (airforceID) REFERENCES airforces(airforceID),
@@ -296,14 +299,12 @@ CREATE TABLE event_airforces (
 
 
 DELIMITER $$
-CREATE PROCEDURE insert_event_airforce (IN event_name VARCHAR(64), IN airforce_name VARCHAR(64) /*,
-IN home_advantage_value BOOLEAN ++++++++++++++++++++++++++++++++++++*/)
+CREATE PROCEDURE insert_event_airforce (IN event_name VARCHAR(64), IN airforce_name VARCHAR(64))
 BEGIN
 	/* error thrown here on duplicate event_airforce insert: */
-	INSERT INTO event_airforces (eventID, airforceID/*, has_home_advantage+++++++++++*/) VALUES ( 
+	INSERT INTO event_airforces (eventID, airforceID) VALUES ( 
 		(SELECT eventID FROM events WHERE events.name = event_name),
-		(SELECT airforceID FROM airforces WHERE airforces.name = airforce_name)/*,
-		home_advantage_value+++++++++++++++*/);
+		(SELECT airforceID FROM airforces WHERE airforces.name = airforce_name));
 END $$
 DELIMITER ;
 
@@ -313,7 +314,6 @@ CREATE PROCEDURE select_event_airforces (IN event_ID INT)
 BEGIN
 	SELECT
 		airforces.name AS airforce_name, 
-		/*event_airforces.has_home_advantage AS home_advantage_value,+++++++++++++++++++*/
 		event_airforces.airforceID AS airforce_ID
 	FROM event_airforces
 		INNER JOIN airforces ON event_airforces.airforceID = airforces.airforceID
@@ -425,7 +425,6 @@ BEGIN
 	ORDER BY event_periods.event_periodID ASC;
 END $$
 DELIMITER ;
-
 
 /*===============================================================*/
 /* select all entries */

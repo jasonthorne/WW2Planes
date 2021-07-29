@@ -14,6 +14,8 @@
 				{
 					"plane": {
 						"name": "Hurricane I",
+						"type": "Fighter",
+						"speed": "324",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -48,6 +50,8 @@
 				{
 					"plane": {
 						"name": "Hurricane II",
+						"type": "Fighter",
+						"speed": "342",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -136,6 +140,8 @@
 				{
 					"plane": {
 						"name": "Mosquito II",
+						"type": "Fighter-bomber",
+						"speed": "366",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -233,6 +239,8 @@
 				{
 					"plane": {
 						"name": "Mosquito VI",
+						"type": "Fighter-bomber",
+						"speed": "386",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -312,6 +320,8 @@
 				{
 					"plane": {
 						"name": "Spitfire II",
+						"type": "Fighter",
+						"speed": "357",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -364,6 +374,8 @@
 				{
 					"plane": {
 						"name": "Spitfire V",
+						"type": "Fighter",
+						"speed": "357",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -452,6 +464,8 @@
 				{
 					"plane": {
 						"name": "Spitfire IX",
+						"type": "Fighter",
+						"speed": "410",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -540,6 +554,8 @@
 				{
 					"plane": {
 						"name": "Spitfire XIV",
+						"type": "Fighter",
+						"speed": "446",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -583,6 +599,8 @@
 				{
 					"plane": {
 						"name": "Tempest V",
+						"type": "Fighter",
+						"speed": "435",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -626,6 +644,8 @@
 				{
 					"plane": {
 						"name": "Typhoon Ib",
+						"type": "Fighter-bomber",
+						"speed": "412",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -738,6 +758,8 @@
 				{
 					"plane": {
 						"name": "Bf109 E",
+						"type": "Fighter",
+						"speed": "354",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -808,6 +830,8 @@
 				{
 					"plane": {
 						"name": "Bf109 F",
+						"type": "Fighter",
+						"speed": "390",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -896,6 +920,8 @@
 				{
 					"plane": {
 						"name": "Bf109 G",
+						"type": "Fighter",
+						"speed": "397",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -993,6 +1019,8 @@
 				{
 					"plane": {
 						"name": "Bf109 K",
+						"type": "Fighter",
+						"speed": "442",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1036,6 +1064,8 @@
 				{
 					"plane": {
 						"name": "Bf110 C",
+						"type": "Fighter-bomber",
+						"speed": "349",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1088,6 +1118,8 @@
 				{
 					"plane": {
 						"name": "Bf110 G",
+						"type": "Fighter-bomber",
+						"speed": "370",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1212,6 +1244,8 @@
 				{
 					"plane": {
 						"name": "Fw190 A",
+						"type": "Fighter",
+						"speed": "408",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1336,6 +1370,8 @@
 				{
 					"plane": {
 						"name": "Fw190 D",
+						"type": "Fighter",
+						"speed": "440",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1361,6 +1397,8 @@
 				{
 					"plane": {
 						"name": "Me 262 A",
+						"type": "Fighter",
+						"speed": "540",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1395,6 +1433,8 @@
 				{
 					"plane": {
 						"name": "Me 262 B",
+						"type": "Fighter",
+						"speed": "497",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1435,6 +1475,8 @@
 				{
 					"plane": {
 						"name": "Hurricane II",
+						"type": "Fighter",
+						"speed": "342",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1541,6 +1583,8 @@
 				{
 					"plane": {
 						"name": "Il-2m3 Sturmovik",
+						"type": "Fighter",
+						"speed": "257",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1665,6 +1709,8 @@
 				{
 					"plane": {
 						"name": "LaGG-3",
+						"type": "Fighter",
+						"speed": "357",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1771,6 +1817,8 @@
 				{
 					"plane": {
 						"name": "Lavochkin La-5FN",
+						"type": "Fighter",
+						"speed": "403",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1868,6 +1916,8 @@
 				{
 					"plane": {
 						"name": "MiG-3",
+						"type": "Fighter",
+						"speed": "398",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1902,6 +1952,8 @@
 				{
 					"plane": {
 						"name": "P-39 Airacobra",
+						"type": "Fighter",
+						"speed": "359",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -1990,6 +2042,8 @@
 				{
 					"plane": {
 						"name": "P-63 Kingcobra",
+						"type": "Fighter",
+						"speed": "410",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2042,6 +2096,8 @@
 				{
 					"plane": {
 						"name": "Polikarpov I-15",
+						"type": "Fighter",
+						"speed": "220",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2094,6 +2150,8 @@
 				{
 					"plane": {
 						"name": "Polikarpov I-16",
+						"type": "Fighter",
+						"speed": "324",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2164,6 +2222,8 @@
 				{
 					"plane": {
 						"name": "Polikarpov I-153",
+						"type": "Fighter",
+						"speed": "265",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2216,6 +2276,8 @@
 				{
 					"plane": {
 						"name": "Yak-1",
+						"type": "Fighter",
+						"speed": "335",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2340,6 +2402,8 @@
 				{
 					"plane": {
 						"name": "Yak-3",
+						"type": "Fighter",
+						"speed": "407",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2464,6 +2528,8 @@
 				{
 					"plane": {
 						"name": "Yak-7B",
+						"type": "Fighter",
+						"speed": "373",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2561,6 +2627,8 @@
 				{
 					"plane": {
 						"name": "Yak-9D",
+						"type": "Fighter",
+						"speed": "366",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2649,6 +2717,8 @@
 				{
 					"plane": {
 						"name": "Yak-9U",
+						"type": "Fighter",
+						"speed": "417",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2689,6 +2759,8 @@
 				{
 					"plane": {
 						"name": "F4F Wildcat",
+						"type": "Fighter",
+						"speed": "320",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2777,6 +2849,8 @@
 				{
 					"plane": {
 						"name": "F4U Corsair",
+						"type": "Fighter",
+						"speed": "388",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2829,6 +2903,8 @@
 				{
 					"plane": {
 						"name": "F6F Hellcat",
+						"type": "Fighter",
+						"speed": "380",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2899,6 +2975,8 @@
 				{
 					"plane": {
 						"name": "P-38E Lightning",
+						"type": "Fighter-bomber",
+						"speed": "393",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -2960,6 +3038,8 @@
 				{
 					"plane": {
 						"name": "P-38J Lightning",
+						"type": "Fighter-bomber",
+						"speed": "420",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3030,6 +3110,8 @@
 				{
 					"plane": {
 						"name": "P-39 Airacobra",
+						"type": "Fighter",
+						"speed": "359",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3136,6 +3218,8 @@
 				{
 					"plane": {
 						"name": "P-40B Warhawk",
+						"type": "Fighter",
+						"speed": "345",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3188,6 +3272,8 @@
 				{
 					"plane": {
 						"name": "P-40E Tomahawk",
+						"type": "Fighter",
+						"speed": "344",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3249,6 +3335,8 @@
 				{
 					"plane": {
 						"name": "P-40N Kittyhawk",
+						"type": "Fighter",
+						"speed": "378",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3310,6 +3398,8 @@
 				{
 					"plane": {
 						"name": "P-47C Thunderbolt",
+						"type": "Fighter-bomber",
+						"speed": "416",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3362,6 +3452,8 @@
 				{
 					"plane": {
 						"name": "P-47D Thunderbolt",
+						"type": "Fighter-bomber",
+						"speed": "433",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3413,7 +3505,9 @@
 				},
 				{
 					"plane": {
-						"name": "P-51B Mustang", 
+						"name": "P-51B Mustang",
+						"type": "Fighter",
+						"speed": "439",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3484,6 +3578,8 @@
 				{
 					"plane": {
 						"name": "P-51D Mustang",
+						"type": "Fighter",
+						"speed": "443",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3551,6 +3647,8 @@
 				{
 					"plane": {
 						"name": "A6-M2 Zero",
+						"type": "Fighter",
+						"speed": "331",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3648,6 +3746,8 @@
 				{
 					"plane": {
 						"name": "A6-M5 Zero",
+						"type": "Fighter",
+						"speed": "354",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3718,6 +3818,8 @@
 				{
 					"plane": {
 						"name": "J2M Raiden",
+						"type": "Fighter",
+						"speed": "417",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3770,6 +3872,8 @@
 				{
 					"plane": {
 						"name": "N1K1-J Shiden",
+						"type": "Fighter",
+						"speed": "408",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3813,6 +3917,8 @@
 				{
 					"plane": {
 						"name": "N1K2-J Shiden-Kai",
+						"type": "Fighter",
+						"speed": "371",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3838,6 +3944,8 @@
 				{
 					"plane": {
 						"name": "KI-43 Hayabusa",
+						"type": "Fighter",
+						"speed": "308",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -3962,6 +4070,8 @@
 				{
 					"plane": {
 						"name": "KI-44 Shoki",
+						"type": "Fighter",
+						"speed": "376",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -4059,6 +4169,8 @@
 				{
 					"plane": {
 						"name": "KI-61 Hien",
+						"type": "Fighter",
+						"speed": "348",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -4129,6 +4241,8 @@
 				{
 					"plane": {
 						"name": "KI-84 Hayate",
+						"type": "Fighter",
+						"speed": "415",
 						"period_statuses": [
 							{
 								"period_status":{
@@ -4181,6 +4295,8 @@
 				{
 					"plane": {
 						"name": "KI-100 Hien",
+						"type": "Fighter",
+						"speed": "367",
 						"period_statuses": [
 							{
 								"period_status":{

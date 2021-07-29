@@ -62,9 +62,13 @@ public interface InsertAirForceData {
 					JSONObject plane = (JSONObject) planeIterator.next().get("plane"); //get plane from planeIterator.next()
 					
 					String planeName = (String) plane.get("name");  //get name of plane
-					callableStatement = connection.prepareCall("{CALL insert_airforce_plane(?,?)}"); //create statement
+					String planeType = (String) plane.get("type");  //get type of plane
+					String planeSpeed = (String) plane.get("speed");  //get speed of plane
+					callableStatement = connection.prepareCall("{CALL insert_airforce_plane(?,?,?,?)}"); //create statement
 			        callableStatement.setString(1, airForceName); //set input with air force
 			        callableStatement.setString(2, planeName); //set input with plane
+			        callableStatement.setString(3, planeType); //set input with type
+			        callableStatement.setString(4, planeSpeed); //set input with speed
 			        try {
 				    	callableStatement.execute(); //execute statement
 					}catch(Exception e) { e.printStackTrace(); }
