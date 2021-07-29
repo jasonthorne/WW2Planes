@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import model.Event;
+import model.Plane;
 
 public class FrameController implements Rootable {
 
@@ -19,7 +20,7 @@ public class FrameController implements Rootable {
     @FXML private JFXTabPane tabsTP;
     @FXML private Tab availabilitiesTab;
     @FXML private AnchorPane availabilitiesAP;
-    @FXML private TableView<?>availabilitiesTV;
+    @FXML private TableView<Plane>availabilitiesTV;
     @FXML private Tab speedsTab;
     @FXML private AnchorPane speedsAP;
     @FXML private BarChart<?, ?> speedsBC;

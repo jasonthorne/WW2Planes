@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
@@ -10,12 +10,12 @@
    <children>
       <AnchorPane fx:id="bodyAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label fx:id="testLbl" layoutX="253.0" layoutY="150.0" prefHeight="74.0" prefWidth="261.0" text="loader">
+            <Label fx:id="titleLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="83.0" prefHeight="74.0" prefWidth="261.0" text="Planes Data" textAlignment="CENTER">
                <font>
                   <Font size="35.0" />
                </font>
             </Label>
-            <JFXButton fx:id="testBtn" layoutX="261.0" layoutY="264.0" text="Button" />
+            <JFXSpinner fx:id="loadingSpinner" layoutX="275.0" layoutY="250.0" prefHeight="49.0" prefWidth="54.0" />
          </children>
       </AnchorPane>
    </children>

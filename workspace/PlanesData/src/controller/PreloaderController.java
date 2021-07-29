@@ -1,9 +1,9 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSpinner;
 
 import javafx.animation.FadeTransition;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,9 +18,9 @@ public class PreloaderController implements Rootable {
 	//root fxml element & children:
     @FXML private StackPane rootSP;
     @FXML private AnchorPane bodyAP;
-
-    @FXML private Label testLbl;
-    @FXML private JFXButton testBtn;
+    @FXML private Label titleLbl;
+    @FXML private JFXSpinner loadingSpinner;
+    @FXML private Label loadingLbl;
 
     @FXML
     void initialize() {
