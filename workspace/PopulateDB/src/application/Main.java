@@ -10,8 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		System.out.println("adding data to database");
-		InsertAirForceData.insert(); //insert air force data
-		InsertEventData.insert(); //insert event data
+		//InsertAirForceData.insert(); //insert air force data
+		//InsertEventData.insert(); //insert event data
 		
 		//pull data from database:
 		System.out.println("\ndata added:");
