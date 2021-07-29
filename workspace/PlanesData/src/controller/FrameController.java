@@ -9,6 +9,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import model.Event;
 
 public class FrameController {
 
@@ -18,11 +19,11 @@ public class FrameController {
     @FXML private JFXTabPane tabsTP;
     @FXML private Tab availabilitiesTab;
     @FXML private AnchorPane availabilitiesAP;
-    @FXML private TableView<?> availabilitiesTV;
+    @FXML private TableView<?>availabilitiesTV;
     @FXML private Tab speedsTab;
     @FXML private AnchorPane speedsAP;
     @FXML private BarChart<?, ?> speedsBC;
-    @FXML private JFXListView<?> eventsLV;
+    @FXML private JFXListView<Event> eventsLV;
 
     @FXML
     void initialize() {

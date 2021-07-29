@@ -1,9 +1,24 @@
 package application;
 
-public class Main {
+import controller.PreloaderController;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class Main extends Application {
 
 	public static void main(String[] args) {
-		System.out.println("Hullo, world!");
+		launch();
 	}
+
+	@Override
+	public void start(Stage primaryStage) {
+		
+		//get preloader controller:
+		PreloaderController preloaderCtrlr = PreloaderController.getPreloaderCtrlr();
+		//show its stage:
+		preloaderCtrlr.showStage();
+		
+	}
+		
 
 }

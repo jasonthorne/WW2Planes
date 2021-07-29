@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane fx:id="rootSP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <AnchorPane fx:id="bodyAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="testLbl" layoutX="253.0" layoutY="150.0" prefHeight="74.0" prefWidth="261.0" text="loader">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="testBtn" layoutX="261.0" layoutY="264.0" text="Button" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
