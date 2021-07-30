@@ -1,8 +1,14 @@
 package controller;
 
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +16,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import model.AirForce;
 import model.Event;
@@ -31,11 +38,16 @@ public class FrameController implements Rootable {
 
     @FXML
     void initialize() {
-   
+    	
+    	//add observable events to listView:
+		eventsLV.setItems(observEvents);
+		//set listView cellFactory to create EventCellControllers:
+		eventsLV.setCellFactory(EventCellController -> new EventCellController());
     }
     
+    
     FrameController(){
-    	
+    	/////this.preloaderCtrlr = preloaderCtrlr;
     }
     
     //observable list of events:
@@ -44,17 +56,22 @@ public class FrameController implements Rootable {
     //observable list of event's air forces:
     private ObservableList<AirForce>observAirForces;
     
-    void loadEventsData(){ //load events data from db
+    void loadEventsData(FadeTransition fadeOutPreloader){ //load events data from db
     	
     	if (observEvents.isEmpty()) { //if event data is empty:
-    		observEvents.addAll(database.SelectEvents.select()); //load data from database
-    		eventsLV.setItems(observEvents); //add observable events to listView
-    		//set listView cellFactory to create EventCellControllers:
-    		eventsLV.setCellFactory(EventCellController -> new EventCellController());
+    		new Thread(() -> { //fire new thread:
+    	    	try {
+    	    		//load data from database:
+    	    		observEvents.addAll(database.SelectEvents.select()); 
+    	    	}catch(Exception e) { e.printStackTrace(); }
+    	    	finally { //after loading all data, fade out preloader:
+    	    		fadeOutPreloader.play();
+	    		} 
+        	}).start();
     	}
     	
     	
-    	
+    
     	
     	System.out.println(observEvents);
     }

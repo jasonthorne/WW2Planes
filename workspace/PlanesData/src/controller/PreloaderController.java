@@ -53,40 +53,32 @@ public class PreloaderController implements Rootable {
     	if(!stage.isShowing()) { //if stage isn't showing:
     		
     		//create fade in transition for root stack pane:
-    		FadeTransition fadeInThisRoot = new FadeTransition(Duration.seconds(2), rootSP);
-    		fadeInThisRoot.setFromValue(0);
-    		fadeInThisRoot.setToValue(1);
+    		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), rootSP);
+    		fadeIn.setFromValue(0);
+    		fadeIn.setToValue(1);
             
             //create fade out transition for root stack pane:
-            FadeTransition fadeOutThisRoot = new FadeTransition(Duration.seconds(1), rootSP);
-            fadeOutThisRoot.setFromValue(1);
-            fadeOutThisRoot.setToValue(0);
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), rootSP);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
             
-            //after root stack pane fade out:
-            fadeOutThisRoot.setOnFinished((event) -> {
-	  			
+            //after fade out, change to frame view:
+            fadeOut.setOnFinished(event -> {
+            	
 	  	  		Parent frameRoot = Rootable.getRoot(frameCtrlr, "/view/frame.fxml"); //get frame root
 	  			stage.setScene(new Scene(frameRoot)); //add new scene with root to stage
 	  			
 	  			//create fade in transition for frame root:
-	    		FadeTransition fadeInFrameRoot = new FadeTransition(Duration.seconds(1), frameRoot);
-	    		fadeInFrameRoot.setFromValue(0);
-	    		fadeInFrameRoot.setToValue(1);
-	    		fadeInFrameRoot.play();
-	  			
+	    		FadeTransition fadeInFrame = new FadeTransition(Duration.seconds(1), frameRoot);
+	    		fadeInFrame.setFromValue(0);
+	    		fadeInFrame.setToValue(1);
+	    		fadeInFrame.play();
 	  		});
             
-            //after this root has faded in:
-            fadeInThisRoot.setOnFinished((event) -> {
-            	
-            	new Thread(() -> { //fire off new thread
-            		frameCtrlr.loadEventsData(); //load data to frame controller
-            		fadeOutThisRoot.play(); //then fade out this root
-            	}).start();
-            });
-            
+            //load events data, passing fade out transition:
+        	frameCtrlr.loadEventsData(fadeOut);
             stage.show(); //show stage
-            fadeInThisRoot.play(); //play fade in
+            fadeIn.play(); //play fade in
     	}
     }
 }
