@@ -4,11 +4,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import model.Event;
 import model.AirForce;
@@ -60,11 +58,11 @@ public interface SelectEvents {
 				
 				//+++++++++++++++++++++++++++++++++++++++PASS THE LIST OF PERIODS TO EVENT, INSTEAD OF JUST THE STARRT & END :P 
 				//get start & end periods from list:
-				Period startPeriod = eventPeriods.get(0);
-				Period endPeriod = eventPeriods.get(eventPeriods.size()-1);
+				/////////////Period startPeriod = eventPeriods.get(0);
+				////////////////Period endPeriod = eventPeriods.get(eventPeriods.size()-1);
 				
 				//get period total:
-				int periodTotal = eventPeriods.size(); 
+				///////////////int periodTotal = eventPeriods.size(); 
 				
 				//create list for event air forces:
 				List<AirForce>eventAirForces = new ArrayList<>();
@@ -89,6 +87,12 @@ public interface SelectEvents {
 						
 						String planeNane = planesRS.getString("plane_name"); //get plane name
 						
+						//==========================================
+						int planeSpeed = planesRS.getInt("plane_speed"); //get plane speed
+						
+						
+						//================================================
+						
 						//set statement input parameters with air force plane id & event id:
 						availabilitiesStatement.setInt(1, planesRS.getInt("airforce_plane_ID"));
 						availabilitiesStatement.setInt(2, eventsRS.getInt("event_ID"));
@@ -110,7 +114,7 @@ public interface SelectEvents {
 							}
 							
 							//ad plane to air force planes:
-							airForcePlanes.add(new Plane(planeNane, planeAvailabilities));
+							airForcePlanes.add(new Plane(planeNane, planeSpeed, planeAvailabilities));
 						}
 						
 					}//planesRS

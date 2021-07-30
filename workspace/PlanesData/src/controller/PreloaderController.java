@@ -1,6 +1,5 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSpinner;
 
 import javafx.animation.FadeTransition;
@@ -81,8 +80,8 @@ public class PreloaderController implements Rootable {
             fadeInThisRoot.setOnFinished((event) -> {
             	
             	new Thread(() -> { //fire off new thread
-            		frameCtrlr.loadData(); //loading data to frame controller
-            		fadeOutThisRoot.play(); //then fading out this root
+            		frameCtrlr.loadEventsData(); //load data to frame controller
+            		fadeOutThisRoot.play(); //then fade out this root
             	}).start();
             });
             

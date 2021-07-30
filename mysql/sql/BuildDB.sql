@@ -145,14 +145,14 @@ CREATE TABLE planes(
 	planeID INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64) DEFAULT NULL,
     type ENUM ('Fighter','Bomber','Fighter-bomber') NOT NULL,
-    speed VARCHAR(3) DEFAULT NULL,
+    speed INT DEFAULT 0,
 	PRIMARY KEY (planeID),
 	UNIQUE (name) /* prevent duplicate inserts */
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 
 DELIMITER $$
-CREATE PROCEDURE insert_plane (IN plane_name VARCHAR(64), IN plane_type VARCHAR(14), IN plane_speed VARCHAR(3))
+CREATE PROCEDURE insert_plane (IN plane_name VARCHAR(64), IN plane_type VARCHAR(14), IN plane_speed INT)
 BEGIN
 	INSERT IGNORE INTO planes (name, type, speed) VALUES (
 		plane_name, plane_type, plane_speed); 
@@ -175,7 +175,7 @@ CREATE TABLE airforce_planes(
 
 DELIMITER $$
 CREATE PROCEDURE insert_airforce_plane (IN airforce_name VARCHAR(64), IN plane_name VARCHAR(64), 
-IN plane_type VARCHAR(14), IN plane_speed VARCHAR(3))
+IN plane_type VARCHAR(14), IN plane_speed INT)
 BEGIN
 	/* insert plane_name to planes if not present: */
 	CALL insert_plane (plane_name, plane_type, plane_speed);
@@ -187,12 +187,27 @@ BEGIN
 END $$
 DELIMITER ;
 
+/*
+DELIMITER $$
+CREATE PROCEDURE select_airforce_planes (IN airforce_ID INT)
+BEGIN
+	SELECT
+		planes.name AS plane_name,
+		airforce_planes.airforce_planeID AS airforce_plane_ID
+	FROM airforce_planes
+		INNER JOIN planes ON airforce_planes.planeID = planes.planeID
+	WHERE airforce_planes.airforceID = airforce_ID;
+END $$
+DELIMITER ;
+*/
+
 
 DELIMITER $$
 CREATE PROCEDURE select_airforce_planes (IN airforce_ID INT)
 BEGIN
 	SELECT
 		planes.name AS plane_name,
+		planes.speed AS plane_speed,
 		airforce_planes.airforce_planeID AS airforce_plane_ID
 	FROM airforce_planes
 		INNER JOIN planes ON airforce_planes.planeID = planes.planeID

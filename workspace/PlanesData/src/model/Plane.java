@@ -18,16 +18,21 @@ public final class Plane {
 	}
 	
 	private final SimpleStringProperty name; //name of plane
+	private final int speed; //speed of plane
 	private final Map<Period, Availability>periodToAvailability; //periods and their corresponding availability
 	
 	//constructor:
-	public Plane(String name, Map<Period, Availability>periodToAvailability) {
+	public Plane(String name, int speed, Map<Period, Availability>periodToAvailability) {
 		this.name = new SimpleStringProperty(name);
+		this.speed = speed;
 		this.periodToAvailability = new HashMap<Period, Availability>(periodToAvailability); 
 	}
 	
 	//get plane name:
 	public String getName() { return name.get(); }
+	
+	//get plane speed:
+	public int getSpeed() { return speed; }
 	
 	//get plane availabilities:
 	public HashMap<Period, Availability> getAvailabilities() { 
@@ -36,7 +41,7 @@ public final class Plane {
 
 	@Override
 	public String toString() {
-		return "Plane [name=" + name.get() + ", periodToStatus=" + periodToAvailability + "]";
+		return "Plane [name=" + name.get() + ", speed=" + speed + ", periodToAvailability=" + periodToAvailability + "]";
 	}
-	
+
 }
