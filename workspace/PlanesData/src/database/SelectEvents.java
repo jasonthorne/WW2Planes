@@ -56,14 +56,6 @@ public interface SelectEvents {
 							periodsRS.getInt("period_year"))); 
 				}
 				
-				//+++++++++++++++++++++++++++++++++++++++PASS THE LIST OF PERIODS TO EVENT, INSTEAD OF JUST THE STARRT & END :P 
-				//get start & end periods from list:
-				/////////////Period startPeriod = eventPeriods.get(0);
-				////////////////Period endPeriod = eventPeriods.get(eventPeriods.size()-1);
-				
-				//get period total:
-				///////////////int periodTotal = eventPeriods.size(); 
-				
 				//create list for event air forces:
 				List<AirForce>eventAirForces = new ArrayList<>();
 				
@@ -74,7 +66,6 @@ public interface SelectEvents {
 				while(airForcesRS.next()) {
 					
 					String airForceName = airForcesRS.getString("airforce_name"); //get air force name
-					//////////////////boolean hasHomeAdv = airForcesRS.getBoolean("home_advantage_value"); //get home adv value
 					
 					//create list for air force planes:
 					List<Plane>airForcePlanes = new ArrayList<>();
@@ -86,12 +77,7 @@ public interface SelectEvents {
 					while(planesRS.next()) {
 						
 						String planeNane = planesRS.getString("plane_name"); //get plane name
-						
-						//==========================================
 						int planeSpeed = planesRS.getInt("plane_speed"); //get plane speed
-						
-						
-						//================================================
 						
 						//set statement input parameters with air force plane id & event id:
 						availabilitiesStatement.setInt(1, planesRS.getInt("airforce_plane_ID"));
@@ -113,7 +99,7 @@ public interface SelectEvents {
 										Availability.valueOf(availabilitiesRS.getString("status_option").toUpperCase()));
 							}
 							
-							//ad plane to air force planes:
+							//add plane to air force planes:
 							airForcePlanes.add(new Plane(planeNane, planeSpeed, planeAvailabilities));
 						}
 						

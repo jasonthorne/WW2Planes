@@ -7,11 +7,8 @@ public final class Period implements Comparable <Period>{
 		EARLY("Early"), MID("Mid"), LATE("Late");
 		
 		private final String block; //name of block
-		
-		//constructor sets name of block:
-		private Block(String block) { this.block = block; } 
-		@Override 
-		public String toString() { return block; } //return chosen block
+		private Block(String block) { this.block = block; } //constructor sets name of block
+		@Override public String toString() { return block; } //return chosen block
 	}
 	
 	private final Block block; //block
@@ -64,7 +61,7 @@ public final class Period implements Comparable <Period>{
 		return result;
 	}
 	
-	//or unique HashMap insertion:
+	//for unique HashMap insertion:
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

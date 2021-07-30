@@ -66,6 +66,7 @@ public class FrameController implements Rootable {
     			List<AirForce>airForces = newVal.getAirForces(); //get selected event's air forces
 	        	//////showAvailabilities(airForces); //show air force availabilities
     			
+    			planesTables.clear(); ///////////////MAKE THIS BETTER :P
     			airForces.forEach(airForce ->{
     				showAvailabilities(airForce);
     	    	});
@@ -125,7 +126,7 @@ public class FrameController implements Rootable {
     	
     	//----------------------------
     	planesTable.setFixedCellSize(25);
-    	planesTable.prefHeightProperty().bind(planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(2.01)));
+    	planesTable.prefHeightProperty().bind(planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(2.0)));
     	planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
     	//-------------------------------
@@ -138,7 +139,8 @@ public class FrameController implements Rootable {
 		Period end = sortedAvails.lastKey(); //get end period
 		
     	//create plane column:
-    	TableColumn<Plane,String> planeCol = new TableColumn<>("Plane");
+    	//////////TableColumn<Plane,String> planeCol = new TableColumn<>("Plane");
+    	TableColumn<Plane,String> planeCol = new TableColumn<>(airForce.getAirForceName());
     	
     	//set cell factory:
     	planeCol.setCellValueFactory( new PropertyValueFactory<Plane,String>("name"));
@@ -198,7 +200,6 @@ public class FrameController implements Rootable {
     	}
     	//add table to planesTablesVB:
     	//////////planesTablesVB.getChildren().setAll(planesTable);
-    	
     	planesTables.add(planesTable);
     	
     }
