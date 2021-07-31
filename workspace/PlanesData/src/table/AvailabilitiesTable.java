@@ -22,10 +22,10 @@ import model.Plane.Availability;
 
 public interface AvailabilitiesTable {
 		
-	public static TableView<Plane>getTable(AirForce airforce, Pane pane) {
+	public static TableView<Plane>getTable(AirForce airForce, Pane pane) {
 		
 		//make observable list of planes from air force planes:
-    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airforce.getAirForcePlanes()); 
+    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes()); 
     	//add observable list to table view for planes:
     	TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
     	
@@ -48,7 +48,7 @@ public interface AvailabilitiesTable {
 		Period end = sortedAvails.lastKey(); //get end period
 		
     	//create plane column:
-    	TableColumn<Plane,String> planeCol = new TableColumn<>(airforce.getAirForceName());
+    	TableColumn<Plane,String> planeCol = new TableColumn<>(airForce.getAirForceName());
     	planeCol.setId("plane-col"); //give id for style sheet
     	planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name")); //set cell factory
     	planesTable.getColumns().add(planeCol); //add plane column to table

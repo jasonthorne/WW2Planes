@@ -19,7 +19,6 @@ public class PreloaderController implements Rootable {
     @FXML private AnchorPane bodyAP;
     @FXML private Label titleLbl;
     @FXML private JFXSpinner loadingSpinner;
-    @FXML private Label loadingLbl;
 
     @FXML
     void initialize() {

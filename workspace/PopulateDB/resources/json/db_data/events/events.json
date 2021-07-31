@@ -48,5 +48,140 @@
 				"year": "1941"
 			}
 		}
+	},
+	{
+		"event": {
+			"name": "Guadalcanal",
+			"airforces": [
+				{
+					"airforce": {
+						"name": "USAAF"
+					}
+				},
+				{
+					"airforce": {
+						"name": "Japan"
+					}
+				}
+			],
+			"start_period": {
+				"block": "Mid",
+				"year": "1942"
+			},
+			"end_period": {
+				"block": "Early",
+				"year": "1943"
+			}
+		}
+	},
+	{
+		"event": {
+			"name": "Stalingrad",
+			"airforces": [
+				{
+					"airforce": {
+						"name": "Soviet"
+					}
+				},
+				{
+					"airforce": {
+						"name": "Luftwaffe"
+					}
+				}
+			],
+			"start_period": {
+				"block": "Late",
+				"year": "1942"
+			},
+			"end_period": {
+				"block": "Early",
+				"year": "1943"
+			}
+		}
+	},
+	{
+		"event": {
+			"name": "Assault on the Reich",
+			"airforces": [
+				{
+					"airforce": {
+						"name": "RAF"
+					}
+				},
+				{
+					"airforce": {
+						"name": "USAAF"
+					}
+				},
+				{
+					"airforce": {
+						"name": "Luftwaffe"
+					}
+				}
+			],
+			"start_period": {
+				"block": "Mid",
+				"year": "1943"
+			},
+			"end_period": {
+				"block": "Early",
+				"year": "1945"
+			}
+		}
+	},
+	{
+		"event": {
+			"name": "The Italian Campaign",
+			"airforces": [
+				{
+					"airforce": {
+						"name": "RAF"
+					}
+				},
+				{
+					"airforce": {
+						"name": "USAAF"
+					}
+				},
+				{
+					"airforce": {
+						"name": "Luftwaffe"
+					}
+				}
+			],
+			"start_period": {
+				"block": "Mid",
+				"year": "1943"
+			},
+			"end_period": {
+				"block": "Mid",
+				"year": "1944"
+			}
+		}
+	},
+	{
+		"event": {
+			"name": "Defence of the home islands",
+			"airforces": [
+				{
+					"airforce": {
+						"name": "USAAF"
+					}
+				},
+				{
+					"airforce": {
+						"name": "Japan"
+					}
+				}
+			],
+			"start_period": {
+				"block": "Mid",
+				"year": "1944"
+			},
+			"end_period": {
+				"block": "Mid",
+				"year": "1945"
+			}
+		}
 	}
 ]

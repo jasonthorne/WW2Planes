@@ -2,15 +2,24 @@ package chart;
 
 import java.util.List;
 
-import javafx.scene.chart.BarChart;
 import model.AirForce;
 
-public interface SpeedsBarChart {
+public final class SpeedsBarChart {
 	
-	public static BarChart<String,Number>getBarChart(List<AirForce> airforces) {
+	//singleton reference:
+	private static SpeedsBarChart singleSpeedsBarChart = null;
+
+	private SpeedsBarChart(List<AirForce> airForces) {
 		
-		airforces.forEach(airforce -> System.out.println(airforce));
-		return null;
 	}
+	
+	//get speeds bar chart singleton:
+	public static SpeedsBarChart getSpeedsBarChart(List<AirForce> airForces) {
+        if (singleSpeedsBarChart == null){ //create singleton if necessary
+        	singleSpeedsBarChart = new SpeedsBarChart(airForces);}
+        return singleSpeedsBarChart; 
+	}
+	
+	
 
 }
