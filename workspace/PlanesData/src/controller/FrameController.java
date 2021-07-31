@@ -65,10 +65,11 @@ public class FrameController implements Rootable {
     			planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
     			
 	        	//showSpeeds(airForces); //show air force speeds
-	        	//////SpeedsBarChart.getBarChart(airForces); +++++++++
+	        	//SpeedsBarChart.getBarChart(airForces); +++++++++
 	        
     	    }
     	});
+    	//planesTablesSP.setFitToWidth(true);
     }
     
    
