@@ -38,6 +38,7 @@ import model.Plane;
 import model.Period.Block;
 import model.Plane.Availability;
 import table.AvailabilitiesTable;
+import chart.SpeedsBarChart;
 
 public class FrameController implements Rootable {
 
@@ -78,8 +79,8 @@ public class FrameController implements Rootable {
     			
     			planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
     			
-	        	showSpeeds(airForces); //show air force speeds
-	        	
+	        	//showSpeeds(airForces); //show air force speeds
+	        	SpeedsBarChart.getBarChart(airForces);
 	        
     	    }
     	});

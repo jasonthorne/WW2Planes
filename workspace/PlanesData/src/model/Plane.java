@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public final class Plane extends RecursiveTreeObject<Plane>{
 	
-	public enum Availability {
+	public enum Availability { //a plane's availability (in relation to a period of history)
 		
 		UNAVAILABLE("Unavailable"), LIMITED("Limited"), COMMON("Common");
 		

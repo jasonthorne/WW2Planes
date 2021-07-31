@@ -32,7 +32,7 @@ public interface AvailabilitiesTable {
     	//set table view size to anchor pane:
     	planesTable.setPrefSize(pane.getPrefWidth(), pane.getPrefHeight());
     	
-    	//set cell sizes with mysterious code!:
+    	//set cell sizes with confusing, borrowed code!:
     	/**https://stackoverflow.com/questions/27945817/javafx-adapt-tableview-height-to-number-of-rows*/
     	planesTable.setFixedCellSize(25);
     	planesTable.prefHeightProperty().bind(
@@ -49,13 +49,9 @@ public interface AvailabilitiesTable {
 		
     	//create plane column:
     	TableColumn<Plane,String> planeCol = new TableColumn<>(airforce.getAirForceName());
-    	//planeCol.setStyle( "-fx-alignment: CENTER;"); //++++++++++++++++++++++++++++++++++++++++++HAVE THIS IN CSS FILE! :P
     	planeCol.setId("plane-col"); //give id for style sheet
-    	//set cell factory:
-    	planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name"));
-    			
-    	//add plane column to table:
-    	planesTable.getColumns().add(planeCol); 
+    	planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name")); //set cell factory
+    	planesTable.getColumns().add(planeCol); //add plane column to table
     	
     	//year and block columns:
     	TableColumn<Plane,String> yearCol;
@@ -92,8 +88,7 @@ public interface AvailabilitiesTable {
     				
     			if(canAdd) {
     				blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column
-    				blockCol.setId("block-col"); //give id for style sheet
-    				////////blockCol.setStyle( "-fx-alignment: CENTER;"); ///+++++++++HAVE THIS IN A CSS FILE FOR TABLE VIEWS ////https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment
+    				blockCol.setId("block-col"); //give block column id for style sheet
         			blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
         			blockCol.setCellValueFactory(callBack); //set block column cell factory
             		yearCol.getColumns().add(blockCol); //add block column to year column
