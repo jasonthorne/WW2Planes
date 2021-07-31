@@ -1,0 +1,10 @@
+
+
+/* ----- plane availabilities table: -------*/
+
+/* center table column data: */
+#plane-col, #block-col {
+    -fx-alignment: CENTER;
+}
+
+/* -----------------------------------------*/

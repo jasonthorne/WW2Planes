@@ -9,8 +9,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,16 +32,13 @@ public interface AvailabilitiesTable {
     	//set table view size to anchor pane:
     	planesTable.setPrefSize(pane.getPrefWidth(), pane.getPrefHeight());
     	
-    	//----------------------------
-    	//set cell sizes with mysterious code from others!:
+    	//set cell sizes with mysterious code!:
     	/**https://stackoverflow.com/questions/27945817/javafx-adapt-tableview-height-to-number-of-rows*/
     	planesTable.setFixedCellSize(25);
     	planesTable.prefHeightProperty().bind(
     			planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(2.0)));
     	/** https://stackoverflow.com/questions/28428280/how-to-set-column-width-in-tableview-in-javafx */
     	planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    	
-    	//-------------------------------
     	
     	//TreeMap of a plane's availabilities, sorted by period compareTo:
 		TreeMap<Period,Availability> sortedAvails = new TreeMap<Period,Availability>( 
@@ -54,8 +49,8 @@ public interface AvailabilitiesTable {
 		
     	//create plane column:
     	TableColumn<Plane,String> planeCol = new TableColumn<>(airforce.getAirForceName());
-    	planeCol.setStyle( "-fx-alignment: CENTER;");
-    	
+    	//planeCol.setStyle( "-fx-alignment: CENTER;"); //++++++++++++++++++++++++++++++++++++++++++HAVE THIS IN CSS FILE! :P
+    	planeCol.setId("plane-col"); //give id for style sheet
     	//set cell factory:
     	planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name"));
     			
@@ -64,7 +59,7 @@ public interface AvailabilitiesTable {
     	
     	//year and block columns:
     	TableColumn<Plane,String> yearCol;
-    	TableColumn<Plane,String> blockCol;
+    	TableColumn<Plane,String> blockCol;  
     	
     	//call back for populating block column cells with plane period availabilities:
     	Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>> callBack = 
@@ -96,8 +91,9 @@ public interface AvailabilitiesTable {
     			if(currBlock.equals(start.getBlock()) && currYear == start.getYear()) {canAdd = true;}
     				
     			if(canAdd) {
-    				blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column 
-    				blockCol.setStyle( "-fx-alignment: CENTER;"); ///+++++++++HAVE THIS IN A CSS FILE FOR TABLE VIEWS ////https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment
+    				blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column
+    				blockCol.setId("block-col"); //give id for style sheet
+    				////////blockCol.setStyle( "-fx-alignment: CENTER;"); ///+++++++++HAVE THIS IN A CSS FILE FOR TABLE VIEWS ////https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment
         			blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
         			blockCol.setCellValueFactory(callBack); //set block column cell factory
             		yearCol.getColumns().add(blockCol); //add block column to year column
@@ -112,8 +108,6 @@ public interface AvailabilitiesTable {
     		planesTable.getColumns().add(yearCol); //add year column to table
     		currYear++; //advance to next year
     	}
-		
-		return planesTable;
+		return planesTable; //return built table
 	}
-
 }

@@ -90,7 +90,6 @@ public class FrameController implements Rootable {
     FrameController(){
     	/////this.preloaderCtrlr = preloaderCtrlr;
     	
-    
     }
     
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList(); //observable list of events
