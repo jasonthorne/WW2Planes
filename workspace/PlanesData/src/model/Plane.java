@@ -3,9 +3,11 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import javafx.beans.property.SimpleStringProperty;
 
-public final class Plane {
+public final class Plane extends RecursiveTreeObject<Plane>{
 	
 	public enum Availability {
 		

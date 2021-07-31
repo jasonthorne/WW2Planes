@@ -7,7 +7,7 @@ public final class Period implements Comparable <Period>{
 		EARLY("Early"), MID("Mid"), LATE("Late");
 		
 		private final String block; //name of block
-		private Block(String block) { this.block = block; } //constructor sets name of block
+		private Block(String block) { this.block = block; } //constructor
 		@Override public String toString() { return block; } //return chosen block
 	}
 	

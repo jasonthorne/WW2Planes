@@ -5,9 +5,12 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
 
 import javafx.animation.FadeTransition;
 import javafx.beans.binding.Bindings;
@@ -17,6 +20,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
@@ -33,6 +37,7 @@ import model.Period;
 import model.Plane;
 import model.Period.Block;
 import model.Plane.Availability;
+import table.AvailabilitiesTable;
 
 public class FrameController implements Rootable {
 
@@ -61,34 +66,26 @@ public class FrameController implements Rootable {
 		/**https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2	*/
     	eventsLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Event>() {
     		
-    		@Override  //override change listener's changed: 
+    		@Override //override change listener's changed: 
     	    public void changed(ObservableValue<? extends Event> observable, Event oldVal, Event newVal) {
-    			List<AirForce>airForces = newVal.getAirForces(); //get selected event's air forces
-	        	//////showAvailabilities(airForces); //show air force availabilities
     			
-    			planesTables.clear(); ///////////////MAKE THIS BETTER :P
-    			airForces.forEach(airForce ->{
-    				showAvailabilities(airForce);
-    	    	});
+    			List<AirForce>airForces = newVal.getAirForces(); //get selected event's air forces
+	        	
+    			//make list of planes tables from air forces:
+    			List<TableView<Plane>>planesTables = airForces.stream()
+    					.map(airForce -> AvailabilitiesTable.getTable(airForce,availabilitiesAP))
+    					.collect(Collectors.toList());
+    			
+    			planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
     			
 	        	showSpeeds(airForces); //show air force speeds
 	        	
-	        	planesTablesVB.getChildren().setAll(planesTables);
+	        
     	    }
     	});
-    	
-    	tv.setPrefSize(planesTablesSP.getPrefWidth(), planesTablesSP.getPrefHeight());
-    	planesTablesVB.getChildren().setAll(tv,tv2,tv3,tv4, tv5, tv6);
-    	
     }
     
-    TableView<Plane> tv = new TableView<Plane>();
-    TableView<Plane> tv2 = new TableView<Plane>();
-    TableView<Plane> tv3 = new TableView<Plane>();
-    TableView<Plane> tv4 = new TableView<Plane>();
-    TableView<Plane> tv5 = new TableView<Plane>();
-    TableView<Plane> tv6 = new TableView<Plane>();
-    
+   
     
     FrameController(){
     	/////this.preloaderCtrlr = preloaderCtrlr;
@@ -112,104 +109,15 @@ public class FrameController implements Rootable {
     }
     
     //++++++++++++++++++THIS SHOULD MAYBE BE OBSERVABLE??????? ++++++++++++++
-    List<TableView<Plane>>planesTables = new ArrayList<TableView<Plane>>(); //list of planesTables
-    
-    private void showAvailabilities(AirForce airForce) {
-    	
-    	//make observable list of planes from air force planes:
-    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes()); 
-    	//add observable list to table view for planes:
-    	TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
-    	//set table view size to scroll pane:
-    	//planesTable.setPrefSize(planesTablesSP.getPrefWidth(), planesTablesSP.getPrefHeight());
-    	
-    	
-    	//----------------------------
-    	planesTable.setFixedCellSize(25);
-    	planesTable.prefHeightProperty().bind(planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(2.0)));
-    	planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    	
-    	//-------------------------------
-    	
-    	//TreeMap of a plane's availabilities, sorted by period compareTo:
-		TreeMap<Period,Availability> sortedAvails = new TreeMap<Period,Availability>( 
-				observPlanes.get(0).getAvailabilities());
-		
-		Period start = sortedAvails.firstKey(); //get start period
-		Period end = sortedAvails.lastKey(); //get end period
-		
-    	//create plane column:
-    	//////////TableColumn<Plane,String> planeCol = new TableColumn<>("Plane");
-    	TableColumn<Plane,String> planeCol = new TableColumn<>(airForce.getAirForceName());
-    	
-    	//set cell factory:
-    	planeCol.setCellValueFactory( new PropertyValueFactory<Plane,String>("name"));
-    			
-    	//add plane column to table:
-    	planesTable.getColumns().add(planeCol); 
-    	
-    	//year and block columns:
-    	TableColumn<Plane,String> yearCol;
-    	TableColumn<Plane,String> blockCol;
-    	
-    	//call back for populating block column cells with plane period availabilities:
-    	Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>> callBack = 
-                new Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Plane, String> param) {
-            	 return new SimpleStringProperty(
-            			 param.getValue().getAvailabilities().get(
-            					 param.getTableColumn().getUserData()).toString());		
-            }
-        };/** https://stackoverflow.com/questions/21639108/javafx-tableview-objects-with-maps */
-        
-        
-        int currYear = start.getYear(); //holds year values
-		Block currBlock; //holds block values
-    	Iterator<Block>blocksIterator; //blocks iterator
-    	boolean canAdd = false; //flag for adding values
-    	
-    	outerWhile:
-    	while(currYear <= end.getYear()) { //loop through years
-    		
-    		yearCol = new TableColumn<>(String.valueOf(currYear)); //create year column
-    		blocksIterator = Arrays.asList(Block.values()).iterator(); //(re)set blocks iterator
-    		
-    		while(blocksIterator.hasNext()) { //loop through blocks
-    			currBlock = blocksIterator.next(); //advance to next block
-    			
-    			//if found start date, allow adding of values:
-    			if(currBlock.equals(start.getBlock()) && currYear == start.getYear()) {canAdd = true;}
-    				
-    			if(canAdd) {
-    				blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column 
-    				blockCol.setStyle( "-fx-alignment: CENTER;"); ///+++++++++HAVE THIS IN A CSS FILE FOR TABLE VIEWS ////https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment
-        			blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
-        			blockCol.setCellValueFactory(callBack); //set block column cell factory
-            		yearCol.getColumns().add(blockCol); //add block column to year column
-            		
-            		//if found end date:
-    				if(currBlock.equals(end.getBlock()) && currYear == end.getYear()) {
-    					planesTable.getColumns().add(yearCol); //add year column to table 
-    					break outerWhile; //break from outer while
-    				}
-    			}
-    		}
-    		planesTable.getColumns().add(yearCol); //add year column to table
-    		currYear++; //advance to next year
-    	}
-    	//add table to planesTablesVB:
-    	//////////planesTablesVB.getChildren().setAll(planesTable);
-    	planesTables.add(planesTable);
-    	
-    }
-    
-    
-    
+    //////private List<TableView<Plane>>planesTables = new ArrayList<TableView<Plane>>(); //list of planesTables
+   ////////////// private ObservableList<TableView<Plane>>planesTables = FXCollections.observableArrayList();
+    //////////////private TableView<Plane> planesTable = new TableView<Plane>();
+   
+  
     
     
     private void showSpeeds(List<AirForce> airForces) {
-    	System.out.println("airfoece SPEED : " + airForces);
+    	////////System.out.println("airfoece SPEED : " + airForces);
     }
     
     
