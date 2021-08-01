@@ -17,6 +17,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import model.AirForce;
@@ -37,7 +38,12 @@ public class FrameController implements Rootable {
     @FXML private VBox planesTablesVB;
     @FXML private Tab speedsTab;
     @FXML private AnchorPane speedsAP;
-    //////////@FXML private BarChart<?, ?> speedsBC;
+    @FXML private ScrollPane speedsSP;
+    //@FXML private Pane sppedsPane;
+    //@FXML
+   // private AnchorPane graphAP;
+    
+    @FXML private BarChart<String,Number> speedsBC;
     @FXML private JFXListView<Event> eventsLV;
     
     @FXML
@@ -67,8 +73,9 @@ public class FrameController implements Rootable {
 	        	//showSpeeds(airForces); //show air force speeds
 	        	//SpeedsBarChart.getBarChart(airForces); +++++++++
     			
-    			speedsAP.getChildren().add(SpeedsBarChart.getSpeedsBarChart(airForces));
-	        
+    			//speedsSP.getChildren().add(SpeedsBarChart.getSpeedsBarChart(airForces));
+    			/////graphAP.getChildren().setAll(SpeedsBarChart.getSpeedsBarChart(airForces));
+    			speedsBC = SpeedsBarChart.getSpeedsBarChart(airForces);
     	    }
     	});
     	//planesTablesSP.setFitToWidth(true);
