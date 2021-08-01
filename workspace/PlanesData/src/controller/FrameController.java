@@ -66,10 +66,13 @@ public class FrameController implements Rootable {
     			
 	        	//showSpeeds(airForces); //show air force speeds
 	        	//SpeedsBarChart.getBarChart(airForces); +++++++++
+    			
+    			speedsAP.getChildren().add(SpeedsBarChart.getSpeedsBarChart(airForces));
 	        
     	    }
     	});
     	//planesTablesSP.setFitToWidth(true);
+    	
     }
     
    

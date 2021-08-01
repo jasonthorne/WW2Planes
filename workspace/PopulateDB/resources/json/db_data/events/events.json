@@ -131,36 +131,6 @@
 	},
 	{
 		"event": {
-			"name": "The Italian Campaign",
-			"airforces": [
-				{
-					"airforce": {
-						"name": "RAF"
-					}
-				},
-				{
-					"airforce": {
-						"name": "USAAF"
-					}
-				},
-				{
-					"airforce": {
-						"name": "Luftwaffe"
-					}
-				}
-			],
-			"start_period": {
-				"block": "Mid",
-				"year": "1943"
-			},
-			"end_period": {
-				"block": "Mid",
-				"year": "1944"
-			}
-		}
-	},
-	{
-		"event": {
 			"name": "Defence of the home islands",
 			"airforces": [
 				{

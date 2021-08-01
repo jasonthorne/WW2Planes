@@ -10,7 +10,7 @@ public class EventCellController extends JFXListCell<Event> {
 
     //root fxml element:
     @FXML private AnchorPane rootAP;
- 
+    
     //update cell with event name:
 	@Override  
 	protected void updateItem(Event event, boolean isEmpty) {
