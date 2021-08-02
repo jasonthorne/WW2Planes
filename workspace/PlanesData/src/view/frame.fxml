@@ -33,17 +33,17 @@
                     <content>
                       <AnchorPane fx:id="speedsAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
                            <children>
-                              <BarChart fx:id="speedsBC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="800.0">
+                              <BarChart fx:id="speedsBC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" fx:id="xAirforces" />
                                 </xAxis>
                                 <yAxis>
-                                  <NumberAxis fx:id="ySpeeds" side="LEFT" />
+                                  <NumberAxis fx:id="ySpeeds" label="Miles per hour" side="LEFT" />
                                 </yAxis>
                               </BarChart>
                               <HBox fx:id="TEST_HB" alignment="CENTER" layoutY="446.0" prefHeight="60.0" prefWidth="800.0">
                                  <children>
-                                    <JFXListView fx:id="TEST_LV" minHeight="50.0" prefWidth="800.0" />
+                                    <JFXListView fx:id="TEST_LV" prefHeight="50.0" prefWidth="800.0" />
                                  </children>
                               </HBox>
                            </children></AnchorPane>

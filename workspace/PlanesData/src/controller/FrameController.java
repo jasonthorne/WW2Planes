@@ -55,8 +55,17 @@ public class FrameController implements Rootable {
     @FXML private BarChart<String,Number> speedsBC;
     @FXML private CategoryAxis xAirforces;
     @FXML private NumberAxis ySpeeds;
-    //----------------------
     
+    
+    @FXML
+    private HBox TEST_HB;
+
+    @FXML
+    private JFXListView<AirForce> TEST_LV;
+    
+    
+    //----------------------
+    /////////////https://stackoverflow.com/questions/51574266/align-contents-of-a-listview-using-javafx
     @FXML
     private HBox eventsHB;
     @FXML private JFXListView<Event> eventsLV;
@@ -103,18 +112,7 @@ public class FrameController implements Rootable {
         	        speedsBC.getData().add(series1);
     			//}
     			
-    	        //+++++++++++++++++++++SHOW MAX SPEED, MIN SPEED and AVG SPeeds for each airforce! +++++++++++++
-    			//show the namef of each of these planes too! 
-    	        
-    	        /**https://coderanch.com/t/688814/java/install-tooltips-JavaFX-barchart-nodes*/
-    	        /*
-    	        for (Series<String, Number> series : speedsBC.getData()) {
-    	            for (Data<String, Number> data : series.getData()) {
-    	                Tooltip tooltip = new Tooltip();
-    	                tooltip.setText("Yo dawg!");
-    	                Tooltip.install(data.getNode(), tooltip);
-    	            }
-    	        }*/
+    	      
     	    }
     	});
     	//planesTablesSP.setFitToWidth(true);

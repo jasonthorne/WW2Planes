@@ -3,13 +3,17 @@ package controller;
 import com.jfoenix.controls.JFXListCell;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import model.Event;
 
 public class EventCellController extends JFXListCell<Event> {
 
     //root fxml element:
-    @FXML private AnchorPane rootAP;
+    //@FXML private AnchorPane rootAP;
+    @FXML private HBox rootHB;
     
     //update cell with event name:
 	@Override  
@@ -23,6 +27,20 @@ public class EventCellController extends JFXListCell<Event> {
   	    } else {
   	    	//set text with event name:
 			setText(event.getName());
+			
+			
+			// Create centered Label
+           /* Label label = new Label(event.getName());
+            label.setAlignment(Pos.CENTER);
+
+            rootHB.getChildren().setAll(label);*/
+            //setGraphic(rootHB);
+            
+            
+			
+			
+			
+			
         }
     }
 }
