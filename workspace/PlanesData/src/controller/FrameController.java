@@ -12,10 +12,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Side;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -43,7 +50,13 @@ public class FrameController implements Rootable {
     //@FXML
    // private AnchorPane graphAP;
     
+    //----------------
     @FXML private BarChart<String,Number> speedsBC;
+    @FXML private CategoryAxis xAirforces;
+    @FXML private NumberAxis ySpeeds;
+    //----------------------
+    
+    
     @FXML private JFXListView<Event> eventsLV;
     
     @FXML
@@ -75,19 +88,44 @@ public class FrameController implements Rootable {
     			
     			//speedsSP.getChildren().add(SpeedsBarChart.getSpeedsBarChart(airForces));
     			/////graphAP.getChildren().setAll(SpeedsBarChart.getSpeedsBarChart(airForces));
-    			speedsBC = SpeedsBarChart.getSpeedsBarChart(airForces);
+    			//////speedsBC.getData().setAll(elements) = SpeedsBarChart.getSpeedsBarChart(airForces);
+    			speedsBC.setTitle("Airforce name");
+    			//////////speedsBC.setStyle("-fx-font-size: " + 15 + "px;");
+    			
+    			/**https://stackoverflow.com/questions/29423510/display-chart-in-javafx*/
+    			//for (int i=0;i<4;i++){
+    				XYChart.Series<String, Number> series1 = new Series<String, Number>();
+    				series1.setName(i++ + "Plane name");    
+        	        series1.getData().add(new Data<String, Number>("Planes", 80));
+        	        //Tooltip.install(series1.getNode(), new Tooltip("Yo dawg!"));
+        	        speedsBC.getData().add(series1);
+    			//}
+    			
+    	        //+++++++++++++++++++++SHOW MAX SPEED, MIN SPEED and AVG SPeeds for each airforce! +++++++++++++
+    			//show the namef of each of these planes too! 
+    	        
+    	        /**https://coderanch.com/t/688814/java/install-tooltips-JavaFX-barchart-nodes*/
+    	        /*
+    	        for (Series<String, Number> series : speedsBC.getData()) {
+    	            for (Data<String, Number> data : series.getData()) {
+    	                Tooltip tooltip = new Tooltip();
+    	                tooltip.setText("Yo dawg!");
+    	                Tooltip.install(data.getNode(), tooltip);
+    	            }
+    	        }*/
     	    }
     	});
     	//planesTablesSP.setFitToWidth(true);
-    	
+    	//xAirforces.setLabel("Value");
+    	ySpeeds.setLabel("Miles per hour"); //DO THIS IN scene builder ++++
     }
     
-   
-    
+   //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
+  
     FrameController(){
     	
     }
-    
+    int i = 0;
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList(); //observable list of events
     
     void loadEventsData(FadeTransition fadeOutPreloader){ //load events data from db

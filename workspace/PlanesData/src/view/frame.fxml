@@ -32,18 +32,15 @@
                     <content>
                       <AnchorPane fx:id="speedsAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
                            <children>
-                              <ScrollPane fx:id="speedsSP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
-                                 <content>
-                                    <BarChart fx:id="speedsBC" prefHeight="515.0" prefWidth="785.0">
-                                      <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis side="LEFT" />
-                                      </yAxis>
-                                    </BarChart>
-                                 </content>
-                              </ScrollPane>
+                              <ScrollPane fx:id="speedsSP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0" />
+                              <BarChart fx:id="speedsBC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" fx:id="xAirforces" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis fx:id="ySpeeds" side="LEFT" />
+                                </yAxis>
+                              </BarChart>
                            </children></AnchorPane>
                     </content>
                   </Tab>
