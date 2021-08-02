@@ -24,6 +24,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -56,7 +57,8 @@ public class FrameController implements Rootable {
     @FXML private NumberAxis ySpeeds;
     //----------------------
     
-    
+    @FXML
+    private HBox eventsHB;
     @FXML private JFXListView<Event> eventsLV;
     
     @FXML

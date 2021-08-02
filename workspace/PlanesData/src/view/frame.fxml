@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -32,8 +33,7 @@
                     <content>
                       <AnchorPane fx:id="speedsAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
                            <children>
-                              <ScrollPane fx:id="speedsSP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0" />
-                              <BarChart fx:id="speedsBC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
+                              <BarChart fx:id="speedsBC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="800.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" fx:id="xAirforces" />
                                 </xAxis>
@@ -41,12 +41,21 @@
                                   <NumberAxis fx:id="ySpeeds" side="LEFT" />
                                 </yAxis>
                               </BarChart>
+                              <HBox fx:id="TEST_HB" alignment="CENTER" layoutY="446.0" prefHeight="60.0" prefWidth="800.0">
+                                 <children>
+                                    <JFXListView fx:id="TEST_LV" minHeight="50.0" prefWidth="800.0" />
+                                 </children>
+                              </HBox>
                            </children></AnchorPane>
                     </content>
                   </Tab>
                </tabs>
             </JFXTabPane>
-            <JFXListView fx:id="eventsLV" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="800.0" />
+            <HBox fx:id="eventsHB" alignment="CENTER" layoutY="550.0" prefHeight="50.0" prefWidth="800.0">
+               <children>
+                  <JFXListView fx:id="eventsLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="800.0" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>
