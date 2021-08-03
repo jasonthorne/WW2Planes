@@ -10,10 +10,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import model.Event;
 
-public class EventCellController extends JFXListCell<Event> {
+public class EventCellController extends JFXListCell<Event>implements Rootable {
 
     //root fxml element:
     @FXML private AnchorPane rootAP;
+    
+    //root element for this controller:
+  	/////////////////private final Parent root = Rootable.getRoot(this, "/view/eventCell.fxml");
    
     //update cell with event name:
 	@Override  

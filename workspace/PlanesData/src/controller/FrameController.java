@@ -76,11 +76,11 @@ public class FrameController implements Rootable {
     			
     			//==========================================
     			//add selected event's air forces to observable airForces:
-    	       // observAirForces = FXCollections.observableArrayList(newVal.getAirForces());
+    	        observAirForces = FXCollections.observableArrayList(newVal.getAirForces());
     			
-    			observAirForces.setAll(newVal.getAirForces());
+    			////////############observAirForces.setAll(newVal.getAirForces());
     	        System.out.println("B");
-    	       ////////////////////////////airForcesLV.setItems(observAirForces); //set list view with airForces
+    	       airForcesLV.setItems(observAirForces); //set list view with airForces
     	       
     	        System.out.println("C");
     	        //////buildTables(observAirForces); //+++++++++++++DELETE THIS :P 
@@ -129,11 +129,12 @@ public class FrameController implements Rootable {
     	    }
     	});
     	
-    	airForcesLV.setItems(observAirForces); //set list view with airForces
+    	/////////////////???????airForcesLV.setItems(observAirForces); //set list view with airForces
     	
     	//set air forces list view to create AirForceCellControllers:
     	airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController());
     	
+    	/*
     	//add change listener to air forces list view:
     	airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
    
@@ -143,7 +144,7 @@ public class FrameController implements Rootable {
 				
 			}
 
-    	});
+    	});*/
     }
     
    //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
@@ -155,7 +156,7 @@ public class FrameController implements Rootable {
     //observable list of events:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();
     //observable list of event's air forces:
-    private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); 
+    private ObservableList<AirForce>observAirForces; // = FXCollections.observableArrayList(); 
     
     
     //load events data from db:
