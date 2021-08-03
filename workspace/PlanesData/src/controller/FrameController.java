@@ -72,21 +72,25 @@ public class FrameController implements Rootable {
     	    public void changed(ObservableValue<? extends Event> observable, Event oldVal, Event newVal) {
     			
     			
-    			
+    			System.out.println("A");
     			
     			//==========================================
     			//add selected event's air forces to observable airForces:
-    	        observAirForces = FXCollections.observableArrayList(newVal.getAirForces());
-    	        airForcesLV.setItems(observAirForces); //set list view with airForces
+    	       // observAirForces = FXCollections.observableArrayList(newVal.getAirForces());
     			
-    	        buildTables(observAirForces); //+++++++++++++DELETE THIS :P 
+    			observAirForces.setAll(newVal.getAirForces());
+    	        System.out.println("B");
+    	       ////////////////////////////airForcesLV.setItems(observAirForces); //set list view with airForces
+    	       
+    	        System.out.println("C");
+    	        //////buildTables(observAirForces); //+++++++++++++DELETE THIS :P 
     			
     			
     			
     			//==========================================
     			
     			
-    			
+    			/*
     			//------------------------------
     			List<AirForce>airForces = newVal.getAirForces(); //get selected event's air forces
 	        	
@@ -98,6 +102,9 @@ public class FrameController implements Rootable {
     			planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
     			
     			//--------------------------------
+    			  */
+    	        
+    			
     			
 	        	//showSpeeds(airForces); //show air force speeds
 	        	//SpeedsBarChart.getBarChart(airForces); +++++++++
@@ -105,10 +112,11 @@ public class FrameController implements Rootable {
     			//speedsSP.getChildren().add(SpeedsBarChart.getSpeedsBarChart(airForces));
     			/////graphAP.getChildren().setAll(SpeedsBarChart.getSpeedsBarChart(airForces));
     			//////speedsBC.getData().setAll(elements) = SpeedsBarChart.getSpeedsBarChart(airForces);
-    			speedsBC.setTitle("Airforce name");
+    			///////////////////////speedsBC.setTitle("Airforce name");
     			//////////speedsBC.setStyle("-fx-font-size: " + 15 + "px;");
     			
     			/**https://stackoverflow.com/questions/29423510/display-chart-in-javafx*/
+    	        /*
     			//for (int i=0;i<4;i++){
     				XYChart.Series<String, Number> series1 = new Series<String, Number>();
     				series1.setName("Plane name here");    
@@ -116,10 +124,12 @@ public class FrameController implements Rootable {
         	        //Tooltip.install(series1.getNode(), new Tooltip("Yo dawg!"));
         	        speedsBC.getData().add(series1);
     			//}
-    			
+    			*/
     	      
     	    }
     	});
+    	
+    	airForcesLV.setItems(observAirForces); //set list view with airForces
     	
     	//set air forces list view to create AirForceCellControllers:
     	airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController());
@@ -145,7 +155,8 @@ public class FrameController implements Rootable {
     //observable list of events:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();
     //observable list of event's air forces:
-    private ObservableList<AirForce>observAirForces; 
+    private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); 
+    
     
     //load events data from db:
     void loadEventsData(FadeTransition fadeOutPreloader) { 
