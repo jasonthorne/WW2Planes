@@ -29,6 +29,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import model.AirForce;
 import model.Event;
 import model.Plane;
@@ -47,25 +48,12 @@ public class FrameController implements Rootable {
     @FXML private VBox planesTablesVB;
     @FXML private Tab speedsTab;
     @FXML private AnchorPane speedsAP;
-    @FXML private ScrollPane speedsSP;
-    //@FXML private Pane sppedsPane;
-    //@FXML
-   // private AnchorPane graphAP;
-    
-    //----------------
     @FXML private BarChart<String,Number> speedsBC;
-    @FXML private CategoryAxis xAirforces;
-    @FXML private NumberAxis ySpeeds;
-    
-    
+    @FXML private CategoryAxis xAirforcesCA;
+    @FXML private NumberAxis ySpeedsNA;
     @FXML private HBox airForcesHB;
     @FXML private JFXListView<AirForce> airForcesLV;
-    
-    
-    //----------------------
-    /////////////https://stackoverflow.com/questions/51574266/align-contents-of-a-listview-using-javafx
-    @FXML
-    private HBox eventsHB;
+    @FXML private HBox eventsHB;
     @FXML private JFXListView<Event> eventsLV;
     
     @FXML
@@ -104,7 +92,7 @@ public class FrameController implements Rootable {
     			/**https://stackoverflow.com/questions/29423510/display-chart-in-javafx*/
     			//for (int i=0;i<4;i++){
     				XYChart.Series<String, Number> series1 = new Series<String, Number>();
-    				series1.setName(i++ + "Plane name");    
+    				series1.setName("Plane name here");    
         	        series1.getData().add(new Data<String, Number>("Planes", 80));
         	        //Tooltip.install(series1.getNode(), new Tooltip("Yo dawg!"));
         	        speedsBC.getData().add(series1);
@@ -113,20 +101,6 @@ public class FrameController implements Rootable {
     	      
     	    }
     	});
-    	
-    	///////////@@@@@@@@@@@
-    	//https://stackoverflow.com/questions/17429508/how-do-you-get-javafx-listview-to-be-the-height-of-its-items
-    	
-    	/*
-    	eventsLV.setPrefWidth(observEvents.size() * 24 + 2);
-    	
-    	observEvents.addListener(new ListChangeListener<Event>() {
-    	    @Override
-    	    public void onChanged(ListChangeListener.Change change) {
-    	    	eventsLV.setPrefWidth(observEvents.size() * 24 + 2);
-    	    }
-
-    	});*/
     }
     
    //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
@@ -134,11 +108,7 @@ public class FrameController implements Rootable {
     FrameController(){
     	
     }
-    
-    
-    int i = 0; /**+++++++++++++++++++DELETE THIS :P */
-    
-    
+  
     
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList(); //observable list of events
     

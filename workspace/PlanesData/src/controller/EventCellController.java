@@ -13,13 +13,8 @@ import model.Event;
 public class EventCellController extends JFXListCell<Event> implements Rootable{
 
     //root fxml element:
-    //@FXML private AnchorPane rootAP;
-    
-    @FXML private HBox rootHB;
-    
-    //root element for this controller:
-  	private final Parent root = Rootable.getRoot(this, "/view/eventCell.fxml");
-    
+    @FXML private AnchorPane rootAP;
+   
     //update cell with event name:
 	@Override  
 	protected void updateItem(Event event, boolean isEmpty) {
@@ -30,33 +25,9 @@ public class EventCellController extends JFXListCell<Event> implements Rootable{
   	        setText(null);
   	        setGraphic(null);
   	    } else {
-  	    	
-  	    	
-  	    	/*
-  	    	// Create the HBox
-            HBox hBox = new HBox();
-            hBox.setAlignment(Pos.CENTER);*/
-
-            // Create centered Label
-            Label label = new Label(event.getName());
-            label.setAlignment(Pos.CENTER);
-
-            ///////hBox.getChildren().add(label);
-            
-            rootHB.getChildren().setAll(label);
-            setGraphic(rootHB);
-  	    	
-  	    	
-            setText(null);
-  	    	
-  	    	
-  	    	
-  	    	
-  	    	
-  	    	
-  	    	
   	    	//set text with event name:
-			////////setText(event.getName());
+  	    	setText(event.getName());
+  	    	setGraphic(null);
         }
     }
 }

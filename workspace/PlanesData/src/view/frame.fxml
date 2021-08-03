@@ -33,17 +33,17 @@
                     <content>
                       <AnchorPane fx:id="speedsAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
                            <children>
-                              <BarChart fx:id="speedsBC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0">
+                              <BarChart fx:id="speedsBC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="800.0">
                                 <xAxis>
-                                  <CategoryAxis side="BOTTOM" fx:id="xAirforces" />
+                                  <CategoryAxis side="BOTTOM" fx:id="xAirforcesCA" />
                                 </xAxis>
                                 <yAxis>
-                                  <NumberAxis fx:id="ySpeeds" label="Miles per hour" side="LEFT" />
+                                  <NumberAxis fx:id="ySpeedsNA" label="Miles per hour" side="LEFT" />
                                 </yAxis>
                               </BarChart>
-                              <HBox fx:id="airForcesHB" alignment="CENTER" layoutY="446.0" prefHeight="60.0" prefWidth="800.0">
+                              <HBox fx:id="airForcesHB" alignment="BOTTOM_CENTER" layoutY="470.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0">
                                  <children>
-                                    <JFXListView fx:id="airForcesLV" prefHeight="50.0" prefWidth="800.0" />
+                                    <JFXListView fx:id="airForcesLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" />
                                  </children>
                               </HBox>
                            </children></AnchorPane>
@@ -51,9 +51,9 @@
                   </Tab>
                </tabs>
             </JFXTabPane>
-            <HBox fx:id="eventsHB" alignment="CENTER" layoutY="550.0" prefHeight="50.0" prefWidth="800.0">
+            <HBox fx:id="eventsHB" alignment="BOTTOM_CENTER" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0">
                <children>
-                  <JFXListView fx:id="eventsLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="700.0" />
+                  <JFXListView fx:id="eventsLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="800.0" />
                </children>
             </HBox>
          </children>
