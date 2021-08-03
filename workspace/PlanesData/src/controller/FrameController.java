@@ -10,6 +10,7 @@ import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
@@ -57,11 +58,8 @@ public class FrameController implements Rootable {
     @FXML private NumberAxis ySpeeds;
     
     
-    @FXML
-    private HBox TEST_HB;
-
-    @FXML
-    private JFXListView<AirForce> TEST_LV;
+    @FXML private HBox airForcesHB;
+    @FXML private JFXListView<AirForce> airForcesLV;
     
     
     //----------------------
@@ -115,9 +113,20 @@ public class FrameController implements Rootable {
     	      
     	    }
     	});
-    	//planesTablesSP.setFitToWidth(true);
-    	//xAirforces.setLabel("Value");
-    	ySpeeds.setLabel("Miles per hour"); //DO THIS IN scene builder ++++
+    	
+    	///////////@@@@@@@@@@@
+    	//https://stackoverflow.com/questions/17429508/how-do-you-get-javafx-listview-to-be-the-height-of-its-items
+    	
+    	/*
+    	eventsLV.setPrefWidth(observEvents.size() * 24 + 2);
+    	
+    	observEvents.addListener(new ListChangeListener<Event>() {
+    	    @Override
+    	    public void onChanged(ListChangeListener.Change change) {
+    	    	eventsLV.setPrefWidth(observEvents.size() * 24 + 2);
+    	    }
+
+    	});*/
     }
     
    //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
@@ -125,7 +134,12 @@ public class FrameController implements Rootable {
     FrameController(){
     	
     }
-    int i = 0;
+    
+    
+    int i = 0; /**+++++++++++++++++++DELETE THIS :P */
+    
+    
+    
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList(); //observable list of events
     
     void loadEventsData(FadeTransition fadeOutPreloader){ //load events data from db

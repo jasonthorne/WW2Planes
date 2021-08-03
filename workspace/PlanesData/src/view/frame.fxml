@@ -41,9 +41,9 @@
                                   <NumberAxis fx:id="ySpeeds" label="Miles per hour" side="LEFT" />
                                 </yAxis>
                               </BarChart>
-                              <HBox fx:id="TEST_HB" alignment="CENTER" layoutY="446.0" prefHeight="60.0" prefWidth="800.0">
+                              <HBox fx:id="airForcesHB" alignment="CENTER" layoutY="446.0" prefHeight="60.0" prefWidth="800.0">
                                  <children>
-                                    <JFXListView fx:id="TEST_LV" prefHeight="50.0" prefWidth="800.0" />
+                                    <JFXListView fx:id="airForcesLV" prefHeight="50.0" prefWidth="800.0" />
                                  </children>
                               </HBox>
                            </children></AnchorPane>
@@ -53,7 +53,7 @@
             </JFXTabPane>
             <HBox fx:id="eventsHB" alignment="CENTER" layoutY="550.0" prefHeight="50.0" prefWidth="800.0">
                <children>
-                  <JFXListView fx:id="eventsLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="800.0" />
+                  <JFXListView fx:id="eventsLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="700.0" />
                </children>
             </HBox>
          </children>
