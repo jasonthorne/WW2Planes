@@ -43,7 +43,7 @@
                               </BarChart>
                               <HBox fx:id="airForcesHB" alignment="BOTTOM_CENTER" layoutY="470.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0">
                                  <children>
-                                    <JFXListView fx:id="airForcesLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" />
+                                    <JFXListView fx:id="airForcesLV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="800.0" />
                                  </children>
                               </HBox>
                            </children></AnchorPane>

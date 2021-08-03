@@ -61,7 +61,7 @@ public class FrameController implements Rootable {
     	
     	//add observable events to events list view:
 		eventsLV.setItems(observEvents);
-		//set list view cellFactory to create EventCellControllers:
+		//set events list view cellFactory to create EventCellControllers:
 		eventsLV.setCellFactory(EventCellController -> new EventCellController());
 		
 		//add change listener to events list view:
@@ -71,6 +71,23 @@ public class FrameController implements Rootable {
     		@Override //override change listener's changed: 
     	    public void changed(ObservableValue<? extends Event> observable, Event oldVal, Event newVal) {
     			
+    			
+    			
+    			
+    			//==========================================
+    			//add selected event's air forces to observable airForces:
+    	        observAirForces = FXCollections.observableArrayList(newVal.getAirForces());
+    	        airForcesLV.setItems(observAirForces); //set list view with airForces
+    			
+    	        buildTables(observAirForces); //+++++++++++++DELETE THIS :P 
+    			
+    			
+    			
+    			//==========================================
+    			
+    			
+    			
+    			//------------------------------
     			List<AirForce>airForces = newVal.getAirForces(); //get selected event's air forces
 	        	
     			//make list of planes tables from air forces:
@@ -79,6 +96,8 @@ public class FrameController implements Rootable {
     					.collect(Collectors.toList());
     			
     			planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
+    			
+    			//--------------------------------
     			
 	        	//showSpeeds(airForces); //show air force speeds
 	        	//SpeedsBarChart.getBarChart(airForces); +++++++++
@@ -101,6 +120,9 @@ public class FrameController implements Rootable {
     	      
     	    }
     	});
+    	
+    	//set air force list view to create AirForceCellControllers:
+    	airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController());
     }
     
    //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
@@ -109,12 +131,15 @@ public class FrameController implements Rootable {
     	
     }
   
+    //observable list of events:
+    private final ObservableList<Event>observEvents = FXCollections.observableArrayList();
+    //observable list of event's air forces:
+    private ObservableList<AirForce>observAirForces; 
     
-    private final ObservableList<Event>observEvents = FXCollections.observableArrayList(); //observable list of events
-    
-    void loadEventsData(FadeTransition fadeOutPreloader){ //load events data from db
-    	
-    	if (observEvents.isEmpty()) { //if events data is empty:
+    //load events data from db:
+    void loadEventsData(FadeTransition fadeOutPreloader) { 
+    	//if events data is empty:
+    	if (observEvents.isEmpty()) { 
     		new Thread(() -> { //fire new thread:
     	    	try {
     	    		observEvents.addAll(database.SelectEvents.select()); //load events data
@@ -125,6 +150,10 @@ public class FrameController implements Rootable {
     }
     
   
+    private void buildTables (List<AirForce> airForces) {
+    	////////System.out.println("airfoece SPEED : " + airForces);
+    }
+    
     private void showSpeeds(List<AirForce> airForces) {
     	////////System.out.println("airfoece SPEED : " + airForces);
     }

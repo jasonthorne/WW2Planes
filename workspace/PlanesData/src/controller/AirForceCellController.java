@@ -12,7 +12,7 @@ import model.Plane;
 public class AirForceCellController extends JFXListCell<AirForce> {
 	
 	//root fxml element:
-	@FXML private HBox rootHB;
+	@FXML private HBox rootAP;
 	
 	//air force planes:
   	private List<Plane>planes;
@@ -47,7 +47,7 @@ public class AirForceCellController extends JFXListCell<AirForce> {
 	    	
 	    	/** +++++++++++++++++LOOK AT CAMPAIGN CELL CONTROLLER ++++++++++++++++ */
 	    	/////////////////create cliock event here that calls bar chart creation using selected airforces planes
-	    	
+	    	setGraphic(null);
 	    }
 	}
 
