@@ -1,9 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.jfoenix.controls.JFXListCell;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
@@ -13,6 +16,7 @@ import javafx.scene.chart.XYChart.Series;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.AirForce;
+import model.Event;
 import model.Plane;
 
 public class AirForceCellController extends JFXListCell<AirForce> {
@@ -31,12 +35,40 @@ public class AirForceCellController extends JFXListCell<AirForce> {
                 System.out.println(TEST + " " + planes);
                 
                 //-------------
+                /*
             	XYChart.Series<String, Number> series1 = new Series<String, Number>();
 				series1.setName("Plane name here");    
     	        series1.getData().add(new Data<String, Number>("Planes", 80));
     	        //Tooltip.install(series1.getNode(), new Tooltip("Yo dawg!"));
+    	        
+    	        series1.getData().add(new Data<String, Number>("Planes", 30));
+    	        
     	        speedsBC.getData().add(series1);
+    	        //speedsBC.getData().setAll(series1);
                 //-----------
+                 * 
+                 * 
+    	        
+    	      */
+                
+                
+                //List<Series>series = new ArrayList<Series>();
+                ObservableList<XYChart.Series<String,Number>>series = FXCollections.observableArrayList();
+               
+                
+    	        planes.forEach(plane ->{
+    				
+	        	 XYChart.Series<String,Number> seriesTEST = new XYChart.Series<String, Number>();
+   				 seriesTEST.setName(plane.getName());
+   				 seriesTEST.getData().add(new Data<String, Number>("",plane.getSpeed()));
+   				 series.add(seriesTEST);
+   				 
+   			});
+    	        
+    	        speedsBC.getData().clear();
+    	        speedsBC.getData().setAll(series);
+    	        
+    	        
                 
                 
                 
