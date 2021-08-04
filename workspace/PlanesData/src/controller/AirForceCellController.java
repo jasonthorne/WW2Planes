@@ -6,6 +6,10 @@ import com.jfoenix.controls.JFXListCell;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.AirForce;
@@ -20,11 +24,23 @@ public class AirForceCellController extends JFXListCell<AirForce> {
   	private List<Plane>planes;
   	
   	//constructor:
-  	AirForceCellController(String TEST) { //#####################PASS GRAPH IN HERE!! AND 
+  	AirForceCellController(String TEST, BarChart<String,Number> speedsBC) { //#####################PASS GRAPH IN HERE!! AND 
   		//add click event to build graph using cell's planes:
   		this.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent e) {
                 System.out.println(TEST + " " + planes);
+                
+                //-------------
+            	XYChart.Series<String, Number> series1 = new Series<String, Number>();
+				series1.setName("Plane name here");    
+    	        series1.getData().add(new Data<String, Number>("Planes", 80));
+    	        //Tooltip.install(series1.getNode(), new Tooltip("Yo dawg!"));
+    	        speedsBC.getData().add(series1);
+                //-----------
+                
+                
+                
+                
              }
 		});
   	}
