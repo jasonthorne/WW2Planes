@@ -186,10 +186,24 @@ public class FrameController implements Rootable {
     	
     	System.out.println("first af is: " + observAirForces.get(0).getAirForceName());
     	
-    	 
+    	//--------------------------------------------
+    	showSpeedsBC.accept(
+    			observAirForces.get(0).getAirForceName(), 
+    			observAirForces.get(0).getAirForcePlanes());
     	 
     	/// consumeStr.accept("Hi");
-    	    
+    	
+    	//make list of planes tables from air forces:
+		List<TableView<Plane>>planesTables = observAirForces.stream()
+				.map(airForce -> AvailabilitiesTable.getTable(airForce,availabilitiesAP))
+				.collect(Collectors.toList());
+		
+		planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
+    	
+    	
+    	
+    	
+    	//--------------------------------------------------    
     	    
     	
     }
@@ -199,12 +213,10 @@ public class FrameController implements Rootable {
     FrameController(){
     	
     }
-  
-    //observable list of events:
-    private final ObservableList<Event>observEvents = FXCollections.observableArrayList();
-    //observable list of event's air forces:
-    private ObservableList<AirForce>observAirForces = FXCollections.observableArrayList();
     
+    //observable lists:
+    private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
+    private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
     
     //bi consumer for showing plane speeds on bar chart:
     BiConsumer<String,List<Plane>> showSpeedsBC = (airForce,planes) -> {
@@ -220,6 +232,8 @@ public class FrameController implements Rootable {
 		});
 
 		speedsBC.getData().setAll(planeSeries); //set char with series list
+		//+++BELOW SHOULD ALSO HAVE EVENT NAME - UI think we should make a new title which is above the chart, and is populated with everything
+		//this means we can have consumer instead of bi consumer too! 
   		speedsBC.setTitle(airForce); //set chart title //+++++++++++++++++++++++++ANIMATED THIS (fade old from view and then this into view :P)
 	};
     
@@ -231,25 +245,17 @@ public class FrameController implements Rootable {
     		new Thread(() -> { //fire new thread:
     	    	try {
     	    		observEvents.addAll(database.SelectEvents.select()); //load events data
-    	    		//----------
-    	    		
-    	    		observAirForces.setAll(observEvents.get(0).getAirForces()); //set first event's air forces
-    	    		
-    	    		//get first event's air forces:
-    	    		/////List<AirForce>airForces = observEvents.get(0).getAirForces();
-    	    		
-    	    		//show speeds of first air force:
-    	    		/////showSpeedsBC.accept(observAirForces.get(0).getAirForceName(), observAirForces.get(0).getAirForcePlanes());
-    	    		
-    	    		
-    	    		
-    	    		//-----------
+    	    		//set air forces with first event's air forces:
+    	    		observAirForces.setAll(observEvents.get(0).getAirForces()); 
     	    		fadeOutPreloader.play(); //fade out preloader:
     	    	}catch(Exception e) { e.printStackTrace(); }
         	}).start();
     	}
     }
     
+    private void showData() {
+    	
+    }
   
     private void buildTables (List<AirForce> airForces) {
     	////////System.out.println("airfoece SPEED : " + airForces);
