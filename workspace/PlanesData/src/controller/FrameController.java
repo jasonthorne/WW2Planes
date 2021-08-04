@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import com.jfoenix.controls.JFXListView;
@@ -59,10 +61,63 @@ public class FrameController implements Rootable {
     @FXML
     void initialize() {
     	
-    	//add observable events to events list view:
-		eventsLV.setItems(observEvents);
+    	
+    	BiConsumer<List<Plane>,String> setSpeedsBC = (planes, airForce) -> {
+    		
+    		ObservableList<XYChart.Series<String,Number>>
+    		planeSeries = FXCollections.observableArrayList();
+    		
+    		planes.forEach(plane ->{
+    			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
+    			series.setName(plane.getName());
+    			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed()));
+    			planeSeries.add(series);
+    		});
+      		 
+    		speedsBC.getData().setAll(planeSeries);
+      		speedsBC.setTitle(airForce);
+   		};
+   		
+    	
+    	
+    	
+    	//set events list view observable events:
+		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventCellControllers:
 		eventsLV.setCellFactory(EventCellController -> new EventCellController());
+		
+		//set air forces list view with observable airForces:
+		airForcesLV.setItems(observAirForces);
+		//set air forces list view to create AirForceCellControllers:
+		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(setSpeedsBC));
+		
+		
+		
+		/*
+		//add change listener to air forces list view:
+		airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
+		
+			@Override //override change listener's changed: 
+			public void changed(ObservableValue<? extends AirForce> observable, AirForce oldVal, AirForce newVal) {
+				System.out.println("airforce is: " + newVal.getAirForceName());
+				
+			}
+		
+		});*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		//add change listener to events list view:
 		/**https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2	*/
@@ -76,19 +131,38 @@ public class FrameController implements Rootable {
     			
     			//==========================================
     			//add selected event's air forces to observable airForces:
-    	        observAirForces = FXCollections.observableArrayList(newVal.getAirForces());
+    	        //observAirForces = FXCollections.observableArrayList(newVal.getAirForces());
     			
-    			////////############observAirForces.setAll(newVal.getAirForces());
+    			
+    			//add selected event's air forces to observable airForces:
+        	    observAirForces.setAll(newVal.getAirForces());
+        	    
+        	    
+        	    		
+        	    	//airForcesLV.setItems(observAirForces); //set list view with airForces
+        	    	       
+        	    	       ///airForcesLV.getSelectionModel().select(0);
+        	    	       
+        	  //++LOAD FIRST AIFORCE GRAPH HER ON SELECTION!! 
+    			System.out.println("AFTER EVENT SELECTION: first af is: " + observAirForces.get(0).getAirForceName());
+    			
+    		
+    			///////////observAirForces.setAll(newVal.getAirForces());
     	        System.out.println("B");
-    	       airForcesLV.setItems(observAirForces); //set list view with airForces
+    	       //////////airForcesLV.setItems(observAirForces); //set list view with airForces
+    	       
+    	      ////////// airForcesLV.getSelectionModel().select(0);
     	       
     	        System.out.println("C");
     	        //////buildTables(observAirForces); //+++++++++++++DELETE THIS :P 
     			
     			
+    	        setSpeedsBC.accept(observAirForces.get(0).getAirForcePlanes(), observAirForces.get(0).getAirForceName());
+    	        
     			
     			//==========================================
-    			
+    	       //////////speedsBC.getData().clear();
+    	        
     			
     			/*
     			//------------------------------
@@ -112,7 +186,7 @@ public class FrameController implements Rootable {
     			//speedsSP.getChildren().add(SpeedsBarChart.getSpeedsBarChart(airForces));
     			/////graphAP.getChildren().setAll(SpeedsBarChart.getSpeedsBarChart(airForces));
     			//////speedsBC.getData().setAll(elements) = SpeedsBarChart.getSpeedsBarChart(airForces);
-    			///////////////////////speedsBC.setTitle("Airforce name");
+    			///////////////////speedsBC.setTitle("Airforce name");
     			//////////speedsBC.setStyle("-fx-font-size: " + 15 + "px;");
     			
     			/**https://stackoverflow.com/questions/29423510/display-chart-in-javafx*/
@@ -129,22 +203,15 @@ public class FrameController implements Rootable {
     	    }
     	});
     	
-    	/////////////////???????airForcesLV.setItems(observAirForces); //set list view with airForces
-    	String TEST = "yo";
-    	//set air forces list view to create AirForceCellControllers:
-    	airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(TEST, speedsBC));
     	
-    	/*
-    	//add change listener to air forces list view:
-    	airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
-   
-			@Override //override change listener's changed: 
-			public void changed(ObservableValue<? extends AirForce> observable, AirForce oldVal, AirForce newVal) {
-				System.out.println("airforce is: " + newVal.getAirForceName());
-				
-			}
-
-    	});*/
+    	System.out.println("first af is: " + observAirForces.get(0).getAirForceName());
+    	
+    	 
+    	 
+    	/// consumeStr.accept("Hi");
+    	    
+    	    
+    	
     }
     
    //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
@@ -156,16 +223,20 @@ public class FrameController implements Rootable {
     //observable list of events:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();
     //observable list of event's air forces:
-    private ObservableList<AirForce>observAirForces; // = FXCollections.observableArrayList(); 
+    private ObservableList<AirForce>observAirForces = FXCollections.observableArrayList();
     
-    
-    //load events data from db:
-    void loadEventsData(FadeTransition fadeOutPreloader) { 
+   
+    //load data from database:
+    void loadData(FadeTransition fadeOutPreloader) { 
     	//if events data is empty:
     	if (observEvents.isEmpty()) { 
     		new Thread(() -> { //fire new thread:
     	    	try {
     	    		observEvents.addAll(database.SelectEvents.select()); //load events data
+    	    		//----------
+    	    		observAirForces.setAll(observEvents.get(0).getAirForces()); //set first event's air forces
+    	    		
+    	    		//-----------
     	    		fadeOutPreloader.play(); //fade out preloader:
     	    	}catch(Exception e) { e.printStackTrace(); }
         	}).start();
