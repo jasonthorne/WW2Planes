@@ -62,7 +62,7 @@ public class FrameController implements Rootable {
     void initialize() {
     	
     	
-    	BiConsumer<List<Plane>,String> setSpeedsBC = (planes, airForce) -> {
+    	BiConsumer<String,List<Plane>> setSpeedsBC = (airForce, planes) -> {
     		
     		ObservableList<XYChart.Series<String,Number>>
     		planeSeries = FXCollections.observableArrayList();
@@ -157,7 +157,7 @@ public class FrameController implements Rootable {
     	        //////buildTables(observAirForces); //+++++++++++++DELETE THIS :P 
     			
     			
-    	        setSpeedsBC.accept(observAirForces.get(0).getAirForcePlanes(), observAirForces.get(0).getAirForceName());
+    	        setSpeedsBC.accept(observAirForces.get(0).getAirForceName(), observAirForces.get(0).getAirForcePlanes());
     	        
     			
     			//==========================================
