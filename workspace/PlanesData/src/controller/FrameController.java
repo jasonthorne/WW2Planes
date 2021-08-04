@@ -61,26 +61,6 @@ public class FrameController implements Rootable {
     @FXML
     void initialize() {
     	
-    	
-    	BiConsumer<String,List<Plane>> setSpeedsBC = (airForce, planes) -> {
-    		
-    		ObservableList<XYChart.Series<String,Number>>
-    		planeSeries = FXCollections.observableArrayList();
-    		
-    		planes.forEach(plane ->{
-    			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>();
-    			series.setName(plane.getName());
-    			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed()));
-    			planeSeries.add(series);
-    		});
-      		 
-    		speedsBC.getData().setAll(planeSeries);
-      		speedsBC.setTitle(airForce);
-   		};
-   		
-    	
-    	
-    	
     	//set events list view observable events:
 		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventCellControllers:
@@ -89,7 +69,7 @@ public class FrameController implements Rootable {
 		//set air forces list view with observable airForces:
 		airForcesLV.setItems(observAirForces);
 		//set air forces list view to create AirForceCellControllers:
-		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(setSpeedsBC));
+		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(showSpeedsBC));
 		
 		
 		
@@ -103,8 +83,8 @@ public class FrameController implements Rootable {
 				
 			}
 		
-		});*/
-		
+		});
+		*/
 		
 		
 		
@@ -157,14 +137,14 @@ public class FrameController implements Rootable {
     	        //////buildTables(observAirForces); //+++++++++++++DELETE THIS :P 
     			
     			
-    	        setSpeedsBC.accept(observAirForces.get(0).getAirForceName(), observAirForces.get(0).getAirForcePlanes());
+    	        showSpeedsBC.accept(observAirForces.get(0).getAirForceName(), observAirForces.get(0).getAirForcePlanes());
     	        
     			
     			//==========================================
     	       //////////speedsBC.getData().clear();
     	        
     			
-    			/*
+    			
     			//------------------------------
     			List<AirForce>airForces = newVal.getAirForces(); //get selected event's air forces
 	        	
@@ -176,7 +156,7 @@ public class FrameController implements Rootable {
     			planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
     			
     			//--------------------------------
-    			  */
+    			 
     	        
     			
     			
@@ -225,6 +205,24 @@ public class FrameController implements Rootable {
     //observable list of event's air forces:
     private ObservableList<AirForce>observAirForces = FXCollections.observableArrayList();
     
+    
+    //bi consumer for showing plane speeds on bar chart:
+    BiConsumer<String,List<Plane>> showSpeedsBC = (airForce,planes) -> {
+		
+		ObservableList<XYChart.Series<String,Number>>
+		planeSeries = FXCollections.observableArrayList(); //list of series
+		
+		planes.forEach(plane ->{
+			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>(); //create series
+			series.setName(plane.getName()); //add plane name
+			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed())); //add planes speed
+			planeSeries.add(series); //add series to list
+		});
+
+		speedsBC.getData().setAll(planeSeries); //set char with series list
+  		speedsBC.setTitle(airForce); //set chart title //+++++++++++++++++++++++++ANIMATED THIS (fade old from view and then this into view :P)
+	};
+    
    
     //load data from database:
     void loadData(FadeTransition fadeOutPreloader) { 
@@ -234,7 +232,16 @@ public class FrameController implements Rootable {
     	    	try {
     	    		observEvents.addAll(database.SelectEvents.select()); //load events data
     	    		//----------
+    	    		
     	    		observAirForces.setAll(observEvents.get(0).getAirForces()); //set first event's air forces
+    	    		
+    	    		//get first event's air forces:
+    	    		/////List<AirForce>airForces = observEvents.get(0).getAirForces();
+    	    		
+    	    		//show speeds of first air force:
+    	    		/////showSpeedsBC.accept(observAirForces.get(0).getAirForceName(), observAirForces.get(0).getAirForcePlanes());
+    	    		
+    	    		
     	    		
     	    		//-----------
     	    		fadeOutPreloader.play(); //fade out preloader:

@@ -21,14 +21,13 @@ public class AirForceCellController extends JFXListCell<AirForce> {
 	private List<Plane>planes; //air force planes
   	
   	//constructor:
-  	AirForceCellController(BiConsumer<String, List<Plane>> setSpeedsBC) {
+  	AirForceCellController(BiConsumer<String, List<Plane>> showSpeedsBC) {
   		
   		//add click event to build speeds bar chart using cell's planes:
   		this.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override 
-            public void handle(MouseEvent e) {
+            @Override public void handle(MouseEvent e) {
             	//give name and planes to invoked bi consumer:
-            	setSpeedsBC.accept(name, planes);
+            	showSpeedsBC.accept(name, planes);
              }
 		});
   	}
