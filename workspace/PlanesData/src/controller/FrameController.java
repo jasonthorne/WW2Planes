@@ -130,11 +130,11 @@ public class FrameController implements Rootable {
     	});
     	
     	/////////////////???????airForcesLV.setItems(observAirForces); //set list view with airForces
-    	
+    	String TEST = "yo";
     	//set air forces list view to create AirForceCellControllers:
-    	airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController());
+    	airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(TEST));
     	
-    	/*
+    	
     	//add change listener to air forces list view:
     	airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
    
@@ -144,7 +144,7 @@ public class FrameController implements Rootable {
 				
 			}
 
-    	});*/
+    	});
     }
     
    //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
