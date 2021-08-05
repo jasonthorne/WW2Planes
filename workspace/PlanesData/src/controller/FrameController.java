@@ -35,7 +35,7 @@ import javafx.scene.text.Text;
 import model.AirForce;
 import model.Event;
 import model.Plane;
-import table.AvailabilitiesTable;
+import table.AvailabilitiesTableMASTER;
 import chart.SpeedsBarChart;
 
 public class FrameController implements Rootable {
@@ -135,32 +135,31 @@ public class FrameController implements Rootable {
     
     private void showData() {
     	
+    	//get current event's first air force: 
+    	AirForce firstAirForce = observAirForces.get(0);
     	
-    	showSpeeds.accept(
-    			observAirForces.get(0).getAirForceName(), 
-    			observAirForces.get(0).getAirForcePlanes());
-    	 
+    	//show first air force's speeds in bar chart;
+    	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
+    	
     	//--------------------------------
     	//make list of planes tables from air forces:
 		List<TableView<Plane>>planesTables = observAirForces.stream()
-				.map(airForce -> AvailabilitiesTable.getTable(airForce,availabilitiesAP))
+				.map(airForce -> AvailabilitiesTableMASTER.getTable(airForce,availabilitiesAP))
 				.collect(Collectors.toList());
 		
 		planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
     	//-------------------------------------
-    	
+    	 
     }
   
     private void buildTables (List<AirForce> airForces) {
     	////////System.out.println("airfoece SPEED : " + airForces);
     }
     
-    private void showSpeeds(List<AirForce> airForces) {
-    	////////System.out.println("airfoece SPEED : " + airForces);
+    
+    private void showAvailabilities() {
+    	
     }
-    
-    
-    
     
     
 }

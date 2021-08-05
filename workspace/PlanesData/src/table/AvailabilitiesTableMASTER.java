@@ -20,7 +20,7 @@ import model.Plane;
 import model.Period.Block;
 import model.Plane.Availability;
 
-public interface AvailabilitiesTable {
+public interface AvailabilitiesTableMASTER {
 		
 	public static TableView<Plane>getTable(AirForce airForce, Pane pane) {
 		
