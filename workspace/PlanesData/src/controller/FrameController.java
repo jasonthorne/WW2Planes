@@ -82,16 +82,11 @@ public class FrameController implements Rootable {
     			
     			//add selected event's air forces to observable airForces:
         	    observAirForces.setAll(newVal.getAirForces());
-        	    
-        	    
-        	    List<TableView<Plane>>planesTables = AvailabilitiesTableTEST.getTables(newVal, availabilitiesAP);
-        	    //////System.out.println(planesTables);
-        	   /////// planesTablesVB.getChildren().setAll(planesTables);
-        	    showData(planesTables); //show new data
+        	    showData(newVal); //show selected event data
     	    }
     	});
     	
-    	//showData(); //show initial data
+    	showData(observEvents.get(0)); //show first event data
     }
     
     FrameController(){
@@ -138,29 +133,29 @@ public class FrameController implements Rootable {
     	}
     }
     
-    private void showData(List<TableView<Plane>>planesTables) {
+    private void showData(Event event) {
     	
     	//get current event's first air force: 
     	AirForce firstAirForce = observAirForces.get(0);
     	
     	//show first air force's speeds in bar chart;
     	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
-    	/*
+    	
     	//--------------------------------
     	//make list of planes tables from air forces:
-		List<TableView<Plane>>planesTables = observAirForces.stream()
+		List<TableView<Plane>>planesTables2 = observAirForces.stream()
 				.map(airForce -> AvailabilitiesTableMASTER.getTable(airForce,availabilitiesAP))
 				.collect(Collectors.toList());
 		
-		planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
+		////////planesTablesVB.getChildren().setAll(planesTables2); //add planes tables to vb
     	//-------------------------------------
-		*/
 	
     	 //==============
-    	//List<TableView<Plane>>planesTables = AvailabilitiesTableTEST.getTables(observEvents.get(0), availabilitiesAP);
-    	planesTablesVB.getChildren().setAll(planesTables);
-    	
+		
+		planesTablesVB.getChildren().setAll(AvailabilitiesTableTEST.getTables(event, availabilitiesAP));
     	//===============
+		
+		
     }
   
     private void buildTables (List<AirForce> airForces) {

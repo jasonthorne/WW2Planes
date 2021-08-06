@@ -25,7 +25,7 @@ public interface AvailabilitiesTableTEST {
 
 	public static List<TableView<Plane>>getTables(Event event, Pane pane) {
 		
-		//use tree set to sort periods by period compareTo:
+		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
 		
 		Period start = sortedPeriods.first(); //get start period from tree set
@@ -38,7 +38,7 @@ public interface AvailabilitiesTableTEST {
 		event.getAirForces().forEach(airForce ->{
 			
 			//make observable list of planes from air force planes:
-	    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes()); 
+	    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes());
 	    	//add observable list to table view for planes:
 	    	TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
 	    	
