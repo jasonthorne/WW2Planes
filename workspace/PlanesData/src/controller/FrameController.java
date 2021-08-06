@@ -63,22 +63,6 @@ public class FrameController implements Rootable {
     @FXML private VBox planesTablesVB;
     @FXML private Tab speedsTab;
     @FXML private AnchorPane speedsAP;
-    //-----------------------
-    @FXML
-    private HBox speedsTitleHB;
-    
-    @FXML
-    private HBox TESTHB;
-
-    @FXML
-    private Label speedsEventLbl;
-    
-    @FXML
-    private Label speedsSeperatorLbl;
-   
-    @FXML
-    private Label speedsAirForceLbl;
-    //------------------------
     @FXML private BarChart<String,Number> speedsBC;
     @FXML private CategoryAxis xAirforcesCA;
     @FXML private NumberAxis ySpeedsNA;
@@ -136,29 +120,8 @@ public class FrameController implements Rootable {
 			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed())); //add planes speed
 			planeSeries.add(series); //add series to list
 		});
-
-		speedsBC.getData().setAll(planeSeries); //set char with series list
-		//+++BELOW SHOULD ALSO HAVE EVENT NAME - UI think we should make a new title which is above the chart, and is populated with everything
-		//this means we can have consumer instead of bi consumer too! 
-  		////////////speedsBC.setTitle(airForce); //set chart title //+++++++++++++++++++++++++ANIMATED THIS (fade old from view and then this into view :P)
-		//create fade in transition for root stack pane:
-		
-		
-        //create fade out transition for root stack pane:
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), speedsAirForceLbl);
-        fadeOut.setFromValue(1);
-        fadeOut.setToValue(0);
-        
-        //after fade out, change to frame view:
-        fadeOut.setOnFinished(event -> {
-        	speedsAirForceLbl.setText(airForce);
-  			FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), speedsAirForceLbl);
-  			fadeIn.setFromValue(0);
-  			fadeIn.setToValue(1);
-    		fadeIn.play();
-  		});
-        
-        fadeOut.play(); //play fade out
+		speedsBC.getData().setAll(planeSeries); //set chart with series list
+		speedsBC.setTitle(airForce); //set title with air force
 	};
     
    
@@ -186,20 +149,19 @@ public class FrameController implements Rootable {
     	
     	
     	//create fade out transition for root stack pane:
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), speedsEventLbl);
-        fadeOut.setFromValue(1);
-        fadeOut.setToValue(0);
+       // FadeTransition fadeOut = new FadeTransition(Duration.millis(500), speedsEventLbl);
+       // fadeOut.setFromValue(1);
+       // fadeOut.setToValue(0);
         
         //after fade out, change to frame view:
-        fadeOut.setOnFinished(e -> {
-        	speedsEventLbl.setText(event.getName());
-  			FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), speedsEventLbl);
-  			fadeIn.setFromValue(0);
-  			fadeIn.setToValue(1);
-    		fadeIn.play();
-  		});
+      //  fadeOut.setOnFinished(e -> {
+  			///////FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), speedsEventLbl);
+  			///////fadeIn.setFromValue(0);
+  			///fadeIn.setToValue(1);
+    		//fadeIn.play();
+  		//});
         
-        fadeOut.play(); //play fade out
+        ///////////fadeOut.play(); //play fade out
     	//show first air force's speeds in bar chart;
     	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     	//+++++++++++++HERE BOTH EVENT AND AIRFORCE LABELS NEED FADING IN
