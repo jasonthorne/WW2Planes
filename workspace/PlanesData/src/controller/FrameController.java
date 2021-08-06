@@ -22,6 +22,8 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -42,6 +44,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import model.AirForce;
 import model.Event;
 import model.Period;
@@ -63,6 +66,9 @@ public class FrameController implements Rootable {
     //-----------------------
     @FXML
     private HBox speedsTitleHB;
+    
+    @FXML
+    private HBox TESTHB;
 
     @FXML
     private Label speedsEventLbl;
@@ -135,6 +141,24 @@ public class FrameController implements Rootable {
 		//+++BELOW SHOULD ALSO HAVE EVENT NAME - UI think we should make a new title which is above the chart, and is populated with everything
 		//this means we can have consumer instead of bi consumer too! 
   		////////////speedsBC.setTitle(airForce); //set chart title //+++++++++++++++++++++++++ANIMATED THIS (fade old from view and then this into view :P)
+		//create fade in transition for root stack pane:
+		
+		
+        //create fade out transition for root stack pane:
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), speedsAirForceLbl);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        
+        //after fade out, change to frame view:
+        fadeOut.setOnFinished(event -> {
+        	speedsAirForceLbl.setText(airForce);
+  			FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), speedsAirForceLbl);
+  			fadeIn.setFromValue(0);
+  			fadeIn.setToValue(1);
+    		fadeIn.play();
+  		});
+        
+        fadeOut.play(); //play fade out
 	};
     
    
@@ -160,8 +184,25 @@ public class FrameController implements Rootable {
     	//get event's first air force:
     	AirForce firstAirForce = event.getAirForces().get(0); 
     	
+    	
+    	//create fade out transition for root stack pane:
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), speedsEventLbl);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        
+        //after fade out, change to frame view:
+        fadeOut.setOnFinished(e -> {
+        	speedsEventLbl.setText(event.getName());
+  			FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), speedsEventLbl);
+  			fadeIn.setFromValue(0);
+  			fadeIn.setToValue(1);
+    		fadeIn.play();
+  		});
+        
+        fadeOut.play(); //play fade out
     	//show first air force's speeds in bar chart;
     	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
+    	//+++++++++++++HERE BOTH EVENT AND AIRFORCE LABELS NEED FADING IN
     	
 		//show plane availabilities tables:
 		//planesTablesVB.getChildren().setAll(AvailabilitiesTable.getTables(event, availabilitiesAP));

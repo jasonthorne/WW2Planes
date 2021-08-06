@@ -37,21 +37,25 @@
                            <children>
                               <HBox fx:id="speedsTitleHB" alignment="CENTER" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0">
                                  <children>
-                                    <Label fx:id="speedsEventLbl" text="Event Name">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="speedsSeperatorLbl" text=" - ">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="speedsAirForceLbl" text="Air Force">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
+                                    <HBox fx:id="TESTHB" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="500.0">
+                                       <children>
+                                          <Label fx:id="speedsEventLbl" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="20.0" prefWidth="200.0" text="Event Name">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="speedsSeperatorLbl" alignment="CENTER" prefHeight="20.0" prefWidth="20.0" text=" - " textAlignment="RIGHT">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="speedsAirForceLbl" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" text="Air Force">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </HBox>
                               <BarChart fx:id="speedsBC" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="800.0">
