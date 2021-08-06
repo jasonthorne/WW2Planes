@@ -98,10 +98,11 @@ public class FrameController implements Rootable {
     	
     	//show first event data:
     	showEventData(observEvents.get(0));
+    	System.out.println("to me");
     }
     
     FrameController(){
-    	
+    	System.out.println("to you");
     }
     
     //observable lists:
@@ -144,31 +145,25 @@ public class FrameController implements Rootable {
     //show data of given event:
     private void showEventData(Event event) {
     	
+    	//create fade out transition for availability tables:
+    	FadeTransition fadeOutTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
+    	fadeOutTables.setFromValue(1);
+    	fadeOutTables.setToValue(0);
+        
+        //after fade out, build new tables from event, then fade back in:
+    	fadeOutTables.setOnFinished(e -> {
+    		planesTablesVB.getChildren().setAll(getAvailabilities(event)); //add new tables
+  			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
+  			fadeInTables.setFromValue(0);
+  			fadeInTables.setToValue(1);
+  			fadeInTables.play();
+    	});
+    	fadeOutTables.play(); //play fade out
+       
     	//get event's first air force:
-    	AirForce firstAirForce = event.getAirForces().get(0); 
-    	
-    	
-    	//create fade out transition for root stack pane:
-       // FadeTransition fadeOut = new FadeTransition(Duration.millis(500), speedsEventLbl);
-       // fadeOut.setFromValue(1);
-       // fadeOut.setToValue(0);
-        
-        //after fade out, change to frame view:
-      //  fadeOut.setOnFinished(e -> {
-  			///////FadeTransition fadeIn = new FadeTransition(Duration.millis(1000), speedsEventLbl);
-  			///////fadeIn.setFromValue(0);
-  			///fadeIn.setToValue(1);
-    		//fadeIn.play();
-  		//});
-        
-        ///////////fadeOut.play(); //play fade out
+    	AirForce firstAirForce = event.getAirForces().get(0);
     	//show first air force's speeds in bar chart;
     	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
-    	//+++++++++++++HERE BOTH EVENT AND AIRFORCE LABELS NEED FADING IN
-    	
-		//show plane availabilities tables:
-		//planesTablesVB.getChildren().setAll(AvailabilitiesTable.getTables(event, availabilitiesAP));
-		planesTablesVB.getChildren().setAll(getAvailabilities(event));
 		
     }
     
