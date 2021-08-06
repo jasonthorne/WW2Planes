@@ -28,6 +28,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
@@ -46,9 +47,6 @@ import model.Event;
 import model.Period;
 import model.Plane;
 import model.Period.Block;
-import table.AvailabilitiesTableMASTER;
-import table.AvailabilitiesTable;
-import chart.SpeedsBarChart;
 
 public class FrameController implements Rootable {
 
@@ -62,6 +60,19 @@ public class FrameController implements Rootable {
     @FXML private VBox planesTablesVB;
     @FXML private Tab speedsTab;
     @FXML private AnchorPane speedsAP;
+    //-----------------------
+    @FXML
+    private HBox speedsTitleHB;
+
+    @FXML
+    private Label speedsEventLbl;
+    
+    @FXML
+    private Label speedsSeperatorLbl;
+   
+    @FXML
+    private Label speedsAirForceLbl;
+    //------------------------
     @FXML private BarChart<String,Number> speedsBC;
     @FXML private CategoryAxis xAirforcesCA;
     @FXML private NumberAxis ySpeedsNA;
@@ -123,7 +134,7 @@ public class FrameController implements Rootable {
 		speedsBC.getData().setAll(planeSeries); //set char with series list
 		//+++BELOW SHOULD ALSO HAVE EVENT NAME - UI think we should make a new title which is above the chart, and is populated with everything
 		//this means we can have consumer instead of bi consumer too! 
-  		speedsBC.setTitle(airForce); //set chart title //+++++++++++++++++++++++++ANIMATED THIS (fade old from view and then this into view :P)
+  		////////////speedsBC.setTitle(airForce); //set chart title //+++++++++++++++++++++++++ANIMATED THIS (fade old from view and then this into view :P)
 	};
     
    
@@ -163,7 +174,6 @@ public class FrameController implements Rootable {
 		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
-		
 		Period start = sortedPeriods.first(); //get start period
 		Period end = sortedPeriods.last(); //get end period
 		
@@ -188,7 +198,6 @@ public class FrameController implements Rootable {
 	    			planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(2.0)));
 	    	/** https://stackoverflow.com/questions/28428280/how-to-set-column-width-in-tableview-in-javafx */
 	    	planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-	    	
 	    	
 	    	//create plane column:
 	    	TableColumn<Plane,String> planeCol = new TableColumn<>(airForce.getAirForceName());
