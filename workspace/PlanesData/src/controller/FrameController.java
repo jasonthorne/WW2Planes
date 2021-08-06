@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -10,6 +13,8 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
 import javafx.animation.FadeTransition;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -25,19 +30,24 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 import model.AirForce;
 import model.Event;
+import model.Period;
 import model.Plane;
+import model.Period.Block;
 import table.AvailabilitiesTableMASTER;
-import table.AvailabilitiesTableTEST;
+import table.AvailabilitiesTable;
 import chart.SpeedsBarChart;
 
 public class FrameController implements Rootable {
@@ -79,14 +89,14 @@ public class FrameController implements Rootable {
     		
     		@Override //override change listener's changed: 
     	    public void changed(ObservableValue<? extends Event> observable, Event oldVal, Event newVal) {
-    			
-    			//add selected event's air forces to observable airForces:
-        	    observAirForces.setAll(newVal.getAirForces());
-        	    showData(newVal); //show selected event data
+    			//set air forces with event's air forces:
+        	    observAirForces.setAll(newVal.getAirForces()); 
+        	    showEventData(newVal); //show selected event data
     	    }
     	});
     	
-    	showData(observEvents.get(0)); //show first event data
+    	//show first event data:
+    	showEventData(observEvents.get(0));
     }
     
     FrameController(){
@@ -118,7 +128,7 @@ public class FrameController implements Rootable {
     
    
     //load data from database:
-    void loadData(FadeTransition fadeOutPreloader) { 
+    void loadEventsData(FadeTransition fadeOutPreloader) { 
     	//if events data is empty:
     	if (observEvents.isEmpty()) { 
     		new Thread(() -> { //fire new thread:
@@ -133,39 +143,113 @@ public class FrameController implements Rootable {
     	}
     }
     
-    private void showData(Event event) {
+    //show data of given event:
+    private void showEventData(Event event) {
     	
-    	//get current event's first air force: 
-    	AirForce firstAirForce = observAirForces.get(0);
+    	//get event's first air force:
+    	AirForce firstAirForce = event.getAirForces().get(0); 
     	
     	//show first air force's speeds in bar chart;
     	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     	
-    	//--------------------------------
-    	//make list of planes tables from air forces:
-		List<TableView<Plane>>planesTables2 = observAirForces.stream()
-				.map(airForce -> AvailabilitiesTableMASTER.getTable(airForce,availabilitiesAP))
-				.collect(Collectors.toList());
+		//show plane availabilities tables:
+		//planesTablesVB.getChildren().setAll(AvailabilitiesTable.getTables(event, availabilitiesAP));
+		planesTablesVB.getChildren().setAll(getAvailabilities(event));
 		
-		////////planesTablesVB.getChildren().setAll(planesTables2); //add planes tables to vb
-    	//-------------------------------------
-	
-    	 //==============
-		
-		planesTablesVB.getChildren().setAll(AvailabilitiesTableTEST.getTables(event, availabilitiesAP));
-    	//===============
-		
-		
-    }
-  
-    private void buildTables (List<AirForce> airForces) {
-    	////////System.out.println("airfoece SPEED : " + airForces);
     }
     
-    
-    private void showAvailabilities() {
-    	
-    }
+    //get availabilities tables for given event:
+	private List<TableView<Plane>>getAvailabilities(Event event) {
+		
+		//use tree set to sort periods by period's compareTo:
+		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
+		
+		Period start = sortedPeriods.first(); //get start period
+		Period end = sortedPeriods.last(); //get end period
+		
+		//make list for holding planes tables:
+		List<TableView<Plane>>planesTables = new ArrayList<TableView<Plane>>();
+		
+		//for each air force in event:
+		event.getAirForces().forEach(airForce ->{
+			
+			//make observable list of planes from air force planes:
+	    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes());
+	    	//add observable list to table view for planes:
+	    	TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
+	    	
+	    	//set table view size to it's anchor pane:
+	    	planesTable.setPrefSize(availabilitiesAP.getPrefWidth(), availabilitiesAP.getPrefHeight());
+	    	 
+	    	//set cell sizes with confusing, borrowed code!:
+	    	/**https://stackoverflow.com/questions/27945817/javafx-adapt-tableview-height-to-number-of-rows*/
+	    	planesTable.setFixedCellSize(25);
+	    	planesTable.prefHeightProperty().bind(
+	    			planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(2.0)));
+	    	/** https://stackoverflow.com/questions/28428280/how-to-set-column-width-in-tableview-in-javafx */
+	    	planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+	    	
+	    	
+	    	//create plane column:
+	    	TableColumn<Plane,String> planeCol = new TableColumn<>(airForce.getAirForceName());
+	    	planeCol.setId("plane-col"); //give id for style sheet
+	    	planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name")); //set cell factory
+	    	planesTable.getColumns().add(planeCol); //add plane column to table
+	    	
+	    	//year and block columns:
+	    	TableColumn<Plane,String> yearCol;
+	    	TableColumn<Plane,String> blockCol;  
+	    	
+	    	//call back for populating block column cells with plane period availabilities:
+	    	Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>> callBack = 
+	                new Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>>() {
+	            @Override
+	            public ObservableValue<String> call(TableColumn.CellDataFeatures<Plane, String> param) {
+	            	 return new SimpleStringProperty(
+	            			 param.getValue().getAvailabilities().get(
+	            					 param.getTableColumn().getUserData()).toString());		
+	            }
+	        };/** https://stackoverflow.com/questions/21639108/javafx-tableview-objects-with-maps */
+	        
+	        
+	        int currYear = start.getYear(); //holds year values
+			Block currBlock; //holds block values
+	    	Iterator<Block>blocksIterator; //blocks iterator
+	    	boolean canAdd = false; //flag for adding values
+	    	
+	    	outerWhile:
+	    	while(currYear <= end.getYear()) { //loop through years
+	    		
+	    		yearCol = new TableColumn<>(String.valueOf(currYear)); //create year column
+	    		blocksIterator = Arrays.asList(Block.values()).iterator(); //(re)set blocks iterator
+	    		
+	    		while(blocksIterator.hasNext()) { //loop through blocks
+	    			currBlock = blocksIterator.next(); //advance to next block
+	    			
+	    			//if found start date, allow adding of values:
+	    			if(currBlock.equals(start.getBlock()) && currYear == start.getYear()) {canAdd = true;}
+	    				
+	    			if(canAdd) {
+	    				blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column
+	    				blockCol.setId("block-col"); //give block column id for style sheet
+	        			blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
+	        			blockCol.setCellValueFactory(callBack); //set block column cell factory
+	            		yearCol.getColumns().add(blockCol); //add block column to year column
+	            		
+	            		//if found end date:
+	    				if(currBlock.equals(end.getBlock()) && currYear == end.getYear()) {
+	    					planesTable.getColumns().add(yearCol); //add year column to table 
+	    					break outerWhile; //break from outer while
+	    				}
+	    			}
+	    		}
+	    		planesTable.getColumns().add(yearCol); //add year column to table
+	    		currYear++; //advance to next year
+	    	}
+	    	planesTables.add(planesTable); //add table to tables
+		});
+		return planesTables; //return planes tables
+	}
     
     
 }

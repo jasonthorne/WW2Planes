@@ -21,15 +21,15 @@ import model.Period;
 import model.Plane;
 import model.Period.Block;
 
-public interface AvailabilitiesTableTEST {
+public interface AvailabilitiesTable {
 
 	public static List<TableView<Plane>>getTables(Event event, Pane pane) {
 		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
 		
-		Period start = sortedPeriods.first(); //get start period from tree set
-		Period end = sortedPeriods.last(); //get end period from tree set
+		Period start = sortedPeriods.first(); //get start period
+		Period end = sortedPeriods.last(); //get end period
 		
 		//make list for holding planes tables:
 		List<TableView<Plane>>planesTables = new ArrayList<TableView<Plane>>();

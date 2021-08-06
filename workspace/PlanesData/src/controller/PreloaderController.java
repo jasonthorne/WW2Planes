@@ -75,7 +75,7 @@ public class PreloaderController implements Rootable {
 	  		});
             
             //load data, passing fade out transition:
-        	frameCtrlr.loadData(fadeOut);
+        	frameCtrlr.loadEventsData(fadeOut);
             stage.show(); //show stage
             fadeIn.play(); //play fade in
     	}
