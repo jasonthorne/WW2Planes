@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -36,6 +37,7 @@ import model.AirForce;
 import model.Event;
 import model.Plane;
 import table.AvailabilitiesTableMASTER;
+import table.AvailabilitiesTableTEST;
 import chart.SpeedsBarChart;
 
 public class FrameController implements Rootable {
@@ -80,15 +82,18 @@ public class FrameController implements Rootable {
     			
     			//add selected event's air forces to observable airForces:
         	    observAirForces.setAll(newVal.getAirForces());
-        	    showData(); //show new data
+        	    
+        	    
+        	    List<TableView<Plane>>planesTables = AvailabilitiesTableTEST.getTables(newVal, availabilitiesAP);
+        	    //////System.out.println(planesTables);
+        	   /////// planesTablesVB.getChildren().setAll(planesTables);
+        	    showData(planesTables); //show new data
     	    }
     	});
     	
-    	showData(); //show initial data
+    	//showData(); //show initial data
     }
     
-   //https://stackoverflow.com/questions/55675064/how-to-create-a-barchart-or-a-linechart-in-javafx-using-observablelists
-  
     FrameController(){
     	
     }
@@ -133,14 +138,14 @@ public class FrameController implements Rootable {
     	}
     }
     
-    private void showData() {
+    private void showData(List<TableView<Plane>>planesTables) {
     	
     	//get current event's first air force: 
     	AirForce firstAirForce = observAirForces.get(0);
     	
     	//show first air force's speeds in bar chart;
     	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
-    	
+    	/*
     	//--------------------------------
     	//make list of planes tables from air forces:
 		List<TableView<Plane>>planesTables = observAirForces.stream()
@@ -149,7 +154,13 @@ public class FrameController implements Rootable {
 		
 		planesTablesVB.getChildren().setAll(planesTables); //add planes tables to vb
     	//-------------------------------------
-    	 
+		*/
+	
+    	 //==============
+    	//List<TableView<Plane>>planesTables = AvailabilitiesTableTEST.getTables(observEvents.get(0), availabilitiesAP);
+    	planesTablesVB.getChildren().setAll(planesTables);
+    	
+    	//===============
     }
   
     private void buildTables (List<AirForce> airForces) {

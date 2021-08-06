@@ -50,7 +50,7 @@ public final class Period implements Comparable <Period>{
 		
 		return 0; //same periods
 	}
-
+/*
 	//for unique HashMap insertion:
 	@Override
 	public int hashCode() {
@@ -76,5 +76,5 @@ public final class Period implements Comparable <Period>{
 		if (year != other.year)
 			return false;
 		return true;
-	}
+	}*/
 }

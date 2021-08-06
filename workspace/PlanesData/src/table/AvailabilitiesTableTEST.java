@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.TreeMap;
+import java.util.TreeSet;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,28 +16,26 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
-import model.AirForce;
+import model.Event;
 import model.Period;
 import model.Plane;
 import model.Period.Block;
-import model.Plane.Availability;
 
 public interface AvailabilitiesTableTEST {
 
-	public static List<TableView<Plane>>getTables(List<AirForce> airForces, Pane pane) {
+	public static List<TableView<Plane>>getTables(Event event, Pane pane) {
 		
-		//Make TreeMap of a plane's availabilities, sorted by period compareTo:
-		TreeMap<Period,Availability> sortedAvails = new TreeMap<Period,Availability>( 
-				airForces.get(0).getAirForcePlanes().get(0).getAvailabilities());
+		//use tree set to sort periods by period compareTo:
+		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
 		
-		Period start = sortedAvails.firstKey(); //get start period from tree map
-		Period end = sortedAvails.lastKey(); //get end period from tree map
+		Period start = sortedPeriods.first(); //get start period from tree set
+		Period end = sortedPeriods.last(); //get end period from tree set
 		
 		//make list for holding planes tables:
 		List<TableView<Plane>>planesTables = new ArrayList<TableView<Plane>>();
 		
-		//for each air force:
-		airForces.forEach(airForce ->{
+		//for each air force in event:
+		event.getAirForces().forEach(airForce ->{
 			
 			//make observable list of planes from air force planes:
 	    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes()); 
