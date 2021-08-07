@@ -193,16 +193,28 @@ public class FrameController implements Rootable {
 	    	/**https://stackoverflow.com/questions/27945817/javafx-adapt-tableview-height-to-number-of-rows*/
 	    	planesTable.setFixedCellSize(25);
 	    	planesTable.prefHeightProperty().bind(
-	    			planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(2.0)));
+	    			planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(3.0)));
 	    	/** https://stackoverflow.com/questions/28428280/how-to-set-column-width-in-tableview-in-javafx */
 	    	planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 	    	
+	    	//============================
+	    	Label label = new Label(airForce.getAirForceName());
+	    	label.setId("test");
+	    	TableColumn<Plane, String> airForceCol = new TableColumn<>();
+	    	airForceCol.setId("airforce-col"); //give id for style sheet
+	    	airForceCol.setGraphic(label);
+	    	
+	    	//=======================
+	    	
 	    	//create plane column:
-	    	TableColumn<Plane,String> planeCol = new TableColumn<>(airForce.getAirForceName());
+	    	TableColumn<Plane,String> planeCol = new TableColumn<>(/*airForce.getAirForceName()*/ "Plane");
 	    	planeCol.setId("plane-col"); //give id for style sheet
 	    	planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name")); //set cell factory
-	    	planesTable.getColumns().add(planeCol); //add plane column to table
+	    	/////////////////planesTable.getColumns().add(planeCol); //add plane column to table
+	    	//===================================
+	    	airForceCol.getColumns().add(planeCol);
 	    	
+	    	//===============================
 	    	//year and block columns:
 	    	TableColumn<Plane,String> yearCol;
 	    	TableColumn<Plane,String> blockCol;  
@@ -245,14 +257,24 @@ public class FrameController implements Rootable {
 	            		
 	            		//if found end date:
 	    				if(currBlock.equals(end.getBlock()) && currYear == end.getYear()) {
-	    					planesTable.getColumns().add(yearCol); //add year column to table 
+	    					//==================================
+	    					airForceCol.getColumns().add(yearCol); 
+	    					//===================================
+	    					/////////////////////planesTable.getColumns().add(yearCol); //add year column to table 
 	    					break outerWhile; //break from outer while
 	    				}
 	    			}
 	    		}
-	    		planesTable.getColumns().add(yearCol); //add year column to table
+	    		//==================================
+	    		airForceCol.getColumns().add(yearCol); 
+				//===================================
+	    		///////////////////planesTable.getColumns().add(yearCol); //add year column to table
 	    		currYear++; //advance to next year
 	    	}
+	    	//----------------
+	    	planesTable.getColumns().add(airForceCol); 
+	    	
+	    	//----------------
 	    	planesTables.add(planesTable); //add table to tables
 		});
 		return planesTables; //return planes tables

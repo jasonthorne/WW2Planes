@@ -6,15 +6,27 @@
 #plane-col, #block-col {
     -fx-alignment: CENTER;
 }
-
 /*https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment*/
+
+
+#airforce-col {
+ 	-fx-background-color: #4682b4;
+ 	/*-fx-font-weight: bold;*/
+   	/*-fx-text-fill: red;*/
+   
+}
+
 /* -----------------------------------------*/
 
 
-
+#test{
+	-fx-text-fill: white;
+ 	-fx-font-size: 16px;
+}
 
 
 .chart-title {
   -fx-text-fill: #4682b4;
   -fx-font-size: 2em;
 }
+
