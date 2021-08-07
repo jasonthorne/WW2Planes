@@ -108,7 +108,7 @@ public class FrameController implements Rootable {
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
     private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
     
-    //bi consumer for showing plane speeds on bar chart:
+    //consumer for showing plane speeds on bar chart:
     BiConsumer<String,List<Plane>> showSpeeds = (airForce,planes) -> {
 		
 		ObservableList<XYChart.Series<String,Number>>
@@ -200,8 +200,8 @@ public class FrameController implements Rootable {
 	    	//create air force column:
 	    	TableColumn<Plane, String> airForceCol = new TableColumn<>();
 	    	airForceCol.setId("airforce-col"); //give id for style sheet
-	    	Label airForceLbl = new Label(airForce.getAirForceName()); //label for styled column content
-	    	airForceLbl.setId("airforce-col-label"); //give label id for style sheet
+	    	Label airForceLbl = new Label(airForce.getAirForceName()); //label for styled content
+	    	airForceLbl.setId("airforce-col-label"); //give id for style sheet
 	    	airForceCol.setGraphic(airForceLbl); //add label to column
 	    	
 	    	//create plane column:
@@ -260,7 +260,7 @@ public class FrameController implements Rootable {
 	    		airForceCol.getColumns().add(yearCol); //add year column to air force column
 	    		currYear++; //advance to next year
 	    	}
-	    	planesTable.getColumns().add(airForceCol); //add air force colum to taable
+	    	planesTable.getColumns().add(airForceCol); //add air force column to table
 	    	planesTables.add(planesTable); //add table to tables
 		});
 		return planesTables; //return planes tables
