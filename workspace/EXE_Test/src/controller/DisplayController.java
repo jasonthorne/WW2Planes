@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 
 import javafx.collections.FXCollections;
@@ -25,6 +26,9 @@ public class DisplayController implements Rootable{
 
     @FXML
     private Label eventsLbl;
+    
+    @FXML
+    private JFXButton loadDataBtn;
 
     @FXML
     void initialize() {
@@ -33,6 +37,16 @@ public class DisplayController implements Rootable{
 		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventControllers:
 		eventsLV.setCellFactory(EventCellController -> new EventController());
+		
+		loadDataBtn.setOnAction(event -> {
+			
+	    	new Thread(() -> { //fire new thread:
+		    	try {
+		    		//load events data:
+		    		observEvents.addAll(database.SelectAll.selectEvents());
+		    	}catch(Exception e) { e.printStackTrace(); }
+	    	}).start();
+		});
     }
     
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
@@ -48,12 +62,6 @@ public class DisplayController implements Rootable{
     	Scene scene = new Scene(Rootable.getRoot(this, "/view/display.fxml")); //add root to scene
     	stage.setScene(scene); //add scene to stage
 
-    	new Thread(() -> { //fire new thread:
-	    	try {
-	    		//load events data:
-	    		observEvents.addAll(database.SelectAll.selectEvents());
-	    	}catch(Exception e) { e.printStackTrace(); }
-    	}).start();
     }
   	
   	//get controller singleton:

@@ -1,6 +1,8 @@
 package database;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -14,8 +16,13 @@ final class ConnectDB {
 		
 		try {
 			//load properties:
-			Properties properties = new Properties();	
-			properties.load(new FileInputStream("./configs/mysql/db_configs/db_configs.properties"));
+			Properties properties = new Properties();
+			///////ConnectDB.class.getResource("./configs/mysql/db_configs/db_configs.properties") ;
+			//properties.load(new FileInputStream("./configs/mysql/db_configs/db_configs.properties"));
+			//URL url = ConnectDB.class.getResource("./configs/mysql/db_configs/db_configs.properties");
+			
+			File file = new File("./configs/mysql/db_configs/db_configs.properties");
+			properties.load(new FileInputStream(file));
 			
 			//get connection using properties: 
 			this.connection = DriverManager.getConnection(
