@@ -1,6 +1,16 @@
 package controller;
 
-public class DisplayController {
+import com.jfoenix.controls.JFXListView;
+
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import model.Event;
+
+public class DisplayController implements Rootable{
 	
 	@FXML
     private StackPane rootSP;
@@ -9,18 +19,49 @@ public class DisplayController {
     private AnchorPane bosyAP;
 
     @FXML
-    private JFXListView<?> eventsLV;
+    private JFXListView<Event> eventsLV;
 
     @FXML
     private Label eventsLbl;
 
     @FXML
     void initialize() {
-        assert rootSP != null : "fx:id=\"rootSP\" was not injected: check your FXML file 'display.fxml'.";
-        assert bosyAP != null : "fx:id=\"bosyAP\" was not injected: check your FXML file 'display.fxml'.";
-        assert eventsLV != null : "fx:id=\"eventsLV\" was not injected: check your FXML file 'display.fxml'.";
-        assert eventsLbl != null : "fx:id=\"eventsLbl\" was not injected: check your FXML file 'display.fxml'.";
-
+       
     }
+    
+    
+    private final Stage stage = new Stage(); //stage
+  	
+  	//frame.fxml controller:
+  	private static DisplayController displayCtrlr = new DisplayController();
+  	
+  	//private constructor for singleton:
+    private DisplayController() {
+    	Scene scene = new Scene(Rootable.getRoot(this, "/view/display.fxml")); //add root to scene
+    	stage.setScene(scene); //add scene to stage
+    }
+  	
+  	//get controller singleton:
+    public static DisplayController getDisplayCtrlr() {
+    	//create singleton if necessary:
+        if (displayCtrlr == null) {displayCtrlr = new DisplayController();}
+        return displayCtrlr; 
+    }
+    
+    
+    //show stage:
+    public void showStage() {
+    	 stage.show(); //show stage
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
