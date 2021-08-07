@@ -11,18 +11,15 @@
 
 #airforce-col {
  	-fx-background-color: #4682b4;
- 	/*-fx-font-weight: bold;*/
-   	/*-fx-text-fill: red;*/
-   
+}
+
+#airforce-col-label {
+	-fx-text-fill: white;
+ 	-fx-font-size: 16px;
 }
 
 /* -----------------------------------------*/
 
-
-#test{
-	-fx-text-fill: white;
- 	-fx-font-size: 16px;
-}
 
 
 .chart-title {
