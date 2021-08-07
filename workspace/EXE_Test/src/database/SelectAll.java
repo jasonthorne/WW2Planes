@@ -24,12 +24,7 @@ public interface SelectAll {
 			
 			//print column data from result set:
 			while(resultSet.next()) {
-				for(int i=1,j=resultSet.getMetaData().getColumnCount();i<=j;i++) {
-					System.out.print("[" + resultSet.getString(i) + "] ");
-					events.add(new Event( resultSet.getString(i)));
-				}
-				
-				
+				events.add(new Event(resultSet.getString(2)));
 			}
 			
 		 }catch(Exception e) { e.printStackTrace(); }
