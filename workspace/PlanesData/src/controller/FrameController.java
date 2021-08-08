@@ -2,10 +2,14 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
@@ -40,6 +44,7 @@ import model.AirForce;
 import model.Event;
 import model.Period;
 import model.Plane;
+import model.Plane.Type;
 import model.Period.Block;
 
 public class FrameController implements Rootable {
@@ -133,12 +138,67 @@ public class FrameController implements Rootable {
     BiConsumer<String,List<Plane>> showTypes = (airForce,planes) -> {
     	
     	//list of pie chart data:
-    	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(); 
+    	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+    	
+    	/*Map<Type.type, String> typeToName = planes.stream()
+    			.collect(Collectors.toMap(Type.values() -> Type, plane -> plane));*/
+    	
+    	/*
+    	intMap = animals.stream().collect(Collectors.toMap(k->k.length(),  //take in string from current pos in list and return it's length as key.
+				v->v, //take in string from current pos in list and use that as value
+				(s1, s2)-> s1+", " + s2)); //if 2 keys are the same (same length), concatenate the two strings to create a new value for them
+*/
+    	//.collect(Collectors.toMap(Item::getKey, item -> item));
+    	
+    	//Map<String,Event>nameToEvent
+    	 //.collect(Collectors.toMap(event -> event.getName(), event -> event))); 
+    	
+    	
+    	
+    	
+    	//List<Item> list;
+    	/*Map<Type,String> map = new HashMap<Type,String>();
+    	for (Plane p : planes) map.put(p.getType(),p.getName());
+    	System.out.println(map);*/
+    	
+    	/*Map<Type, String> enumMap = new EnumMap<Type, String>(Type.class);
+    	//enumMap.put(Color.RED, "red");
+    	//String value = enumMap.get(Color.RED);
+    	planes.forEach(plane ->{
+    		enumMap.put(plane.getType(), plane.getName());
+    	});*/
+    	
+    	
+    	Map<Type, List<String>> map = new HashMap<Type, List<String>>();
+    	//for (Plane p : planes) map.put(p.getType(),p.getName());
+    	System.out.println(map.keySet());
+    	
+    	Type[] test = Type.values();
+    	
+    	/*
+    	for (Type type : test) {
+    		System.out.println(type);
+    		map.put(type, null);
+    	}*/
+    	
+    	
+    	for (Plane plane : planes) {
+    		//if key already exists (as null wasn't returned) 
+    		if(!map.putIfAbsent(plane.getType(), Arrays.asList(plane.getName())).equals(null)) {
+    			map.replace(plane.getType(),  Arrays.asList(plane.getName(), map.get(plane.getType()));
+    		}
+    		
+    		
+    		//(map.getOrDefault(plane.getType(), defaultValue));
+    				
+    				//p.getType(),p.getName());
+    	}
+    	
     	
 		planes.forEach(plane ->{
 			
 			///pieChartData.add(new PieChart.Data(plane.getType(), 5));
-			System.out.println(plane.getType());
+			//System.out.println(plane.getType());
 			/*
 			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>(); //create series
 			series.setName(plane.getName()); //add plane name
