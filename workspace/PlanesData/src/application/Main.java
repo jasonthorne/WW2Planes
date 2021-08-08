@@ -17,7 +17,6 @@ public class Main extends Application {
 		PreloaderController preloaderCtrlr = PreloaderController.getPreloaderCtrlr();
 		//show its stage:
 		preloaderCtrlr.showStage();
-		
 	}
 
 

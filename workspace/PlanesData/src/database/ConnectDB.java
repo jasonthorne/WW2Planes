@@ -1,6 +1,5 @@
 package database;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
@@ -15,7 +14,6 @@ final class ConnectDB {
 		try { 
 			//load properties:
 			Properties properties = new Properties();	
-			//properties.load(new FileInputStream("./configs/mysql/db_configs/db_configs.properties"));
 			properties.load(getClass().getResourceAsStream("db_configs.properties"));
 			
 			//get connection using properties: 

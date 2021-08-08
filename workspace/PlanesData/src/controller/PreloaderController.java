@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXSpinner;
 
+import application.Main;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -65,7 +66,9 @@ public class PreloaderController implements Rootable {
             fadeOut.setOnFinished(event -> {
             	
 	  	  		Parent frameRoot = Rootable.getRoot(frameCtrlr, "/view/frame.fxml"); //get frame root
-	  			stage.setScene(new Scene(frameRoot)); //add new scene with root to stage
+	  	  		Scene scene = new Scene(frameRoot); //create new scene with root
+	  	  		scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm()); //add styles
+	  	  		stage.setScene(scene); //add scene to stage
 	  			
 	  			//create fade in transition for frame root:
 	    		FadeTransition fadeInFrame = new FadeTransition(Duration.seconds(1), frameRoot);
