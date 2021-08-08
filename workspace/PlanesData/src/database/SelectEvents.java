@@ -14,6 +14,7 @@ import model.Period;
 import model.Period.Block;
 import model.Plane;
 import model.Plane.Availability;
+import model.Plane.Type;
 
 public interface SelectEvents {
 
@@ -77,6 +78,8 @@ public interface SelectEvents {
 					while(planesRS.next()) {
 						
 						String planeNane = planesRS.getString("plane_name"); //get plane name
+						Type planeType = Type.valueOf( //get plane type, replacing hyphen with underscore for enum
+								planesRS.getString("plane_type").toUpperCase().replace('-', '_'));
 						int planeSpeed = planesRS.getInt("plane_speed"); //get plane speed
 						
 						//set statement input parameters with air force plane id & event id:
@@ -100,7 +103,7 @@ public interface SelectEvents {
 							}
 							
 							//add plane to air force planes:
-							airForcePlanes.add(new Plane(planeNane, planeSpeed, planeAvailabilities));
+							airForcePlanes.add(new Plane(planeNane, planeType, planeSpeed, planeAvailabilities));
 						}
 						
 					}//planesRS

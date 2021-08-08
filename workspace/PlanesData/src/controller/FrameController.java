@@ -138,7 +138,7 @@ public class FrameController implements Rootable {
 		planes.forEach(plane ->{
 			
 			///pieChartData.add(new PieChart.Data(plane.getType(), 5));
-			
+			System.out.println(plane.getType());
 			/*
 			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>(); //create series
 			series.setName(plane.getName()); //add plane name

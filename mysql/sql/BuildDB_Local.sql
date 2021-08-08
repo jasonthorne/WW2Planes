@@ -177,7 +177,7 @@ DELIMITER $$
 CREATE PROCEDURE insert_airforce_plane (IN airforce_name VARCHAR(64), IN plane_name VARCHAR(64), 
 IN plane_type VARCHAR(14), IN plane_speed INT)
 BEGIN
-	/* insert plane_name to planes if not present: */
+	/* insert plane to planes if not present: */
 	CALL insert_plane (plane_name, plane_type, plane_speed);
 	
 	/* error thrown here on duplicate airforce_plane insert: */ 
@@ -193,6 +193,7 @@ CREATE PROCEDURE select_airforce_planes (IN airforce_ID INT)
 BEGIN
 	SELECT
 		planes.name AS plane_name,
+		planes.type AS plane_type,
 		planes.speed AS plane_speed,
 		airforce_planes.airforce_planeID AS airforce_plane_ID
 	FROM airforce_planes
