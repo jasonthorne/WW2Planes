@@ -89,6 +89,8 @@ public class FrameController implements Rootable {
     			//set air forces with event's air forces:
         	    observAirForces.setAll(newVal.getAirForces()); 
         	    showEventData(newVal); //show selected event data
+        	    //testPieChart(); //=============
+        	    showTypes.accept(newVal.getAirForces().get(0).getAirForceName(), newVal.getAirForces().get(0).getAirForcePlanes());
     	    }
     	});
     	
@@ -103,6 +105,54 @@ public class FrameController implements Rootable {
     //observable lists:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
     private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
+    
+    //------------------------------------------------------------------
+    /*
+   // private final ObservableList<PieChart.Data> observPieChartData = FXCollections.observableArrayList(
+           new PieChart.Data("Grapefruit", 13),
+            new PieChart.Data("Oranges", 25),
+            new PieChart.Data("Plums", 10),
+            new PieChart.Data("Pears", 22),
+            new PieChart.Data("Apples", 30));
+    
+   
+    void testPieChart() { //(AirForce airForce, List<Plane>planes){
+    	
+    	System.out.println("hi");
+    	observPieChartData.setAll(new PieChart.Data("Grapefruit", 13),
+                new PieChart.Data("Oranges", 25),
+                new PieChart.Data("Plums", 10),
+                new PieChart.Data("Pears", 22),
+                new PieChart.Data("Apples", 30));
+    	
+    	typesPC.getData().setAll(observPieChartData);
+    }*/
+    
+    
+    //consumer for showing plane types on pie chart:
+    BiConsumer<String,List<Plane>> showTypes = (airForce,planes) -> {
+    	
+    	//list of pie chart data:
+    	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(); 
+    	
+		planes.forEach(plane ->{
+			
+			pieChartData.add(new PieChart.Data(plane.getType(), 5));
+			
+			/*
+			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>(); //create series
+			series.setName(plane.getName()); //add plane name
+			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed())); //add planes speed
+			planeSeries.add(series); //add series to list
+			*/
+		});
+		//speedsBC.getData().setAll(planeSeries); //set chart with series list
+		//speedsBC.setTitle(airForce); //set title with air force
+		typesPC.getData().setAll(pieChartData);
+		
+	};
+    
+    //------------------------------------------------------------------
     
     //consumer for showing plane speeds on bar chart:
     BiConsumer<String,List<Plane>> showSpeeds = (airForce,planes) -> {

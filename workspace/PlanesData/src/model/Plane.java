@@ -19,19 +19,27 @@ public final class Plane extends RecursiveTreeObject<Plane>{
 		@Override public String toString() { return availability; } //return availability
 	}
 	
+	int i = 0; //++++++++++++++++++++++
+	
 	private final SimpleStringProperty name; //name of plane
+	private final String type; //===================================change to enum! 
 	private final int speed; //speed of plane
 	private final Map<Period, Availability>periodToAvailability; //periods and their corresponding availability
 	
 	//constructor:
 	public Plane(String name, int speed, Map<Period, Availability>periodToAvailability) {
 		this.name = new SimpleStringProperty(name);
+		this.type = "type" + i++; //++++++++++++++
 		this.speed = speed;
-		this.periodToAvailability = new HashMap<Period, Availability>(periodToAvailability); 
+		this.periodToAvailability = new HashMap<Period, Availability>(periodToAvailability);
+		
 	}
 	
 	//get plane name:
 	public String getName() { return name.get(); }
+	
+	//get type:
+	public String getType() { return type; }
 	
 	//get plane speed:
 	public int getSpeed() { return speed; }
