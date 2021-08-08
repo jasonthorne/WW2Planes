@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -18,6 +19,7 @@
                </font>
             </Label>
             <JFXButton fx:id="loadDataBtn" layoutX="48.0" layoutY="201.0" prefHeight="61.0" prefWidth="68.0" text="load Data" />
+            <ImageView fx:id="picIV" fitHeight="98.0" fitWidth="108.0" layoutX="16.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

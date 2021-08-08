@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="images"/>
 	<classpathentry kind="lib" path="libraries/jars/mysql/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="lib" path="libraries/jars/javafx/jfxswt.jar"/>
 	<classpathentry kind="lib" path="libraries/jars/jfoenix/jfoenix-8.0.8.jar"/>

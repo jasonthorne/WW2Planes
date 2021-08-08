@@ -53,7 +53,15 @@ final class ConnectDB {
 			    reader.close();
 			    
 			}*/
-			properties.load(ConnectDB.class.getResourceAsStream("db_configs.properties"));
+			
+			/////////getClass().getClassLoader().getResource("test.png")
+			properties.load(getClass().getResourceAsStream("db_configs.properties"));
+			
+			
+			//===========properties.load(ConnectDB.class.getResourceAsStream("db_configs.properties"));
+			
+			
+			
 			////////////File file = new File("./configs/mysql/db_configs/db_configs.properties");
 			////////////////properties.load(new FileInputStream(file));
 			/*
