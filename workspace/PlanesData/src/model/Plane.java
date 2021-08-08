@@ -9,37 +9,40 @@ import javafx.beans.property.SimpleStringProperty;
 
 public final class Plane extends RecursiveTreeObject<Plane>{
 	
-	public enum Availability { //a plane's availability (in relation to a period of history)
-		
+	public enum Availability { 
+		//plane's availability status:
 		UNAVAILABLE("Unavailable"), LIMITED("Limited"), COMMON("Common");
-		
 		private final String availability; //availability
-		//constructor:
 		private Availability(String availability) { this.availability = availability; } 
 		@Override public String toString() { return availability; } //return availability
 	}
 	
-	int i = 0; //++++++++++++++++++++++
+	public enum Type { 
+		//type of plane:
+		FIGHTER("Fighter"), BOMBER("Bomber"), FIGHTER_BOMBER("Fighter-bomber");
+		private final String type; //type
+		private Type(String type) { this.type = type; } 
+		@Override public String toString() { return type; } //return type
+	}
 	
 	private final SimpleStringProperty name; //name of plane
-	private final String type; //===================================change to enum! 
+	private final Type type; //type of plane
 	private final int speed; //speed of plane
 	private final Map<Period, Availability>periodToAvailability; //periods and their corresponding availability
 	
 	//constructor:
-	public Plane(String name, int speed, Map<Period, Availability>periodToAvailability) {
+	public Plane(String name, Type type, int speed, Map<Period, Availability>periodToAvailability) {
 		this.name = new SimpleStringProperty(name);
-		this.type = "type" + i++; //++++++++++++++
+		this.type = type;
 		this.speed = speed;
 		this.periodToAvailability = new HashMap<Period, Availability>(periodToAvailability);
-		
 	}
 	
 	//get plane name:
 	public String getName() { return name.get(); }
 	
-	//get type:
-	public String getType() { return type; }
+	//get plane type:
+	public Type getType() { return type; }
 	
 	//get plane speed:
 	public int getSpeed() { return speed; }
@@ -51,7 +54,7 @@ public final class Plane extends RecursiveTreeObject<Plane>{
 
 	@Override
 	public String toString() {
-		return "Plane [name=" + name.get() + ", speed=" + speed + ", periodToAvailability=" + periodToAvailability + "]";
+		return "Plane [name=" + name.get() + ", type=" + type + ", speed=" + speed + ", periodToAvailability=" 
+				+ periodToAvailability + "]";
 	}
-
 }

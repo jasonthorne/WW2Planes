@@ -1,6 +1,4 @@
 
-/* creates remote version of database */ 
-
 USE sql4429711;
 
 /* throw custom error: */

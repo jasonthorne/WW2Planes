@@ -3,7 +3,7 @@ CREATE DATABASE planes_db;
 USE planes_db;
 
 /* set time zone: */
-SET GLOBAL time_zone = '+1:00'; /* ++++++++++++++++++MIGHT NOT BE NEEDED :P ++++++++++++++ */
+/*SET GLOBAL time_zone = '+1:00'; /* ++++++++++++++++++MIGHT NOT BE NEEDED :P ++++++++++++++ */
 
 /* enabled to throw errors for invalid enum inserts: */
 SET GLOBAL sql_mode = 'STRICT_ALL_TABLES';
