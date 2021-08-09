@@ -83,7 +83,7 @@ public class FrameController implements Rootable {
 		//set air forces list view with observable airForces:
 		airForcesLV.setItems(observAirForces);
 		//set air forces list view to create AirForceCellControllers:
-		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(showSpeeds));
+		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(showCharts));
 		
 		//add change listener to events list view:
 		/**https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2	*/
@@ -94,8 +94,6 @@ public class FrameController implements Rootable {
     			//set air forces with event's air forces:
         	    observAirForces.setAll(newVal.getAirForces()); 
         	    showEventData(newVal); //show selected event data
-        	    //testPieChart(); //=============
-        	    /////////showTypes(newVal.getAirForces().get(0).getAirForceName(), newVal.getAirForces().get(0).getAirForcePlanes());
     	    }
     	});
     	
@@ -119,14 +117,17 @@ public class FrameController implements Rootable {
     	//list of pie chart data:
     	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
     	
+    	//===========================MADE GLOBAL
     	//map of plane types and lists of planes of said type:
     	Map<Plane.Type, List<String>> planeTypeToNames = new HashMap<Plane.Type, List<String>>();
     	
-    	//initialize map with enum keys, holding empty lists:
+    	//initialize map with enum keys, holding empty lists: //++++++PUT IN GLOBAL METHOD WHICH IS THEN CALLED HERE??
     	for (Plane.Type planeType : Plane.Type.values()) {
     		//add type key with empty list value to map:
     		planeTypeToNames.put(planeType, new ArrayList<String>());
     	}
+    	
+    	//======================
     	
     	System.out.println(planeTypeToNames);
     	
@@ -139,9 +140,9 @@ public class FrameController implements Rootable {
     	//loop through map's key set:
     	for (Plane.Type planeType : planeTypeToNames.keySet()) {
     		//++++++++++++++++CHECK THAT NUMBER IS GREATER THAN 1
-    		int planeNum;
-    		//if plane type has entries (i.e list size is greater than 0)
-    		if((planeNum = planeTypeToNames.get(planeType).size()) > 0){
+    		int planesNum;
+    		//if plane type has list entries:
+    		if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
     			
     			//+++++++++TEST FOR STORING data for retreival later +++++++++++
     			 PieChart.Data test = new PieChart.Data(
@@ -149,9 +150,8 @@ public class FrameController implements Rootable {
         				 planeTypeToNames.get(planeType).size());
     			 
     			//Add type and its amount to pie chart:
-        		pieChartData.add(new PieChart.Data(planeType.toString(),planeNum));
+        		pieChartData.add(new PieChart.Data(planeType.toString(), planesNum));
     		}
-    		
     	}
     	
     	System.out.println("NEW MAP: " + planeTypeToNames);
@@ -166,7 +166,7 @@ public class FrameController implements Rootable {
     	
     	//++++check collections for each premade thing, if not there, then invoke methods +++++++++++++
     	
-		////showSpeeds(airForce,planes);
+		showSpeeds(airForce,planes);
 		showTypes(airForce,planes);
 		
 	};
@@ -175,8 +175,10 @@ public class FrameController implements Rootable {
 
     //------------------------------------------------------------------
     
-    //consumer for showing plane speeds on bar chart:
-    BiConsumer<String,List<Plane>> showSpeeds = (airForce,planes) -> { //++++++++++++++SHOW CHAARTS???
+    //show plane speeds on bar chart:
+    ///////////////BiConsumer<String,List<Plane>> showSpeeds = (airForce,planes) -> { //++++++++++++++SHOW CHAARTS???
+	//show plane speeds on bar chart:
+	private void showSpeeds (String airForce, List<Plane>planes) {
     	
 		ObservableList<XYChart.Series<String,Number>>
 		planeSeries = FXCollections.observableArrayList(); //list of series
