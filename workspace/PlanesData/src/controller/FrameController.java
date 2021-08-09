@@ -95,7 +95,7 @@ public class FrameController implements Rootable {
         	    observAirForces.setAll(newVal.getAirForces()); 
         	    showEventData(newVal); //show selected event data
         	    //testPieChart(); //=============
-        	    showTypes.accept(newVal.getAirForces().get(0).getAirForceName(), newVal.getAirForces().get(0).getAirForcePlanes());
+        	    /////////showTypes(newVal.getAirForces().get(0).getAirForceName(), newVal.getAirForces().get(0).getAirForcePlanes());
     	    }
     	});
     	
@@ -112,133 +112,72 @@ public class FrameController implements Rootable {
     private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
     
     //------------------------------------------------------------------
-    /*
-   // private final ObservableList<PieChart.Data> observPieChartData = FXCollections.observableArrayList(
-           new PieChart.Data("Grapefruit", 13),
-            new PieChart.Data("Oranges", 25),
-            new PieChart.Data("Plums", 10),
-            new PieChart.Data("Pears", 22),
-            new PieChart.Data("Apples", 30));
-    
    
-    void testPieChart() { //(AirForce airForce, List<Plane>planes){
-    	
-    	System.out.println("hi");
-    	observPieChartData.setAll(new PieChart.Data("Grapefruit", 13),
-                new PieChart.Data("Oranges", 25),
-                new PieChart.Data("Plums", 10),
-                new PieChart.Data("Pears", 22),
-                new PieChart.Data("Apples", 30));
-    	
-    	typesPC.getData().setAll(observPieChartData);
-    }*/
-    
-    
-    //consumer for showing plane types on pie chart:
-    BiConsumer<String,List<Plane>> showTypes = (airForce,planes) -> {
+    //show plane types on pie chart:
+    private void showTypes(String airForce, List<Plane>planes){
     	
     	//list of pie chart data:
     	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
     	
-    	/*Map<Type.type, String> typeToName = planes.stream()
-    			.collect(Collectors.toMap(Type.values() -> Type, plane -> plane));*/
-    	
-    	/*
-    	intMap = animals.stream().collect(Collectors.toMap(k->k.length(),  //take in string from current pos in list and return it's length as key.
-				v->v, //take in string from current pos in list and use that as value
-				(s1, s2)-> s1+", " + s2)); //if 2 keys are the same (same length), concatenate the two strings to create a new value for them
-*/
-    	//.collect(Collectors.toMap(Item::getKey, item -> item));
-    	
-    	//Map<String,Event>nameToEvent
-    	 //.collect(Collectors.toMap(event -> event.getName(), event -> event))); 
-    	
-    	
-    	
-    	
-    	//List<Item> list;
-    	/*Map<Type,String> map = new HashMap<Type,String>();
-    	for (Plane p : planes) map.put(p.getType(),p.getName());
-    	System.out.println(map);*/
-    	
-    	/*Map<Type, String> enumMap = new EnumMap<Type, String>(Type.class);
-    	//enumMap.put(Color.RED, "red");
-    	//String value = enumMap.get(Color.RED);
-    	planes.forEach(plane ->{
-    		enumMap.put(plane.getType(), plane.getName());
-    	});*/
-    	
-    	////+++++THIS SHOULD BE <STRING, INT>
-    	Map<Type, List<String>> typeToNames = new HashMap<Type, List<String>>();
-    	//for (Plane p : planes) map.put(p.getType(),p.getName());
-    	//System.out.println(map.keySet());
-    	
-    	//Type[] test = Type.values();
+    	//map of plane types and lists of planes of said type:
+    	Map<Plane.Type, List<String>> planeTypeToNames = new HashMap<Plane.Type, List<String>>();
     	
     	//initialize map with enum keys, holding empty lists:
-    	for (Type type : Type.values()) {
+    	for (Plane.Type planeType : Plane.Type.values()) {
     		//add type key with empty list value to map:
-    		typeToNames.put(type, new ArrayList<String>()); //+++++++++++++++PUT TYPE IN HERE AS A STRING :P and list as an INT
+    		planeTypeToNames.put(planeType, new ArrayList<String>());
     	}
     	
-    	System.out.println(typeToNames);
+    	System.out.println(planeTypeToNames);
     	
     	//loop through planes:
-    	for (Plane plane : planes) {
+    	planes.forEach(plane ->{
     		//add plane's name to list of names with same type:
-    		typeToNames.get(plane.getType()).add(plane.getName());
-    	}
+    		planeTypeToNames.get(plane.getType()).add(plane.getName());
+    	});
     	
     	//loop through map's key set:
-    	for (Type type : typeToNames.keySet()) {
+    	for (Plane.Type planeType : planeTypeToNames.keySet()) {
     		//++++++++++++++++CHECK THAT NUMBER IS GREATER THAN 1
-    		pieChartData.add(new PieChart.Data(type.toString(),typeToNames.get(type).size())); //++++++++++++ADD NUMBER HERE TO STRING
-    	}
-
-    	
-    	
-		//map.put(type, new ArrayList<String>(Arrays.asList(map.get(type).toString(), plane.getName())));
-    	System.out.println("NEW MAP: " + typeToNames);
-    ////Type type = plane.getType(); //get plane type
-		//List<String>sameTypePlanes;
-		//map.put(type, Arrays.asList(map.get(type), plane.getName()));
-    	/*
-    	for (Plane plane : planes) {
-    		//if key already exists (as null wasn't returned) 
-    		if(!map.putIfAbsent(plane.getType(), Arrays.asList(plane.getName())).equals(null)) {
-    			//map.replace(plane.getType(), Arrays.asList(plane.getName(), map.get(plane.getType());
-    			System.out.println("key exists~: " + map);
+    		int planeNum;
+    		//if plane type has entries (i.e list size is greater than 0)
+    		if((planeNum = planeTypeToNames.get(planeType).size()) > 0){
+    			
+    			//+++++++++TEST FOR STORING data for retreival later +++++++++++
+    			 PieChart.Data test = new PieChart.Data(
+        				 planeType.toString(),
+        				 planeTypeToNames.get(planeType).size());
+    			 
+    			//Add type and its amount to pie chart:
+        		pieChartData.add(new PieChart.Data(planeType.toString(),planeNum));
     		}
     		
-    		
-    		//(map.getOrDefault(plane.getType(), defaultValue));
-    				
-    				//p.getType(),p.getName());
-    	}*/
+    	}
     	
-    	
-		planes.forEach(plane ->{
-			
-			///pieChartData.add(new PieChart.Data(plane.getType(), 5));
-			//System.out.println(plane.getType());
-			/*
-			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>(); //create series
-			series.setName(plane.getName()); //add plane name
-			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed())); //add planes speed
-			planeSeries.add(series); //add series to list
-			*/
-		});
-		//speedsBC.getData().setAll(planeSeries); //set chart with series list
-		//speedsBC.setTitle(airForce); //set title with air force
+    	System.out.println("NEW MAP: " + planeTypeToNames);
+  
 		typesPC.getData().setAll(pieChartData);
+		typesPC.setTitle(airForce);
 		
 	};
     
+	//consumer for showing plane speeds on bar chart:
+    BiConsumer<String,List<Plane>> showCharts = (airForce,planes) -> { //++++++++++++++SHOW CHAARTS???
+    	
+    	//++++check collections for each premade thing, if not there, then invoke methods +++++++++++++
+    	
+		////showSpeeds(airForce,planes);
+		showTypes(airForce,planes);
+		
+	};
+	
+	
+
     //------------------------------------------------------------------
     
     //consumer for showing plane speeds on bar chart:
-    BiConsumer<String,List<Plane>> showSpeeds = (airForce,planes) -> {
-		
+    BiConsumer<String,List<Plane>> showSpeeds = (airForce,planes) -> { //++++++++++++++SHOW CHAARTS???
+    	
 		ObservableList<XYChart.Series<String,Number>>
 		planeSeries = FXCollections.observableArrayList(); //list of series
 		
@@ -251,7 +190,7 @@ public class FrameController implements Rootable {
 		speedsBC.getData().setAll(planeSeries); //set chart with series list
 		speedsBC.setTitle(airForce); //set title with air force
 	};
-    
+   
    
     //load data from database:
     void loadEventsData(FadeTransition fadeOutPreloader) { 
@@ -279,6 +218,7 @@ public class FrameController implements Rootable {
         
         //after fade out, build new tables from event, then fade back in:
     	fadeOutTables.setOnFinished(e -> {
+    		//++++++++++++++++++++++++++++++++++++++++CHECK HERE IF TABLES ALREADY EXIST IN COLLECTION +++++++
     		planesTablesVB.getChildren().setAll(getAvailabilities(event)); //add new tables
   			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
   			fadeInTables.setFromValue(0);
@@ -290,8 +230,9 @@ public class FrameController implements Rootable {
     	//get event's first air force:
     	AirForce firstAirForce = event.getAirForces().get(0);
     	
-    	//show first air force's speeds in bar chart;
-    	showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
+    	//show first air force's data in charts;
+    	///////++++++++showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
+    	showCharts.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
 		
     }
     
