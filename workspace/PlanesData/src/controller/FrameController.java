@@ -21,6 +21,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -68,6 +69,8 @@ public class FrameController implements Rootable {
     @FXML private Tab typesTab;
     @FXML private AnchorPane typesAP;
     @FXML private PieChart typesPC;
+    
+    @FXML private VBox listViewsVB;
     //-------------------
     @FXML private HBox eventsHB;
     @FXML private JFXListView<Event> eventsLV;
@@ -97,13 +100,35 @@ public class FrameController implements Rootable {
     	    }
     	});
     	
+    	//create selection event for availabilities tab:
+    	availabilitiesTab.setOnSelectionChanged (event -> {
+    		
+    		//create fade in transition for air forces list view:
+        	FadeTransition fadeInAirForces = new FadeTransition(Duration.millis(300), airForcesLV);
+        	fadeInAirForces.setFromValue(0);
+        	fadeInAirForces.setToValue(1);
+        	fadeInAirForces.setOnFinished(e -> airForcesLV.setDisable(false)); //enable after fade in
+        	
+        	//create fade out transition for air forces list view:
+        	FadeTransition fadeOutAirForces = new FadeTransition(Duration.millis(300), airForcesLV);
+        	fadeOutAirForces.setFromValue(1);
+        	fadeOutAirForces.setToValue(0);
+        	fadeOutAirForces.setOnFinished(e -> airForcesLV.setDisable(true)); //disable after fade out
+        	
+    		//if unselected, fade in and enable list view, else fade out and disable:
+    		if(!availabilitiesTab.isSelected()) { fadeInAirForces.play(); 
+    		} else { fadeOutAirForces.play(); }
+    	});
+      
     	//show first event data:
     	showEventData(observEvents.get(0));
+    	
     }
     
     FrameController(){
     	
     }
+    
     
     //observable lists:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
