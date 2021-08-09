@@ -168,31 +168,53 @@ public class FrameController implements Rootable {
     		enumMap.put(plane.getType(), plane.getName());
     	});*/
     	
-    	
-    	Map<Type, List<String>> map = new HashMap<Type, List<String>>();
+    	////+++++THIS SHOULD BE <STRING, INT>
+    	Map<Type, List<String>> typeToNames = new HashMap<Type, List<String>>();
     	//for (Plane p : planes) map.put(p.getType(),p.getName());
-    	System.out.println(map.keySet());
+    	//System.out.println(map.keySet());
     	
-    	Type[] test = Type.values();
+    	//Type[] test = Type.values();
     	
+    	//initialize map with enum keys, holding empty lists:
+    	for (Type type : Type.values()) {
+    		//add type key with empty list value to map:
+    		typeToNames.put(type, new ArrayList<String>()); //+++++++++++++++PUT TYPE IN HERE AS A STRING :P and list as an INT
+    	}
+    	
+    	System.out.println(typeToNames);
+    	
+    	//loop through planes:
+    	for (Plane plane : planes) {
+    		//add plane's name to list of names with same type:
+    		typeToNames.get(plane.getType()).add(plane.getName());
+    	}
+    	
+    	//loop through map's key set:
+    	for (Type type : typeToNames.keySet()) {
+    		//++++++++++++++++CHECK THAT NUMBER IS GREATER THAN 1
+    		pieChartData.add(new PieChart.Data(type.toString(),typeToNames.get(type).size())); //++++++++++++ADD NUMBER HERE TO STRING
+    	}
+
+    	
+    	
+		//map.put(type, new ArrayList<String>(Arrays.asList(map.get(type).toString(), plane.getName())));
+    	System.out.println("NEW MAP: " + typeToNames);
+    ////Type type = plane.getType(); //get plane type
+		//List<String>sameTypePlanes;
+		//map.put(type, Arrays.asList(map.get(type), plane.getName()));
     	/*
-    	for (Type type : test) {
-    		System.out.println(type);
-    		map.put(type, null);
-    	}*/
-    	
-    	
     	for (Plane plane : planes) {
     		//if key already exists (as null wasn't returned) 
     		if(!map.putIfAbsent(plane.getType(), Arrays.asList(plane.getName())).equals(null)) {
-    			map.replace(plane.getType(),  Arrays.asList(plane.getName(), map.get(plane.getType()));
+    			//map.replace(plane.getType(), Arrays.asList(plane.getName(), map.get(plane.getType());
+    			System.out.println("key exists~: " + map);
     		}
     		
     		
     		//(map.getOrDefault(plane.getType(), defaultValue));
     				
     				//p.getType(),p.getName());
-    	}
+    	}*/
     	
     	
 		planes.forEach(plane ->{
