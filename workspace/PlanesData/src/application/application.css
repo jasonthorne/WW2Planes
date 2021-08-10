@@ -1,29 +1,29 @@
 
 
-/* ----- plane availabilities table: -------*/
+/* plane availabilities table: -------*/
 
-/* center table column data: */
+/*https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment*/
 #plane-col, #block-col {
     -fx-alignment: CENTER;
 }
-/*https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment*/
-
 
 #airforce-col {
  	-fx-background-color: #4682b4;
 }
 
 #airforce-col-label {
-	-fx-text-fill: white;
- 	-fx-font-size: 16px;
+	-fx-text-fill: #ffffff;
+ 	-fx-font-size: 1.3em;
 }
 
-/* -----------------------------------------*/
+/* -----------------------------------*/
 
 
+/* speeds bar chart and types pie chart: */
 
 .chart-title {
   -fx-text-fill: #4682b4;
   -fx-font-size: 2em;
 }
 
+/* --------------------------------------*/

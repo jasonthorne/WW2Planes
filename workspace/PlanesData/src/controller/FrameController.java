@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -94,28 +95,52 @@ public class FrameController implements Rootable {
     		
     		@Override //override change listener's changed: 
     	    public void changed(ObservableValue<? extends Event> observable, Event oldVal, Event newVal) {
-    			//set air forces with event's air forces:
-        	    observAirForces.setAll(newVal.getAirForces()); 
-        	    showEventData(newVal); //show selected event data
+    			
+    			Event selectedEvent = eventsLV.getSelectionModel().getSelectedItem();
+    			
+    			///////System.out.println(selectedEvent);
+    			////////System.out.println("HULLO " + selectedEvent.getAirForces());
+    			
+    			
+    			System.out.println("HULLO " +  observAirForces);
+    			
+    			
+    			//List<AirForce>selectedAirForces = selectedEvent.getAirForces();
+    			
+    			List<AirForce>selectedAirForces = eventsLV.getSelectionModel().getSelectedItem().getAirForces();
+    			
+    			
+    			////observAirForces = FXCollections.observableArrayList(selectedAirForces/*selectedEvent.getAirForces()*/);
+    			//observAirForces.setAll(newVal.getAirForces()); 
+    			
+    			observAirForces.setAll(selectedEvent.getAirForces()); 
+    			
+    			///observAirForces.setAll(selectedAirForces); /////+++++++++++WHY IS A NULL MADE HERE :P
+     	  
+           	    	//airForcesLV.setItems(observAirForces); //set list view with airForces
+           	   
+          
+     	        //+++++++++THIS HOLDS OLD AIRFORCES :PP MAYBE THEY CAN BE TARGETED HERE :P @@@@@@@@@@@@@@@@@@@@@
+     	    	
+             	
+    			
+    			
+    			
+          	    showEventData(selectedEvent); //show selected event data
+    			
+          	    
+          	    
+    			/*
+        	    Platform.runLater(new Runnable() {
+            	    @Override
+            	    public void run() {
+            	    	//set air forces with event's air forces:
+            	    	observAirForces.setAll(newVal.getAirForces()); 
+                  	    showEventData(newVal); //show selected event data
+            	    }
+            	});*/
     	    }
     	});
-    	
-    	/*
-    	//add click event to types pie chart:
-    	typesPC.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent e) {
-            	System.out.println(String.valueOf(typesPC.getData().toString()));
-             }
-		});*/
-    	
-    	
-    	//------------------------
-    	
-    	
-    	
-    	
-    	//-------------------------------------
-    	
     	
     	//create selection event for availabilities tab:
     	availabilitiesTab.setOnSelectionChanged (event -> {
@@ -136,7 +161,44 @@ public class FrameController implements Rootable {
     		if(!availabilitiesTab.isSelected()) { fadeInAirForces.play(); 
     		} else { fadeOutAirForces.play(); }
     	});
-      
+    	
+    	
+    	
+    	
+    	
+    	
+    	airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
+    		
+    		@Override //override change listener's changed: 
+    	    public void changed(ObservableValue<? extends AirForce> observable, AirForce oldVal, AirForce newVal) {
+    			
+    		
+        	    Platform.runLater(new Runnable() {
+            	    @Override
+            	    public void run() {
+            	    	AirForce selectedAirForce = airForcesLV.getSelectionModel().getSelectedItem();
+            	    	System.out.println("OLD VAL WAS: " + oldVal); //''''''''''''''''STILL GIVES NULL!! So i cvant targrt the previous to turn it off again :(
+            			//System.out.println(selectedAirForce);
+            			
+            			System.out.println("THERE " + selectedAirForce);
+            			showCharts.accept(selectedAirForce.getAirForceName(), selectedAirForce.getAirForcePlanes());
+            	    }
+            	});
+    	    }
+    	});
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     	//show first event data:
     	showEventData(observEvents.get(0));
     	//#############################################https://stackoverflow.com/questions/17522686/javafx-tabpane-how-to-listen-to-selection-changes
@@ -144,7 +206,7 @@ public class FrameController implements Rootable {
     
     //observable lists:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
-    private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
+    private ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
     
     //------------------------------------------------------------------
    
@@ -166,13 +228,12 @@ public class FrameController implements Rootable {
     	
     	//======================
     	
-    	System.out.println(planeTypeToNames);
-    	
     	//loop through planes:
     	planes.forEach(plane ->{
     		//add plane's name to list of names with same type:
     		planeTypeToNames.get(plane.getType()).add(plane.getName());
     	});
+    	
     	
     	//loop through map's key set:
     	for (Plane.Type planeType : planeTypeToNames.keySet()) {
@@ -191,9 +252,17 @@ public class FrameController implements Rootable {
     		}
     	}
     	
-    	System.out.println("NEW MAP: " + planeTypeToNames);
-  
-		typesPC.getData().setAll(pieChartData);
+    	/*
+    	Platform.runLater(new Runnable() {
+
+    	    @Override
+    	    public void run() {
+    	    	typesPC.getData().setAll(pieChartData);
+    			typesPC.setTitle(airForce);
+    	    }
+    	});*/
+    	
+    	typesPC.getData().setAll(pieChartData);
 		typesPC.setTitle(airForce);
 		
 		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
@@ -210,6 +279,11 @@ public class FrameController implements Rootable {
 		
 		//@@@@@@@@@@@
 		//https://stackoverflow.com/questions/11873041/javafx-piechart-incorrect-data-handles-mouseevent
+		
+		
+		
+		
+		
 	};
     
 	//consumer for showing plane speeds on bar chart:
@@ -222,12 +296,9 @@ public class FrameController implements Rootable {
 		
 	};
 	
-	
-
     //------------------------------------------------------------------
     
-    //show plane speeds on bar chart:
-    ///////////////BiConsumer<String,List<Plane>> showSpeeds = (airForce,planes) -> { //++++++++++++++SHOW CHAARTS???
+ 
 	//show plane speeds on bar chart:
 	private void showSpeeds (String airForce, List<Plane>planes) {
     	
@@ -286,7 +357,11 @@ public class FrameController implements Rootable {
     	//show first air force's data in charts;
     	///////++++++++showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     	showCharts.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
-		
+    	
+    	airForcesLV.getSelectionModel().select(0);
+    	
+    	
+    	///============https://stackoverflow.com/questions/11088612/javafx-select-item-in-listview
     }
     
     //get availabilities tables for given event:

@@ -22,14 +22,14 @@ public class AirForceCellController extends JFXListCell<AirForce> {
   	
   	//constructor:
   	AirForceCellController(BiConsumer<String, List<Plane>>showCharts) {
-  		
+  		/*
   		//add click event to build charts using cell's planes:
   		this.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent e) {
             	//give name and planes to invoked bi consumer:
             	showCharts.accept(name, planes);
              }
-		});
+		});*/
   	}
 	
 	//update cell with air force data:
