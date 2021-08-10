@@ -26,45 +26,32 @@ import model.Period.Block;
 
 public final class Availabilities {
 	
-	//lists of planes tables for events:
+	//lists of plane availabilities tables for events:
 	private final Map<Event, List<TableView<Plane>>>eventToAvailabilities = new HashMap<Event,List<TableView<Plane>>>();
 	
 	//singleton instance:
   	private static final Availabilities availabilities = new Availabilities();
+    private Availabilities() {} //private constructor for singleton
   	
-  	//private constructor for singleton:
-    private Availabilities() {}
-  	
-  	//get singleton instance:
-    public static Availabilities getAvailabilities() {
-        return availabilities; 
-    }
-	
-	
-	
+  	//get singleton:
+    public static Availabilities getAvailabilities() {return availabilities;}
+    
+	//get availabilities tables:
 	public List<TableView<Plane>>getTables(Event event, Pane pane) {
-	
+		
 		List<TableView<Plane>>tablesCheck = null;
 		
 		//return tables if present in map:
-		if((tablesCheck = eventToAvailabilities.get(event)) != null) {
-			System.out.println("DIDNT EXIST");
-			System.out.println(tablesCheck);
-			System.out.println(eventToAvailabilities);
-			return tablesCheck;
-		}
-		System.out.println("ALREADY MADE");
-		System.out.println(tablesCheck);
-		System.out.println(eventToAvailabilities);
-		//else, add built tables to map:
-		eventToAvailabilities.put(event, buildTables(event,pane));
-		//return built tables:
-		return eventToAvailabilities.get(event);
+		if((tablesCheck = eventToAvailabilities.get(event))!= null) {
+			return tablesCheck;}
+		
+		buildTables(event,pane); //add built tables to map
+		return eventToAvailabilities.get(event); //return tables
 	}
 	
 	
-	//build availabilities tables:
-	private List<TableView<Plane>>buildTables(Event event, Pane pane) {
+	//build plane availabilities tables:
+	private void buildTables(Event event, Pane pane) {
 		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
@@ -159,7 +146,8 @@ public final class Availabilities {
 	    	planesTable.getColumns().add(airForceCol); //add air force column to table
 	    	planesTables.add(planesTable); //add table to tables
 		});
-		return planesTables; //return planes tables
+		//add planesTables to map:
+		eventToAvailabilities.put(event, planesTables);
 	}
-
+	
 }
