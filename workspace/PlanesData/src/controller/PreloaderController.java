@@ -33,7 +33,7 @@ public final class PreloaderController implements Rootable {
   	private static final PreloaderController preloaderCtrlr = new PreloaderController();
   	
   	//frame.fxml controller:
-  	private static final FrameController frameCtrlr = FrameController.getFrameCtrlr();
+  	private final FrameController frameCtrlr = FrameController.getFrameCtrlr();
   	
   	//private constructor for singleton:
     private PreloaderController() {

@@ -2,24 +2,21 @@ package data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 
-import controller.FrameController;
-import controller.PreloaderController;
-import controller.Rootable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import model.Event;
@@ -29,7 +26,9 @@ import model.Period.Block;
 
 public final class Availabilities {
 	
-
+	//lists of planes tables for events:
+	private final Map<Event, List<TableView<Plane>>>eventToAvailabilities = new HashMap<Event,List<TableView<Plane>>>();
+	
 	//singleton instance:
   	private static final Availabilities availabilities = new Availabilities();
   	
@@ -43,13 +42,29 @@ public final class Availabilities {
 	
 	
 	
+	public List<TableView<Plane>>getTables(Event event, Pane pane) {
+	
+		List<TableView<Plane>>tablesCheck = null;
+		
+		//return tables if present in map:
+		if((tablesCheck = eventToAvailabilities.get(event)) != null) {
+			System.out.println("DIDNT EXIST");
+			System.out.println(tablesCheck);
+			System.out.println(eventToAvailabilities);
+			return tablesCheck;
+		}
+		System.out.println("ALREADY MADE");
+		System.out.println(tablesCheck);
+		System.out.println(eventToAvailabilities);
+		//else, add built tables to map:
+		eventToAvailabilities.put(event, buildTables(event,pane));
+		//return built tables:
+		return eventToAvailabilities.get(event);
+	}
 	
 	
-	
-	
-	
-	//get availabilities tables for given event:
-	private List<TableView<Plane>>getTables(Event event, Pane pane) {
+	//build availabilities tables:
+	private List<TableView<Plane>>buildTables(Event event, Pane pane) {
 		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
