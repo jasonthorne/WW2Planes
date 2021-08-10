@@ -22,6 +22,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -34,7 +35,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -63,15 +66,12 @@ public class FrameController implements Rootable {
     @FXML private BarChart<String,Number> speedsBC;
     @FXML private CategoryAxis xAirforcesCA;
     @FXML private NumberAxis ySpeedsNA;
-    @FXML private HBox airForcesHB;
-    @FXML private JFXListView<AirForce> airForcesLV;
-    //-------------------------
     @FXML private Tab typesTab;
     @FXML private AnchorPane typesAP;
     @FXML private PieChart typesPC;
-    
     @FXML private VBox listViewsVB;
-    //-------------------
+    @FXML private HBox airForcesHB;
+    @FXML private JFXListView<AirForce> airForcesLV;
     @FXML private HBox eventsHB;
     @FXML private JFXListView<Event> eventsLV;
     
@@ -100,6 +100,23 @@ public class FrameController implements Rootable {
     	    }
     	});
     	
+    	/*
+    	//add click event to types pie chart:
+    	typesPC.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent e) {
+            	System.out.println(String.valueOf(typesPC.getData().toString()));
+             }
+		});*/
+    	
+    	
+    	//------------------------
+    	
+    	
+    	
+    	
+    	//-------------------------------------
+    	
+    	
     	//create selection event for availabilities tab:
     	availabilitiesTab.setOnSelectionChanged (event -> {
     		
@@ -122,13 +139,8 @@ public class FrameController implements Rootable {
       
     	//show first event data:
     	showEventData(observEvents.get(0));
-    	
+    	//#############################################https://stackoverflow.com/questions/17522686/javafx-tabpane-how-to-listen-to-selection-changes
     }
-    
-    FrameController(){
-    	
-    }
-    
     
     //observable lists:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
@@ -184,6 +196,20 @@ public class FrameController implements Rootable {
 		typesPC.getData().setAll(pieChartData);
 		typesPC.setTitle(airForce);
 		
+		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
+		for (final PieChart.Data data : typesPC.getData()) {
+    	    data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
+    	        new EventHandler<MouseEvent>() {
+    	            @Override public void handle(MouseEvent e) {
+    	            
+    	                System.out.println(planeTypeToNames.get(Plane.Type.valueOf(
+    	                				data.getName().toUpperCase().replace('-', '_'))));
+    	             }
+    	        });
+    	}
+		
+		//@@@@@@@@@@@
+		//https://stackoverflow.com/questions/11873041/javafx-piechart-incorrect-data-handles-mouseevent
 	};
     
 	//consumer for showing plane speeds on bar chart:
