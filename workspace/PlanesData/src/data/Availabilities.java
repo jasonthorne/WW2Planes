@@ -29,26 +29,18 @@ public final class Availabilities {
 	//lists of plane availabilities tables for events:
 	private final Map<Event, List<TableView<Plane>>>eventToAvailabilities = new HashMap<Event,List<TableView<Plane>>>();
 	
-	//singleton instance:
-  	private static final Availabilities availabilities = new Availabilities();
-    private Availabilities() {} //private constructor for singleton
-  	
-  	//get singleton:
-    public static Availabilities getAvailabilities() {return availabilities;}
-    
 	//get availabilities tables:
 	public List<TableView<Plane>>getTables(Event event, Pane pane) {
 		
 		List<TableView<Plane>>tablesCheck = null;
 		
-		//return tables if present in map:
+		//return tables if already present in map:
 		if((tablesCheck = eventToAvailabilities.get(event))!= null) {
 			return tablesCheck;}
 		
 		buildTables(event,pane); //add built tables to map
 		return eventToAvailabilities.get(event); //return tables
 	}
-	
 	
 	//build plane availabilities tables:
 	private void buildTables(Event event, Pane pane) {

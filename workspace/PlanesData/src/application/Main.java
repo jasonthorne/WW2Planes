@@ -13,8 +13,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
-		//get preloader controller:
-		final PreloaderController preloaderCtrlr = PreloaderController.getPreloaderCtrlr();
+		//create instance of preloader controller:
+		final PreloaderController preloaderCtrlr = new PreloaderController();
 		preloaderCtrlr.showStage(); //show its stage:
 	}
 

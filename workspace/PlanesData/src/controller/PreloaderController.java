@@ -21,31 +21,17 @@ public final class PreloaderController implements Rootable {
     @FXML private Label titleLbl;
     @FXML private JFXSpinner loadingSpinner;
 
-    @FXML
-    void initialize() {
-    
-    }
-    
-    //stage:
-    private final Stage stage = new Stage(); 
-  	
-  	//preloader.fxml controller singleton:
-  	private static final PreloaderController preloaderCtrlr = new PreloaderController();
+    private final Stage stage = new Stage(); //stage
   	
   	//frame.fxml controller:
-  	private final FrameController frameCtrlr = FrameController.getFrameCtrlr();
+  	private final FrameController frameCtrlr = new FrameController();
   	
-  	//private constructor for singleton:
-    private PreloaderController() {
+  	//constructor:
+    public PreloaderController() {
     	Scene scene = new Scene(Rootable.getRoot(this, "/view/preloader.fxml")); //add root to scene
     	stage.setScene(scene); //add scene to stage
     }
-  	
-  	//get singleton instance:
-    public static PreloaderController getPreloaderCtrlr() {
-        return preloaderCtrlr; 
-    }
-  	
+   
     //show stage:
     public void showStage() {
     	

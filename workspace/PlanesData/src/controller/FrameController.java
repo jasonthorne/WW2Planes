@@ -316,22 +316,7 @@ public final class FrameController implements Rootable {
 	
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	
-	//singleton instance:
-  	private static final FrameController frameCtrlr = new FrameController();
-  	
-	//private constructor for singleton:
-  	private FrameController() {}
-  	
-    //get singleton instance:
-    public static FrameController getFrameCtrlr() {
-        return frameCtrlr; 
-    }
-	
-    //instance of availabilities:
-	private final Availabilities availabilities = Availabilities.getAvailabilities();
-	//..........speeds and types here too!
-    
-	
+	private final Availabilities availabilities = new Availabilities();
 	
 	
 	
@@ -368,8 +353,7 @@ public final class FrameController implements Rootable {
         
         //after fade out, build new tables from event, then fade back in:
     	fadeOutTables.setOnFinished(e -> {
-    		//++++++++++++++++++++++++++++++++++++++++CHECK HERE IF TABLES ALREADY EXIST IN COLLECTION +++++++
-    		/////////////planesTablesVB.getChildren().setAll(getAvailabilities(event)); //add new tables
+    		
     		planesTablesVB.getChildren().setAll(availabilities.getTables(event, availabilitiesAP)); //add new tables
   			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
   			fadeInTables.setFromValue(0);
