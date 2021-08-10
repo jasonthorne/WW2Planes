@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
 import data.Availabilities;
+import data.Speeds;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -299,7 +300,7 @@ public final class FrameController implements Rootable {
  
 	//show plane speeds on bar chart:
 	private void showSpeeds (String airForce, List<Plane>planes) {
-    	
+    	/*
 		ObservableList<XYChart.Series<String,Number>>
 		planeSeries = FXCollections.observableArrayList(); //list of series
 		
@@ -310,6 +311,10 @@ public final class FrameController implements Rootable {
 			planeSeries.add(series); //add series to list
 		});
 		speedsBC.getData().setAll(planeSeries); //set chart with series list
+		*/
+		
+		speedsBC.getData().setAll(speeds.); //set chart with series list
+		
 		speedsBC.setTitle(airForce); //set title with air force
 	};
 	
@@ -318,7 +323,7 @@ public final class FrameController implements Rootable {
 	
 	private final Availabilities availabilities = new Availabilities();
 	
-	
+	private final Speeds speeds = new Speeds();
 	
 	
 	

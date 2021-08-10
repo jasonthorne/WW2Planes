@@ -1,20 +1,17 @@
 package data;
 
-import model.AirForce;
-import model.Event;
-
-/** for hash map keys holding an event and air force */
+/** for hash map keys holding the name of an event and air force */
 /** https://stackoverflow.com/questions/14677993/how-to-create-a-hashmap-with-two-keys-key-pair-value */
 
 public class EventAirForceKey {
 	
-	private final Event event;
-	private final AirForce airForce;
+	private final String eventName;
+	private final String airForceName;
 	
 	//constructor:
-	EventAirForceKey(Event event, AirForce airForce){
-		this.event = event;
-		this.airForce = airForce;
+	EventAirForceKey(String eventName, String airForceName){
+		this.eventName = eventName;
+		this.airForceName = airForceName;
 	}
 
 	//for unique HashMap insertion:
@@ -22,8 +19,8 @@ public class EventAirForceKey {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((airForce == null) ? 0 : airForce.hashCode());
-		result = prime * result + ((event == null) ? 0 : event.hashCode());
+		result = prime * result + ((airForceName == null) ? 0 : airForceName.hashCode());
+		result = prime * result + ((eventName == null) ? 0 : eventName.hashCode());
 		return result;
 	}
 
@@ -37,15 +34,15 @@ public class EventAirForceKey {
 		if (getClass() != obj.getClass())
 			return false;
 		EventAirForceKey other = (EventAirForceKey) obj;
-		if (airForce == null) {
-			if (other.airForce != null)
+		if (airForceName == null) {
+			if (other.airForceName != null)
 				return false;
-		} else if (!airForce.equals(other.airForce))
+		} else if (!airForceName.equals(other.airForceName))
 			return false;
-		if (event == null) {
-			if (other.event != null)
+		if (eventName == null) {
+			if (other.eventName != null)
 				return false;
-		} else if (!event.equals(other.event))
+		} else if (!eventName.equals(other.eventName))
 			return false;
 		return true;
 	}
