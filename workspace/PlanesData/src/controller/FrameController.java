@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
+import data.Availabilities;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -52,7 +53,7 @@ import model.Plane;
 import model.Plane.Type;
 import model.Period.Block;
 
-public class FrameController implements Rootable {
+public final class FrameController implements Rootable {
 
 	//root fxml element & children:
     @FXML private StackPane rootSP;
@@ -102,7 +103,10 @@ public class FrameController implements Rootable {
     			////////System.out.println("HULLO " + selectedEvent.getAirForces());
     			
     			
-    			System.out.println("HULLO " +  observAirForces);
+    			
+    			
+    			
+    			
     			
     			
     			//List<AirForce>selectedAirForces = selectedEvent.getAirForces();
@@ -171,17 +175,11 @@ public class FrameController implements Rootable {
     		
     		@Override //override change listener's changed: 
     	    public void changed(ObservableValue<? extends AirForce> observable, AirForce oldVal, AirForce newVal) {
-    			
-    		
         	    Platform.runLater(new Runnable() {
             	    @Override
             	    public void run() {
-            	    	AirForce selectedAirForce = airForcesLV.getSelectionModel().getSelectedItem();
-            	    	System.out.println("OLD VAL WAS: " + oldVal); //''''''''''''''''STILL GIVES NULL!! So i cvant targrt the previous to turn it off again :(
-            			//System.out.println(selectedAirForce);
-            			
-            			System.out.println("THERE " + selectedAirForce);
-            			showCharts.accept(selectedAirForce.getAirForceName(), selectedAirForce.getAirForcePlanes());
+            	    	AirForce airForce = airForcesLV.getSelectionModel().getSelectedItem();
+            			showCharts.accept(airForce.getAirForceName(), airForce.getAirForcePlanes());
             	    }
             	});
     	    }
@@ -282,7 +280,7 @@ public class FrameController implements Rootable {
 		
 		
 		
-		
+		/////////######################MAKE THIS A| SINGLWTON :P 
 		
 	};
     
@@ -314,7 +312,23 @@ public class FrameController implements Rootable {
 		speedsBC.getData().setAll(planeSeries); //set chart with series list
 		speedsBC.setTitle(airForce); //set title with air force
 	};
-   
+	
+	
+	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	
+	//singleton instance:
+  	private static final FrameController frameCtrlr = new FrameController();
+  	
+	//private constructor for singleton:
+  	private FrameController() {}
+  	
+    //get singleton instance:
+    public static FrameController getFrameCtrlr() {
+        return frameCtrlr; 
+    }
+	
+	
+   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    
     //load data from database:
     void loadEventsData(FadeTransition fadeOutPreloader) { 

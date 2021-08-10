@@ -13,7 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class PreloaderController implements Rootable {
+public final class PreloaderController implements Rootable {
 
 	//root fxml element & children:
     @FXML private StackPane rootSP;
@@ -26,13 +26,14 @@ public class PreloaderController implements Rootable {
     
     }
     
-    private final Stage stage = new Stage(); //stage
+    //stage:
+    private final Stage stage = new Stage(); 
   	
   	//preloader.fxml controller singleton:
-  	private static PreloaderController singlePreloaderCtrlr = null;
+  	private static final PreloaderController preloaderCtrlr = new PreloaderController();
   	
   	//frame.fxml controller:
-  	private final FrameController frameCtrlr = new FrameController();
+  	private static final FrameController frameCtrlr = FrameController.getFrameCtrlr();
   	
   	//private constructor for singleton:
     private PreloaderController() {
@@ -40,11 +41,9 @@ public class PreloaderController implements Rootable {
     	stage.setScene(scene); //add scene to stage
     }
   	
-  	//get preloader controller singleton:
+  	//get singleton instance:
     public static PreloaderController getPreloaderCtrlr() {
-    	//create singleton if necessary:
-        if (singlePreloaderCtrlr == null) {singlePreloaderCtrlr = new PreloaderController();}
-        return singlePreloaderCtrlr; 
+        return preloaderCtrlr; 
     }
   	
     //show stage:

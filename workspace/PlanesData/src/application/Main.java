@@ -14,9 +14,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		//get preloader controller:
-		PreloaderController preloaderCtrlr = PreloaderController.getPreloaderCtrlr();
-		//show its stage:
-		preloaderCtrlr.showStage();
+		final PreloaderController preloaderCtrlr = PreloaderController.getPreloaderCtrlr();
+		preloaderCtrlr.showStage(); //show its stage:
 	}
 
 

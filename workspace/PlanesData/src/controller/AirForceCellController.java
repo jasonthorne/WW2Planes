@@ -12,13 +12,13 @@ import javafx.scene.layout.AnchorPane;
 import model.AirForce;
 import model.Plane;
 
-public class AirForceCellController extends JFXListCell<AirForce> {
+public final class AirForceCellController extends JFXListCell<AirForce> {
 	
 	//root fxml element:
 	@FXML private AnchorPane rootAP;
 	
-	private String name; //air force name
-	private List<Plane>planes; //air force planes
+	/////////////private String name; //air force name
+	///////////////////////private List<Plane>planes; //air force planes
   	
   	//constructor:
   	AirForceCellController(BiConsumer<String, List<Plane>>showCharts) {
@@ -41,9 +41,10 @@ public class AirForceCellController extends JFXListCell<AirForce> {
 	        setText(null);
 	        setGraphic(null);
 	    } else {
-	    	name = airForce.getAirForceName(); //get air force name
-	    	planes = airForce.getAirForcePlanes(); //get air force planes
-	    	setText(name); //set text with air force name
+	    	/////////////name = airForce.getAirForceName(); //get air force name
+	    	/////////////planes = airForce.getAirForcePlanes(); //get air force planes
+	    	///////////////setText(name); //set text with air force name
+	    	setText(airForce.getAirForceName()); //set text with air force name
 	    	setGraphic(null);
 	    }
 	}

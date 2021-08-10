@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import model.Event;
 
-public class EventCellController extends JFXListCell<Event> {
+public final class EventCellController extends JFXListCell<Event> {
 
     //root fxml element:
     @FXML private AnchorPane rootAP;
