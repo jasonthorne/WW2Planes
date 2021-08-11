@@ -15,7 +15,7 @@ final class ConnectDB {
 		try {
 			//load properties:
 			Properties properties = new Properties();	
-			properties.load(new FileInputStream("./configs/mysql/db_configs/db_configs.properties"));
+			properties.load(getClass().getResourceAsStream("db_configs.properties"));
 			
 			//get connection using properties: 
 			this.connection = DriverManager.getConnection(

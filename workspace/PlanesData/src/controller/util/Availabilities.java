@@ -2,10 +2,8 @@ package controller.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeSet;
 
 import javafx.beans.binding.Bindings;
@@ -26,27 +24,10 @@ import model.Period.Block;
 
 public final class Availabilities {
 	
-	//lists of plane availabilities tables for events:
-	private final Map<String, List<TableView<Plane>>>eventToAvailabilities = new HashMap<String,List<TableView<Plane>>>();
+	private Availabilities() {} //private constructor
 	
-	//get availabilities tables:
-	public List<TableView<Plane>>getTables(Event event, Pane pane) {
-		
-		List<TableView<Plane>>tablesCheck = null;
-		
-		//return tables if already present in map:
-		if((tablesCheck = eventToAvailabilities.get(event.getName()))!= null) {
-			return new ArrayList<TableView<Plane>>(tablesCheck);}
-		
-		//add built tables to map:
-		eventToAvailabilities.put(event.getName(), buildTables(event,pane));
-		//return tables:
-		return new ArrayList<TableView<Plane>>( 
-				eventToAvailabilities.get(event.getName())); 
-	}
-	
-	//build plane availabilities tables:
-	private List<TableView<Plane>>buildTables(Event event, Pane pane) {
+	//return list of plane availabilities tables:
+	public static List<TableView<Plane>>getTables(Event event, Pane pane) {
 		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
@@ -141,7 +122,7 @@ public final class Availabilities {
 	    	planesTable.getColumns().add(airForceCol); //add air force column to table
 	    	planesTables.add(planesTable); //add table to tables
 		});
-		return planesTables; //return planesTables
+		return new ArrayList<TableView<Plane>>(planesTables); //return planesTables
 	}
 	
 }

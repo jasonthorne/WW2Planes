@@ -15,9 +15,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
 import controller.util.Availabilities;
-import controller.util.EventAirForceKey;
 import controller.util.Speeds;
-import database.util.SelectEvents;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -318,7 +316,12 @@ public final class FrameController implements Rootable {
 		//ObservableList<XYChart.Series<String,Number>>
 		//planeSeries = speeds.getSeries(new EventAirForceKey(selectedEvent.getName(),airForce), planes);
 		
-		speedsBC.getData().setAll(speeds.buildSeries(planes));
+		
+		
+    	speedsBC.getData().setAll(Speeds.getSeries(planes));
+    	
+		
+		//speedsBC.getData().setAll(Speeds.getSeries(planes));
 		
 		//speedsBC.getData().setAll(planeSeries); //set chart with series list
 		
@@ -342,7 +345,7 @@ public final class FrameController implements Rootable {
     		new Thread(() -> { //fire new thread:
     	    	try {
     	    		//load events controller.util:
-    	    		observEvents.addAll(SelectEvents.select()); 
+    	    		observEvents.addAll(database.SelectEvents.select()); 
     	    		//set air forces with first event's air forces:
     	    		observAirForces.setAll(observEvents.get(0).getAirForces());
     	    		fadeOutPreloader.play(); //fade out preloader:
@@ -362,7 +365,7 @@ public final class FrameController implements Rootable {
         //after fade out, build new tables from event, then fade back in:
     	fadeOutTables.setOnFinished(e -> {
     		
-    		planesTablesVB.getChildren().setAll(availabilities.getTables(event, availabilitiesAP)); //add new tables
+			planesTablesVB.getChildren().setAll(Availabilities.getTables(event, availabilitiesAP)); //add new tables
   			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
   			fadeInTables.setFromValue(0);
   			fadeInTables.setToValue(1);

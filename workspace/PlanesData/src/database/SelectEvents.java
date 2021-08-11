@@ -1,4 +1,4 @@
-package database.util;
+package database;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -16,9 +16,7 @@ import model.Period.Block;
 import model.Plane.Availability;
 import model.Plane.Type;
 
-public final class SelectEvents {
-	
-	private SelectEvents() {} //private constructor
+public interface SelectEvents {
 	
 	public static List<Event> select() {
 		
