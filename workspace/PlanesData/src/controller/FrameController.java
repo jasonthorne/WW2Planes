@@ -14,8 +14,9 @@ import java.util.stream.Collectors;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
-import controller.util.Availability;
-import controller.util.Speed;
+import data.Availability;
+import data.Speed;
+import data.TypeData;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -86,6 +87,11 @@ public final class FrameController implements Rootable {
 		//set events list view cellFactory to create EventCellControllers:
 		eventsLV.setCellFactory(EventCellController -> new EventCellController());
 		
+		//set air forces list view with observable airForces:
+		airForcesLV.setItems(observAirForces);
+		//set air forces list view to create AirForceCellControllers:
+		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(showChartData));
+		
 		//add change listener to events list view:
 		/**https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2	*/
     	eventsLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Event>() {
@@ -93,33 +99,13 @@ public final class FrameController implements Rootable {
     		@Override //override change listener's changed: 
     	    public void changed(ObservableValue<? extends Event> observable, Event oldVal, Event newVal) {
     			
-    			Event selectedEvent = eventsLV.getSelectionModel().getSelectedItem(); //get selected event
+    			Event selectedEvent = newVal; //get selected event
     			observAirForces.setAll(selectedEvent.getAirForces()); //update air forces with event's
+    			airForcesLV.getSelectionModel().select(0); //auto select event's first air force
           	    showEventData(selectedEvent); //show selected event's data
     	    }
     	});
     	
-    	//set air forces list view with observable airForces:
-		airForcesLV.setItems(observAirForces);
-		//set air forces list view to create AirForceCellControllers:
-		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController());
-    			
-		//add change listener to air forces list view:
-		airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
-    		
-    		@Override //override change listener's changed: 
-    	    public void changed(ObservableValue<? extends AirForce> observable, AirForce oldVal, AirForce newVal) {
-        	    Platform.runLater(new Runnable() {
-            	    @Override
-            	    public void run() {
-            	    	//store selected air force and then show charts:
-            	    	AirForce selectedAirForce = airForcesLV.getSelectionModel().getSelectedItem();
-            			showCharts.accept(selectedAirForce.getAirForceName(), selectedAirForce.getAirForcePlanes());
-            	    }
-            	});
-    	    }
-    	});
-		
     	//create selection event for availabilities tab:
     	availabilitiesTab.setOnSelectionChanged (event -> {
     		
@@ -152,12 +138,17 @@ public final class FrameController implements Rootable {
     
     private final Availability availability = new Availability();
     private final Speed speed = new Speed();
+    private final TypeData typeData = new TypeData();
+    
     
     //------------------------------------------------------------------
    
     //show plane types on pie chart:
     private void showTypes(String airForce, List<Plane>planes){
     	
+    	///Map<Plane.Type, List<String>> planeTypeToNames = new HashMap<Plane.Type, List<String>>();
+    	
+    	/*
     	//list of pie chart data:
     	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
     	
@@ -197,20 +188,16 @@ public final class FrameController implements Rootable {
     		}
     	}
     	
-    	/*
-    	Platform.runLater(new Runnable() {
-
-    	    @Override
-    	    public void run() {
-    	    	typesPC.getData().setAll(pieChartData);
-    			typesPC.setTitle(airForce);
-    	    }
-    	});*/
+    	*/
     	
-    	typesPC.getData().setAll(pieChartData);
+    	//////////////////////typesPC.getData().setAll(pieChartData);
+    	typesPC.getData().setAll(typeData.getData(planes));
 		typesPC.setTitle(airForce);
 		
+		
+		
 		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
+		/*
 		for (final PieChart.Data data : typesPC.getData()) {
     	    data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
     	        new EventHandler<MouseEvent>() {
@@ -220,10 +207,12 @@ public final class FrameController implements Rootable {
     	                				data.getName().toUpperCase().replace('-', '_'))));
     	             }
     	        });
-    	}
+    	}*/
+		
+		
 		
 		//@@@@@@@@@@@
-		//https://stackoverflow.com/questions/11873041/javafx-piechart-incorrect-controller.util-handles-mouseevent
+		//https://stackoverflow.com/questions/11873041/javafx-piechart-incorrect-data-handles-mouseevent
 		
 		
 		
@@ -231,8 +220,8 @@ public final class FrameController implements Rootable {
 		
 	};
     
-	//consumer for showing plane speeds on bar chart:
-    BiConsumer<String,List<Plane>> showCharts = (airForce,planes) -> { //++++++++++++++SHOW CHAARTS???
+	//consumer for showing selected air force's chart data:
+    BiConsumer<String,List<Plane>>showChartData = (airForce, planes) -> { 
     	
     	//++++check collections for each premade thing, if not there, then invoke methods +++++++++++++
     	
@@ -275,18 +264,9 @@ public final class FrameController implements Rootable {
 	};
 	
 	
-	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	
-	
-	
-	
-	
-	
-   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   
     //load events data from database:
     void loadEventsData(FadeTransition fadeOutPreloader) { 
-    	//if events controller.util is empty:
+    	//if events data is empty:
     	if (observEvents.isEmpty()) { 
     		new Thread(() -> { //fire new thread:
     	    	try {
@@ -321,18 +301,8 @@ public final class FrameController implements Rootable {
        
     	//get event's first air force:
     	AirForce firstAirForce = event.getAirForces().get(0);
-    	
     	//show first air force's data in charts;
-    	///////++++++++showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
-    	showCharts.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
-    	
-    	airForcesLV.getSelectionModel().select(0);
-    	
-    	///============https://stackoverflow.com/questions/11088612/javafx-select-item-in-listview
-    	
-    	
-    	//https://stackoverflow.com/questions/31409982/java-best-practice-class-with-only-static-methods
+    	showChartData.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     }
     
-   
 }

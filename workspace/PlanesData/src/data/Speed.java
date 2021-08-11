@@ -1,4 +1,4 @@
-package controller.util;
+package data;
 
 import java.util.List;
 
