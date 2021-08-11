@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
-import controller.util.Availabilities;
-import controller.util.Speeds;
+import controller.util.Availability;
+import controller.util.Speed;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -86,11 +86,6 @@ public final class FrameController implements Rootable {
 		//set events list view cellFactory to create EventCellControllers:
 		eventsLV.setCellFactory(EventCellController -> new EventCellController());
 		
-		//set air forces list view with observable airForces:
-		airForcesLV.setItems(observAirForces);
-		//set air forces list view to create AirForceCellControllers:
-		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(showCharts));
-		
 		//add change listener to events list view:
 		/**https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2	*/
     	eventsLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Event>() {
@@ -98,55 +93,33 @@ public final class FrameController implements Rootable {
     		@Override //override change listener's changed: 
     	    public void changed(ObservableValue<? extends Event> observable, Event oldVal, Event newVal) {
     			
-    			Event selectedEvent = eventsLV.getSelectionModel().getSelectedItem();
-    			
-    			///////System.out.println(selectedEvent);
-    			////////System.out.println("HULLO " + selectedEvent.getAirForces());
-    			
-    			
-    			
-    			
-    			
-    			
-    			
-    			
-    			//List<AirForce>selectedAirForces = selectedEvent.getAirForces();
-    			
-    			List<AirForce>selectedAirForces = eventsLV.getSelectionModel().getSelectedItem().getAirForces();
-    			
-    			
-    			////observAirForces = FXCollections.observableArrayList(selectedAirForces/*selectedEvent.getAirForces()*/);
-    			//observAirForces.setAll(newVal.getAirForces()); 
-    			
-    			observAirForces.setAll(selectedEvent.getAirForces()); 
-    			
-    			///observAirForces.setAll(selectedAirForces); /////+++++++++++WHY IS A NULL MADE HERE :P
-     	  
-           	    	//airForcesLV.setItems(observAirForces); //set list view with airForces
-           	   
-          
-     	        //+++++++++THIS HOLDS OLD AIRFORCES :PP MAYBE THEY CAN BE TARGETED HERE :P @@@@@@@@@@@@@@@@@@@@@
-     	    	
-             	
-    			
-    			
-    			
-          	    showEventData(selectedEvent); //show selected event controller.util
-    			
-          	    
-          	    
-    			/*
-        	    Platform.runLater(new Runnable() {
-            	    @Override
-            	    public void run() {
-            	    	//set air forces with event's air forces:
-            	    	observAirForces.setAll(newVal.getAirForces()); 
-                  	    showEventData(newVal); //show selected event controller.util
-            	    }
-            	});*/
+    			Event selectedEvent = eventsLV.getSelectionModel().getSelectedItem(); //get selected event
+    			observAirForces.setAll(selectedEvent.getAirForces()); //update air forces with event's
+          	    showEventData(selectedEvent); //show selected event's data
     	    }
     	});
     	
+    	//set air forces list view with observable airForces:
+		airForcesLV.setItems(observAirForces);
+		//set air forces list view to create AirForceCellControllers:
+		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController());
+    			
+		//add change listener to air forces list view:
+		airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
+    		
+    		@Override //override change listener's changed: 
+    	    public void changed(ObservableValue<? extends AirForce> observable, AirForce oldVal, AirForce newVal) {
+        	    Platform.runLater(new Runnable() {
+            	    @Override
+            	    public void run() {
+            	    	//store selected air force and then show charts:
+            	    	AirForce selectedAirForce = airForcesLV.getSelectionModel().getSelectedItem();
+            			showCharts.accept(selectedAirForce.getAirForceName(), selectedAirForce.getAirForcePlanes());
+            	    }
+            	});
+    	    }
+    	});
+		
     	//create selection event for availabilities tab:
     	availabilitiesTab.setOnSelectionChanged (event -> {
     		
@@ -167,52 +140,25 @@ public final class FrameController implements Rootable {
     		} else { fadeOutAirForces.play(); }
     	});
     	
-    	
-    	
-    	
-    	
-    	
-    	airForcesLV.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AirForce>() {
-    		
-    		@Override //override change listener's changed: 
-    	    public void changed(ObservableValue<? extends AirForce> observable, AirForce oldVal, AirForce newVal) {
-        	    Platform.runLater(new Runnable() {
-            	    @Override
-            	    public void run() {
-            	    	AirForce airForce = airForcesLV.getSelectionModel().getSelectedItem();
-            			showCharts.accept(airForce.getAirForceName(), airForce.getAirForcePlanes());
-            	    }
-            	});
-    	    }
-    	});
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	//show first event controller.util:
+    	//show first event's data:
     	showEventData(observEvents.get(0));
-    	//#############################################https://stackoverflow.com/questions/17522686/javafx-tabpane-how-to-listen-to-selection-changes
+    	
     }
     
     //observable lists:
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
     private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
     
+    
+    private final Availability availability = new Availability();
+    private final Speed speed = new Speed();
+    
     //------------------------------------------------------------------
    
     //show plane types on pie chart:
     private void showTypes(String airForce, List<Plane>planes){
     	
-    	//list of pie chart controller.util:
+    	//list of pie chart data:
     	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
     	
     	//===========================MADE GLOBAL
@@ -241,7 +187,7 @@ public final class FrameController implements Rootable {
     		//if plane type has list entries:
     		if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
     			
-    			//+++++++++TEST FOR STORING controller.util for retreival later +++++++++++
+    			//+++++++++TEST FOR STORING data  for retreival later +++++++++++
     			 PieChart.Data test = new PieChart.Data(
         				 planeType.toString(),
         				 planeTypeToNames.get(planeType).size());
@@ -318,10 +264,10 @@ public final class FrameController implements Rootable {
 		
 		
 		
-    	speedsBC.getData().setAll(Speeds.getSeries(planes));
+    	speedsBC.getData().setAll(speed.getSeries(planes));
     	
 		
-		//speedsBC.getData().setAll(Speeds.getSeries(planes));
+		//speedsBC.getData().setAll(Speed.getSeries(planes));
 		
 		//speedsBC.getData().setAll(planeSeries); //set chart with series list
 		
@@ -338,13 +284,13 @@ public final class FrameController implements Rootable {
 	
    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    
-    //load controller.util from database:
+    //load events data from database:
     void loadEventsData(FadeTransition fadeOutPreloader) { 
     	//if events controller.util is empty:
     	if (observEvents.isEmpty()) { 
     		new Thread(() -> { //fire new thread:
     	    	try {
-    	    		//load events controller.util:
+    	    		//load events data:
     	    		observEvents.addAll(database.SelectEvents.select()); 
     	    		//set air forces with first event's air forces:
     	    		observAirForces.setAll(observEvents.get(0).getAirForces());
@@ -354,7 +300,7 @@ public final class FrameController implements Rootable {
     	}
     }
     
-    //show controller.util of given event:
+    //show data of given event:
     private void showEventData(Event event) {
     	
     	//create fade out transition for availability tables:
@@ -365,7 +311,7 @@ public final class FrameController implements Rootable {
         //after fade out, build new tables from event, then fade back in:
     	fadeOutTables.setOnFinished(e -> {
     		
-			planesTablesVB.getChildren().setAll(Availabilities.getTables(event, availabilitiesAP)); //add new tables
+			planesTablesVB.getChildren().setAll(availability.getTables(event, availabilitiesAP)); //add new tables
   			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
   			fadeInTables.setFromValue(0);
   			fadeInTables.setToValue(1);
@@ -376,7 +322,7 @@ public final class FrameController implements Rootable {
     	//get event's first air force:
     	AirForce firstAirForce = event.getAirForces().get(0);
     	
-    	//show first air force's controller.util in charts;
+    	//show first air force's data in charts;
     	///////++++++++showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     	showCharts.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     	

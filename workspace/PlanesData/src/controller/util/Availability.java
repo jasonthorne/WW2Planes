@@ -22,12 +22,12 @@ import model.Period;
 import model.Plane;
 import model.Period.Block;
 
-public final class Availabilities {
+public final class Availability {
 	
-	private Availabilities() {} //private constructor
+	///////////////private Availability() {} //private constructor
 	
 	//return list of plane availabilities tables:
-	public static List<TableView<Plane>>getTables(Event event, Pane pane) {
+	public /*static*/ List<TableView<Plane>>getTables(Event event, Pane pane) {
 		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());

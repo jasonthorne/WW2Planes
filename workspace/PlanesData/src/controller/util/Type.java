@@ -1,5 +1,5 @@
 package controller.util;
 
-public final class Types {
+public final class Type {
 
 }
