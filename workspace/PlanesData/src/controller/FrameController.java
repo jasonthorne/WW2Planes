@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
 import data.Availability;
+import data.EventAirForceKey;
 import data.Speed;
 import data.TypeData;
 import javafx.animation.FadeTransition;
@@ -130,7 +131,6 @@ public final class FrameController implements Rootable {
     	
     	//show first event's data:
     	showEventData(observEvents.get(0));
-    	
     }
     
     //observable lists:
@@ -149,7 +149,7 @@ public final class FrameController implements Rootable {
     private void showTypes(String airForce, List<Plane>planes){
     	
     	
-    	System.out.println(eventsLV.getSelectionModel().getSelectedItem());
+    	/////////System.out.println(eventsLV.getSelectionModel().getSelectedItem());
     	//////////////////////typesPC.getData().setAll(pieChartData);
     	
     	
@@ -158,7 +158,12 @@ public final class FrameController implements Rootable {
     	
     	
     	typesPC.setTitle(airForce); //set title with air force
-    	typesPC.getData().setAll(typeData.getData(planes)); //set data
+    	///typesPC.getData().setAll(typeData.getData(planes)); //set data
+    	
+    	//set data, passing event air force key, and planes:
+    	typesPC.getData().setAll(typeData.getData(
+    			new EventAirForceKey(eventsLV.getSelectionModel().getSelectedItem().getName(),airForce), 
+    			planes)); 
 		
 		//add press event to each pie chart data slice:
 		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
