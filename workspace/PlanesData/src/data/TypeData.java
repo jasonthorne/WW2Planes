@@ -16,20 +16,22 @@ import model.Plane;
 
 public final class TypeData {
 	
+	private Map<Plane.Type, List<String>> planeTypeToNames; // = new HashMap<Plane.Type, List<String>>();
 	
-	
-	
-	Map<Plane.Type, List<String>> planeTypeToNames = new HashMap<Plane.Type, List<String>>();
-	
-	
+	/*public TypeData(Map<String, List<String>>planeTypeToNames) {
+		this.planeTypeToNames = planeTypeToNames;
+	}*/
 	
 	
 	//return list of pie chart data for given planes:
-	public /*static*/ ObservableList<PieChart.Data>getData(List<Plane>planes) {
+	////public /*static*/ ObservableList<PieChart.Data>getData(List<Plane>planes) {
+	public /*static*/ PieChart getData(List<Plane>planes) {
 		
 		
 		//list of pie chart data:
     	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+    	
+    	PieChart pc = new PieChart();
     	
     	//===========================MADE GLOBAL
     	//map of plane types and lists of planes of said type:
@@ -82,23 +84,25 @@ public final class TypeData {
     	}
     	*/
     	
+    	pc.getData().setAll(pieChartData);
     	
-    	//pieChartData.forEach(data -> {
-    		
-    		
-    		/*
-    		data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
+    	
+  
+    	
+    	for (final PieChart.Data data : pc.getData()) {
+   
+        	    data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
         	        new EventHandler<MouseEvent>() {
         	            @Override public void handle(MouseEvent e) {
         	            
-        	            	
-        	                //System.out.println(planeTypeToNames.get(Plane.Type.valueOf(
-        	                		//		data.getName().toUpperCase().replace('-', '_'))));
-        	            	
-        	            	System.out.println("yo");
+        	                System.out.println(planeTypeToNames.get(Plane.Type.valueOf(
+        	                				data.getName().toUpperCase().replace('-', '_'))));
         	             }
-        	        });*/
-    	//});*/
+        	        });
+    	}
+	    	
+    	
+    	
     	
     	/*
     	pieChartData.forEach(data -> {
@@ -107,11 +111,13 @@ public final class TypeData {
     		System.out.println(data.getPieValue());
     		System.out.println("=================");
     		
+    		
     	});*/
     	
     	//============================
 		
-    	return pieChartData;
+    	//return pieChartData;
+    	return pc;
 		
 		/*
 		ObservableList<XYChart.Series<String,Number>>

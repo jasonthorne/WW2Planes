@@ -191,7 +191,11 @@ public final class FrameController implements Rootable {
     	*/
     	
     	//////////////////////typesPC.getData().setAll(pieChartData);
-    	typesPC.getData().setAll(typeData.getData(planes));
+    	///typesPC.getData().setAll(typeData.getData(planes));
+    	
+    	
+    	typesPC.getData().setAll( typeData.getData(planes).getData());
+    	
 		typesPC.setTitle(airForce);
 		
 		
