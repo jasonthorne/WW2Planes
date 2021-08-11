@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-final class ConnectDB {
+public final class ConnectDB {
 	
 	private Connection connection = null; //holds an established connection
 	
@@ -26,5 +26,5 @@ final class ConnectDB {
 	}
 	
 	//return a newly established connection:
-	static Connection getConnection() { return new ConnectDB().connection; }
+	public static Connection getConnection() { return new ConnectDB().connection; }
 }

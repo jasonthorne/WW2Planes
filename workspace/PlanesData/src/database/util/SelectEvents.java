@@ -1,4 +1,4 @@
-package database;
+package database.util;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -8,21 +8,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import model.Event;
 import model.AirForce;
+import model.Event;
 import model.Period;
-import model.Period.Block;
 import model.Plane;
+import model.Period.Block;
 import model.Plane.Availability;
 import model.Plane.Type;
 
-public interface SelectEvents {
-
+public final class SelectEvents {
+	
+	private SelectEvents() {} //private constructor
+	
 	public static List<Event> select() {
 		
 		List<Event>events = new ArrayList<Event>(); //list for events
 		
-		try (Connection connection = ConnectDB.getConnection();  //connect to DB
+		try (Connection connection = database.ConnectDB.getConnection();  //connect to DB
 			//statements for selecting events and their children:
 			CallableStatement eventsStatement = connection.prepareCall("{CALL select_events()}");
 			CallableStatement periodsStatement = connection.prepareCall("{CALL select_event_periods(?)}");	

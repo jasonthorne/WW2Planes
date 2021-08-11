@@ -14,8 +14,10 @@ import java.util.stream.Collectors;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
-import data.Availabilities;
-import data.Speeds;
+import controller.util.Availabilities;
+import controller.util.EventAirForceKey;
+import controller.util.Speeds;
+import database.util.SelectEvents;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -131,7 +133,7 @@ public final class FrameController implements Rootable {
     			
     			
     			
-          	    showEventData(selectedEvent); //show selected event data
+          	    showEventData(selectedEvent); //show selected event controller.util
     			
           	    
           	    
@@ -141,7 +143,7 @@ public final class FrameController implements Rootable {
             	    public void run() {
             	    	//set air forces with event's air forces:
             	    	observAirForces.setAll(newVal.getAirForces()); 
-                  	    showEventData(newVal); //show selected event data
+                  	    showEventData(newVal); //show selected event controller.util
             	    }
             	});*/
     	    }
@@ -198,7 +200,7 @@ public final class FrameController implements Rootable {
     	
     	
     	
-    	//show first event data:
+    	//show first event controller.util:
     	showEventData(observEvents.get(0));
     	//#############################################https://stackoverflow.com/questions/17522686/javafx-tabpane-how-to-listen-to-selection-changes
     }
@@ -212,7 +214,7 @@ public final class FrameController implements Rootable {
     //show plane types on pie chart:
     private void showTypes(String airForce, List<Plane>planes){
     	
-    	//list of pie chart data:
+    	//list of pie chart controller.util:
     	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
     	
     	//===========================MADE GLOBAL
@@ -241,7 +243,7 @@ public final class FrameController implements Rootable {
     		//if plane type has list entries:
     		if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
     			
-    			//+++++++++TEST FOR STORING data for retreival later +++++++++++
+    			//+++++++++TEST FOR STORING controller.util for retreival later +++++++++++
     			 PieChart.Data test = new PieChart.Data(
         				 planeType.toString(),
         				 planeTypeToNames.get(planeType).size());
@@ -277,7 +279,7 @@ public final class FrameController implements Rootable {
     	}
 		
 		//@@@@@@@@@@@
-		//https://stackoverflow.com/questions/11873041/javafx-piechart-incorrect-data-handles-mouseevent
+		//https://stackoverflow.com/questions/11873041/javafx-piechart-incorrect-controller.util-handles-mouseevent
 		
 		
 		
@@ -313,17 +315,18 @@ public final class FrameController implements Rootable {
 		speedsBC.getData().setAll(planeSeries); //set chart with series list
 		*/
 		
-		speedsBC.getData().setAll(speeds.); //set chart with series list
+		//ObservableList<XYChart.Series<String,Number>>
+		//planeSeries = speeds.getSeries(new EventAirForceKey(selectedEvent.getName(),airForce), planes);
+		
+		speedsBC.getData().setAll(speeds.buildSeries(planes));
+		
+		//speedsBC.getData().setAll(planeSeries); //set chart with series list
 		
 		speedsBC.setTitle(airForce); //set title with air force
 	};
 	
 	
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	
-	private final Availabilities availabilities = new Availabilities();
-	
-	private final Speeds speeds = new Speeds();
 	
 	
 	
@@ -332,14 +335,14 @@ public final class FrameController implements Rootable {
 	
    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
    
-    //load data from database:
+    //load controller.util from database:
     void loadEventsData(FadeTransition fadeOutPreloader) { 
-    	//if events data is empty:
+    	//if events controller.util is empty:
     	if (observEvents.isEmpty()) { 
     		new Thread(() -> { //fire new thread:
     	    	try {
-    	    		//load events data:
-    	    		observEvents.addAll(database.SelectEvents.select()); 
+    	    		//load events controller.util:
+    	    		observEvents.addAll(SelectEvents.select()); 
     	    		//set air forces with first event's air forces:
     	    		observAirForces.setAll(observEvents.get(0).getAirForces());
     	    		fadeOutPreloader.play(); //fade out preloader:
@@ -348,7 +351,7 @@ public final class FrameController implements Rootable {
     	}
     }
     
-    //show data of given event:
+    //show controller.util of given event:
     private void showEventData(Event event) {
     	
     	//create fade out transition for availability tables:
@@ -370,14 +373,16 @@ public final class FrameController implements Rootable {
     	//get event's first air force:
     	AirForce firstAirForce = event.getAirForces().get(0);
     	
-    	//show first air force's data in charts;
+    	//show first air force's controller.util in charts;
     	///////++++++++showSpeeds.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     	showCharts.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     	
     	airForcesLV.getSelectionModel().select(0);
     	
-    	
     	///============https://stackoverflow.com/questions/11088612/javafx-select-item-in-listview
+    	
+    	
+    	//https://stackoverflow.com/questions/31409982/java-best-practice-class-with-only-static-methods
     }
     
    
