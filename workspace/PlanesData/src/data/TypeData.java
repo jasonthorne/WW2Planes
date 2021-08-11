@@ -13,125 +13,61 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.input.MouseEvent;
 import model.Plane;
+import model.Plane.Type;
 
 public final class TypeData {
 	
-	private Map<Plane.Type, List<String>> planeTypeToNames; // = new HashMap<Plane.Type, List<String>>();
+	//map of plane types and lists of planes of said type:
+	private Map<String, List<String>> planeTypeToNames = new HashMap<String, List<String>>();
 	
 	/*public TypeData(Map<String, List<String>>planeTypeToNames) {
 		this.planeTypeToNames = planeTypeToNames;
 	}*/
 	
+	//constructor:
+	public TypeData() {
+		initPlaneTypeToNames(); //initialize type to names
+	}
 	
-	//return list of pie chart data for given planes:
-	////public /*static*/ ObservableList<PieChart.Data>getData(List<Plane>planes) {
-	public /*static*/ PieChart getData(List<Plane>planes) {
+	
+	
+	//initialize type to names map:
+	private void initPlaneTypeToNames() {
 		
-		
-		//list of pie chart data:
-    	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-    	
-    	PieChart pc = new PieChart();
-    	
-    	//===========================MADE GLOBAL
-    	//map of plane types and lists of planes of said type:
-    	//////////////Map<Plane.Type, List<String>> planeTypeToNames = new HashMap<Plane.Type, List<String>>();
-    	
-    	//initialize map with enum keys, holding empty lists: //++++++PUT IN GLOBAL METHOD WHICH IS THEN CALLED HERE??
-    	for (Plane.Type planeType : Plane.Type.values()) {
-    		//add type key with empty list value to map:
-    		planeTypeToNames.put(planeType, new ArrayList<String>());
+    	for(Type type : Type.values()) {
+    		//initialize map with plane type keys, holding empty lists:
+    		planeTypeToNames.put(type.toString(), new ArrayList<String>());
     	}
+	}
+	
+	//get list of plane names for given type:
+	public List<String> getPlaneNamesForType(String type){
+		return new ArrayList<String>(planeTypeToNames.get(type));
+	}
+
+	//return list of pie chart data for given planes:
+	public ObservableList<PieChart.Data>getData(List<Plane>planes) {
+	
+		//list of pie chart data:
+    	ObservableList<PieChart.Data>pieChartData = FXCollections.observableArrayList();
     	
-    	//======================
+    	initPlaneTypeToNames(); //initialize type to names
     	
-    	//loop through planes:
     	planes.forEach(plane ->{
-    		//add plane's name to list of names with same type:
-    		planeTypeToNames.get(plane.getType()).add(plane.getName());
+    		//add plane's name to list of other names with same type:
+    		planeTypeToNames.get(plane.getType().toString()).add(plane.getName());
     	});
-    	
-    	
+    
     	//loop through map's key set:
-    	for (Plane.Type planeType : planeTypeToNames.keySet()) {
-    		//++++++++++++++++CHECK THAT NUMBER IS GREATER THAN 1
+    	for (String planeType : planeTypeToNames.keySet()) {
     		int planesNum;
     		//if plane type has list entries:
     		if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
-    			
-    			//+++++++++TEST FOR STORING data  for retreival later +++++++++++
-    			 PieChart.Data test = new PieChart.Data(
-        				 planeType.toString(),
-        				 planeTypeToNames.get(planeType).size());
-    			 
-    			//Add type and its amount to pie chart:
+    			//Add type and its amount to pie chart data:
         		pieChartData.add(new PieChart.Data(planeType.toString(), planesNum));
     		}
     	}
-    	
-    	
-    	//=============================
-    	/*
-    	for (final PieChart.Data data : pieChartData.) {
-    	    data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
-    	        new EventHandler<MouseEvent>() {
-    	            @Override public void handle(MouseEvent e) {
-    	            
-    	                System.out.println(planeTypeToNames.get(Plane.Type.valueOf(
-    	                				data.getName().toUpperCase().replace('-', '_'))));
-    	             }
-    	        });
-    	}
-    	*/
-    	
-    	pc.getData().setAll(pieChartData);
-    	
-    	
-  
-    	
-    	for (final PieChart.Data data : pc.getData()) {
-   
-        	    data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
-        	        new EventHandler<MouseEvent>() {
-        	            @Override public void handle(MouseEvent e) {
-        	            
-        	                System.out.println(planeTypeToNames.get(Plane.Type.valueOf(
-        	                				data.getName().toUpperCase().replace('-', '_'))));
-        	             }
-        	        });
-    	}
-	    	
-    	
-    	
-    	
-    	/*
-    	pieChartData.forEach(data -> {
-    		
-    		System.out.println("=================");
-    		System.out.println(data.getPieValue());
-    		System.out.println("=================");
-    		
-    		
-    	});*/
-    	
-    	//============================
-		
-    	//return pieChartData;
-    	return pc;
-		
-		/*
-		ObservableList<XYChart.Series<String,Number>>
-		planeSeries = FXCollections.observableArrayList(); //list of series
-		
-		planes.forEach(plane ->{
-			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>(); //create series
-			series.setName(plane.getName()); //add plane name
-			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed())); //add planes speed
-			planeSeries.add(series); //add series to list
-		});
-		
-		return planeSeries;
-		*/
+    	return pieChartData; //return pie chart data
 	}
 
 }

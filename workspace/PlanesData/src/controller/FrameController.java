@@ -86,6 +86,8 @@ public final class FrameController implements Rootable {
 		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventCellControllers:
 		eventsLV.setCellFactory(EventCellController -> new EventCellController());
+		//preselect first event in list view:
+		eventsLV.getSelectionModel().select(0);
 		
 		//set air forces list view with observable airForces:
 		airForcesLV.setItems(observAirForces);
@@ -146,81 +148,31 @@ public final class FrameController implements Rootable {
     //show plane types on pie chart:
     private void showTypes(String airForce, List<Plane>planes){
     	
-    	///Map<Plane.Type, List<String>> planeTypeToNames = new HashMap<Plane.Type, List<String>>();
     	
-    	/*
-    	//list of pie chart data:
-    	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-    	
-    	//===========================MADE GLOBAL
-    	//map of plane types and lists of planes of said type:
-    	Map<Plane.Type, List<String>> planeTypeToNames = new HashMap<Plane.Type, List<String>>();
-    	
-    	//initialize map with enum keys, holding empty lists: //++++++PUT IN GLOBAL METHOD WHICH IS THEN CALLED HERE??
-    	for (Plane.Type planeType : Plane.Type.values()) {
-    		//add type key with empty list value to map:
-    		planeTypeToNames.put(planeType, new ArrayList<String>());
-    	}
-    	
-    	//======================
-    	
-    	//loop through planes:
-    	planes.forEach(plane ->{
-    		//add plane's name to list of names with same type:
-    		planeTypeToNames.get(plane.getType()).add(plane.getName());
-    	});
-    	
-    	
-    	//loop through map's key set:
-    	for (Plane.Type planeType : planeTypeToNames.keySet()) {
-    		//++++++++++++++++CHECK THAT NUMBER IS GREATER THAN 1
-    		int planesNum;
-    		//if plane type has list entries:
-    		if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
-    			
-    			//+++++++++TEST FOR STORING data  for retreival later +++++++++++
-    			 PieChart.Data test = new PieChart.Data(
-        				 planeType.toString(),
-        				 planeTypeToNames.get(planeType).size());
-    			 
-    			//Add type and its amount to pie chart:
-        		pieChartData.add(new PieChart.Data(planeType.toString(), planesNum));
-    		}
-    	}
-    	
-    	*/
-    	
+    	System.out.println(eventsLV.getSelectionModel().getSelectedItem());
     	//////////////////////typesPC.getData().setAll(pieChartData);
-    	///typesPC.getData().setAll(typeData.getData(planes));
     	
     	
-    	typesPC.getData().setAll( typeData.getData(planes).getData());
     	
-		typesPC.setTitle(airForce);
+    	
+    	
+    	
+    	typesPC.setTitle(airForce); //set title with air force
+    	typesPC.getData().setAll(typeData.getData(planes)); //set data
 		
-		
-		
+		//add press event to each pie chart data slice:
 		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
-		/*
 		for (final PieChart.Data data : typesPC.getData()) {
-    	    data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
-    	        new EventHandler<MouseEvent>() {
-    	            @Override public void handle(MouseEvent e) {
-    	            
-    	                System.out.println(planeTypeToNames.get(Plane.Type.valueOf(
-    	                				data.getName().toUpperCase().replace('-', '_'))));
-    	             }
-    	        });
-    	}*/
+		
+			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+	            @Override public void handle(MouseEvent e) {
+	            	System.out.println(typeData.getPlaneNamesForType(data.getName()));
+	            
+	            }
+	        });
+    	}
 		
 		
-		
-		//@@@@@@@@@@@
-		//https://stackoverflow.com/questions/11873041/javafx-piechart-incorrect-data-handles-mouseevent
-		
-		
-		
-		/////////######################MAKE THIS A| SINGLWTON :P 
 		
 	};
     
@@ -256,15 +208,15 @@ public final class FrameController implements Rootable {
 		//planeSeries = speeds.getSeries(new EventAirForceKey(selectedEvent.getName(),airForce), planes);
 		
 		
-		
-    	speedsBC.getData().setAll(speed.getSeries(planes));
+		speedsBC.setTitle(airForce); //set title with air force
+    	speedsBC.getData().setAll(speed.getSeries(planes)); //set data
     	
 		
 		//speedsBC.getData().setAll(Speed.getSeries(planes));
 		
 		//speedsBC.getData().setAll(planeSeries); //set chart with series list
 		
-		speedsBC.setTitle(airForce); //set title with air force
+		
 	};
 	
 	
@@ -275,7 +227,7 @@ public final class FrameController implements Rootable {
     		new Thread(() -> { //fire new thread:
     	    	try {
     	    		//load events data:
-    	    		observEvents.addAll(database.SelectEvents.select()); 
+    	    		observEvents.addAll(database.SelectEvents.select());
     	    		//set air forces with first event's air forces:
     	    		observAirForces.setAll(observEvents.get(0).getAirForces());
     	    		fadeOutPreloader.play(); //fade out preloader:
