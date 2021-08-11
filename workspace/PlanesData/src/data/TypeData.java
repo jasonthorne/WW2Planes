@@ -71,19 +71,20 @@ public final class TypeData {
 	
 	
 	//return list of pie chart data for given planes:
-	////////////////public ObservableList<PieChart.Data>getData(List<Plane>planes) {
+	/////////////////////public ObservableList<PieChart.Data>getData(List<Plane>planes) {
 	private ObservableList<PieChart.Data>buildData(List<Plane>planes) {
 	
 		//list of pie chart data:
     	ObservableList<PieChart.Data>pieChartData = FXCollections.observableArrayList();
     	
-    	//////////initPlaneTypeToNames(); //initialize type to names
     	/*
+    	initPlaneTypeToNames(); //initialize type to names
+    	
     	planes.forEach(plane ->{
     		//add plane's name to list of other names with same type:
     		planeTypeToNames.get(plane.getType().toString()).add(plane.getName());
-    	});
-    	*/
+    	});*/
+    	
     
     	//loop through map's key set:
     	for (String planeType : planeTypeToNames.keySet()) {

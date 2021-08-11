@@ -26,6 +26,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -137,7 +138,7 @@ public final class FrameController implements Rootable {
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
     private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
     
-    
+    //data objects:
     private final Availability availability = new Availability();
     private final Speed speed = new Speed();
     private final TypeData typeData = new TypeData();
@@ -156,18 +157,21 @@ public final class FrameController implements Rootable {
     	
     	
     	
-    	
     	typesPC.setTitle(airForce); //set title with air force
-    	///typesPC.getData().setAll(typeData.getData(planes)); //set data
+    	/////////typesPC.getData().setAll(typeData.getData(planes)); //set data
+    	
+    	
+    	
+    	
     	
     	//set data, passing event air force key, and planes:
     	typesPC.getData().setAll(typeData.getData(
     			new EventAirForceKey(eventsLV.getSelectionModel().getSelectedItem().getName(),airForce), 
-    			planes)); 
+    			planes));
 		
 		//add press event to each pie chart data slice:
 		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
-		for (final PieChart.Data data : typesPC.getData()) {
+		for (PieChart.Data data : typesPC.getData()) {
 		
 			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent e) {
@@ -176,6 +180,17 @@ public final class FrameController implements Rootable {
 	            }
 	        });
     	}
+				
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
 		
 		
 		
