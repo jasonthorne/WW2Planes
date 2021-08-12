@@ -20,11 +20,13 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -177,7 +179,8 @@ public final class FrameController implements Rootable {
 		
 			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent e) {
-	            	System.out.println(typeData.getPlaneNamesForType(data.getName())); //#########
+	            	//System.out.println(typeData.getPlaneNamesForType(data.getName())); //#########
+	            	new DialogController(new Pane(new Label("Hullo world!"))).show(rootSP);
 	            
 	            }
 	        });

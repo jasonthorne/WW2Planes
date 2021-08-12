@@ -19,7 +19,7 @@ public final class TypeData {
 	
 	//constructor:
 	public TypeData() {
-		initPlaneTypeToNames(); //initialize type to names
+		initPlaneTypeToNames(); //initialize map
 	}
 	
 	//initialize planeTypeToNames:
@@ -42,7 +42,7 @@ public final class TypeData {
 		//list of pie chart data:
     	ObservableList<PieChart.Data>pieChartData = FXCollections.observableArrayList();
     	
-    	initPlaneTypeToNames(); //initialize type to names
+    	initPlaneTypeToNames(); //initialize map
     	
     	planes.forEach(plane ->{
     		//add plane's name to list of other names with same type:
