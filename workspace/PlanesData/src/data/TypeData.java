@@ -7,11 +7,8 @@ import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Data;
-import javafx.scene.input.MouseEvent;
+
 import model.Plane;
 import model.Plane.Type;
 
@@ -29,7 +26,7 @@ public final class TypeData {
 	private void initPlaneTypeToNames() {
 		
     	for(Type type : Type.values()) {
-    		//initialize map with plane type keys, holding empty lists:
+    		//initialize map with plane types, holding empty lists:
     		planeTypeToNames.put(type.toString(), new ArrayList<String>());
     	}
 	}
@@ -58,9 +55,9 @@ public final class TypeData {
     		//if plane type has list entries:
     		if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
     			//Add type and its amount to pie chart data:
-        		pieChartData.add(new PieChart.Data(planeType.toString(), planesNum));
+        		pieChartData.add(new PieChart.Data(planeType,planesNum));
     		}
     	}
-    	return pieChartData; //return pie chart data
+    	return FXCollections.observableArrayList(pieChartData); //return pie chart data
 	}
 }

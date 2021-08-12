@@ -23,6 +23,6 @@ public final class SpeedData {
 			planeSeries.add(series); //add series to list
 		});
 		
-		return planeSeries; //return series
+		return FXCollections.observableArrayList(planeSeries); //return series
 	}
 }
