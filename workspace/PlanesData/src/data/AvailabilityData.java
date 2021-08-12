@@ -22,12 +22,10 @@ import model.Period;
 import model.Plane;
 import model.Period.Block;
 
-public final class Availability {
-	
-	///////////////private Availability() {} //private constructor
+public final class AvailabilityData {
 	
 	//return list of plane availabilities tables:
-	public /*static*/ List<TableView<Plane>>getTables(Event event, Pane pane) {
+	public List<TableView<Plane>>getData(Event event, Pane pane) {
 		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
@@ -122,7 +120,6 @@ public final class Availability {
 	    	planesTable.getColumns().add(airForceCol); //add air force column to table
 	    	planesTables.add(planesTable); //add table to tables
 		});
-		return new ArrayList<TableView<Plane>>(planesTables); //return planesTables
+		return new ArrayList<TableView<Plane>>(planesTables); //return planes tables
 	}
-	
 }

@@ -8,12 +8,10 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import model.Plane;
 
-public final class Speed {
-	
-	/////////////private Speed() {} //private constructor
+public final class SpeedData {
 	
 	//return list of bar chart series for given planes:
-	public /*static*/ ObservableList<XYChart.Series<String,Number>>getSeries(List<Plane>planes) {
+	public ObservableList<XYChart.Series<String,Number>>getData(List<Plane>planes) {
 		
 		ObservableList<XYChart.Series<String,Number>>
 		planeSeries = FXCollections.observableArrayList(); //list of series
@@ -25,6 +23,6 @@ public final class Speed {
 			planeSeries.add(series); //add series to list
 		});
 		
-		return planeSeries;
+		return planeSeries; //return series
 	}
 }

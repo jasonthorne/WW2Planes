@@ -14,9 +14,8 @@ import java.util.stream.Collectors;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
 
-import data.Availability;
-import data.EventAirForceKey;
-import data.Speed;
+import data.AvailabilityData;
+import data.SpeedData;
 import data.TypeData;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
@@ -138,108 +137,12 @@ public final class FrameController implements Rootable {
     private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
     private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
     
-    //data objects:
-    private final Availability availability = new Availability();
-    private final Speed speed = new Speed();
+    //data processing objects:
+    private final AvailabilityData availabilityData = new AvailabilityData();
+    private final SpeedData speedData = new SpeedData();
     private final TypeData typeData = new TypeData();
     
     
-    //------------------------------------------------------------------
-   
-    //show plane types on pie chart:
-    private void showTypes(String airForce, List<Plane>planes){
-    	
-    	
-    	/////////System.out.println(eventsLV.getSelectionModel().getSelectedItem());
-    	//////////////////////typesPC.getData().setAll(pieChartData);
-    	
-    	
-    	
-    	
-    	
-    	typesPC.setTitle(airForce); //set title with air force
-    	/////////typesPC.getData().setAll(typeData.getData(planes)); //set data
-    	
-    	
-    	
-    	
-    	
-    	//set data, passing event air force key, and planes:
-    	typesPC.getData().setAll(typeData.getData(
-    			new EventAirForceKey(eventsLV.getSelectionModel().getSelectedItem().getName(),airForce), 
-    			planes));
-		
-		//add press event to each pie chart data slice:
-		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
-		for (PieChart.Data data : typesPC.getData()) {
-		
-			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-	            @Override public void handle(MouseEvent e) {
-	            	System.out.println(typeData.getPlaneNamesForType(data.getName()));
-	            
-	            }
-	        });
-    	}
-				
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-		
-		
-		
-	};
-    
-	//consumer for showing selected air force's chart data:
-    BiConsumer<String,List<Plane>>showChartData = (airForce, planes) -> { 
-    	
-    	//++++check collections for each premade thing, if not there, then invoke methods +++++++++++++
-    	
-		showSpeeds(airForce,planes);
-		showTypes(airForce,planes);
-		
-	};
-	
-    //------------------------------------------------------------------
-    
- 
-	//show plane speeds on bar chart:
-	private void showSpeeds (String airForce, List<Plane>planes) {
-    	/*
-		ObservableList<XYChart.Series<String,Number>>
-		planeSeries = FXCollections.observableArrayList(); //list of series
-		
-		planes.forEach(plane ->{
-			XYChart.Series<String,Number> series = new XYChart.Series<String, Number>(); //create series
-			series.setName(plane.getName()); //add plane name
-			series.getData().add(new Data<String, Number>("Planes",plane.getSpeed())); //add planes speed
-			planeSeries.add(series); //add series to list
-		});
-		speedsBC.getData().setAll(planeSeries); //set chart with series list
-		*/
-		
-		//ObservableList<XYChart.Series<String,Number>>
-		//planeSeries = speeds.getSeries(new EventAirForceKey(selectedEvent.getName(),airForce), planes);
-		
-		
-		speedsBC.setTitle(airForce); //set title with air force
-    	speedsBC.getData().setAll(speed.getSeries(planes)); //set data
-    	
-		
-		//speedsBC.getData().setAll(Speed.getSeries(planes));
-		
-		//speedsBC.getData().setAll(planeSeries); //set chart with series list
-		
-		
-	};
-	
-	
     //load events data from database:
     void loadEventsData(FadeTransition fadeOutPreloader) { 
     	//if events data is empty:
@@ -259,7 +162,7 @@ public final class FrameController implements Rootable {
     //show data of given event:
     private void showEventData(Event event) {
     	
-    	//create fade out transition for availability tables:
+    	//create fade out transition for availabilityData tables:
     	FadeTransition fadeOutTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
     	fadeOutTables.setFromValue(1);
     	fadeOutTables.setToValue(0);
@@ -267,7 +170,7 @@ public final class FrameController implements Rootable {
         //after fade out, build new tables from event, then fade back in:
     	fadeOutTables.setOnFinished(e -> {
     		
-			planesTablesVB.getChildren().setAll(availability.getTables(event, availabilitiesAP)); //add new tables
+			planesTablesVB.getChildren().setAll(availabilityData.getData(event, availabilitiesAP)); //add new tables
   			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
   			fadeInTables.setFromValue(0);
   			fadeInTables.setToValue(1);
@@ -281,4 +184,27 @@ public final class FrameController implements Rootable {
     	showChartData.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     }
     
+    //consumer for showing selected air force's chart data:
+    BiConsumer<String,List<Plane>>showChartData = (airForce, planes) -> { 
+    	
+    	//show bar chart data:
+    	speedsBC.setTitle(airForce); //set title with air force
+    	speedsBC.getData().setAll(speedData.getData(planes)); //set data with speeds
+    	
+    	//show pie chart data:
+    	typesPC.setTitle(airForce); //set title with air force
+    	typesPC.getData().setAll(typeData.getData(planes)); //set data with types
+    	
+		//add press event to each pie chart data slice:
+		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
+		for (PieChart.Data data : typesPC.getData()) {
+		
+			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+	            @Override public void handle(MouseEvent e) {
+	            	System.out.println(typeData.getPlaneNamesForType(data.getName())); //#########
+	            
+	            }
+	        });
+    	}
+	};
 }
