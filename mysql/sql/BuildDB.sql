@@ -64,25 +64,6 @@ END $$
 DELIMITER ;
 
 /*----------------------------------------------------*/
-/* images */
-
-CREATE TABLE images (
-	imageID INT NOT NULL AUTO_INCREMENT,
-	path VARCHAR(64) DEFAULT NULL,
-	PRIMARY KEY (imageID),
-	UNIQUE (path) /* prevent duplicate inserts */
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-
-
-DELIMITER $$
-CREATE PROCEDURE insert_image (IN image_path VARCHAR(64))
-BEGIN
-	/* error thrown here on duplicate image_path insert: */ 
-	INSERT INTO images (path) VALUES (image_path); 
-END $$
-DELIMITER ;
-
-/*----------------------------------------------------*/
 /* airforces involved */
 
 CREATE TABLE airforces( 
@@ -98,35 +79,6 @@ CREATE PROCEDURE insert_airforce (IN airforce_name VARCHAR(64))
 BEGIN
 	/* error thrown here on duplicate airforce_name insert: */ 
 	INSERT INTO airforces (name) VALUES (airforce_name); 
-END $$
-DELIMITER ;
-
-/*----------------------------------------------------*/
-/* airforce images */
-
-CREATE TABLE airforce_images (
-	airforce_imageID INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) DEFAULT NULL,
-	airforceID INT,
-	imageID INT,
-	PRIMARY KEY (airforce_imageID),
-	FOREIGN KEY (airforceID) REFERENCES airforces(airforceID),
-	FOREIGN KEY (imageID) REFERENCES images(imageID),
-	CONSTRAINT airforceID_name UNIQUE (airforceID, name)	/* make combined columns unique */
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-
-
-DELIMITER $$
-CREATE PROCEDURE insert_airforce_image (IN airforce_name VARCHAR(64), IN image_name VARCHAR(64), IN image_path VARCHAR(64))
-BEGIN
-	 /* insert image_path to images: */
-	CALL insert_image(image_path);
-	
-	/* error thrown here on duplicate airforce_image insert: */ 
-	INSERT INTO airforce_images (name, airforceID, imageID) VALUES (
-		image_name,
-		(SELECT airforceID FROM airforces WHERE airforces.name = airforce_name),
-		(SELECT imageID FROM images WHERE images.path = image_path));
 END $$
 DELIMITER ;
 
@@ -169,7 +121,7 @@ DELIMITER $$
 CREATE PROCEDURE insert_airforce_plane (IN airforce_name VARCHAR(64), IN plane_name VARCHAR(64), 
 IN plane_type VARCHAR(14), IN plane_speed INT)
 BEGIN
-	/* insert plane_name to planes if not present: */
+	/* insert plane to planes if not present: */
 	CALL insert_plane (plane_name, plane_type, plane_speed);
 	
 	/* error thrown here on duplicate airforce_plane insert: */ 
@@ -185,6 +137,7 @@ CREATE PROCEDURE select_airforce_planes (IN airforce_ID INT)
 BEGIN
 	SELECT
 		planes.name AS plane_name,
+		planes.type AS plane_type,
 		planes.speed AS plane_speed,
 		airforce_planes.airforce_planeID AS airforce_plane_ID
 	FROM airforce_planes
@@ -419,8 +372,8 @@ BEGIN
 END $$
 DELIMITER ;
 
-/*===============================================================*/
-/* select all entries */
+/*----------------------------------------------------*/
+/* select all entries: */
 
 DELIMITER $$
 CREATE PROCEDURE select_all (IN table_name VARCHAR(64))
@@ -436,4 +389,4 @@ END $$
 DELIMITER ;
 /* https://stackoverflow.com/questions/27542617/dynamic-table-name-at-sql-statement */
 
-/*===============================================================*/
+/*----------------------------------------------------*/
