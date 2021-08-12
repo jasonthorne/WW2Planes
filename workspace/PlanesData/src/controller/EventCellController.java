@@ -14,7 +14,6 @@ public final class EventCellController extends JFXListCell<Event> {
     //update cell with event name:
 	@Override  
 	protected void updateItem(Event event, boolean isEmpty) {
-		
         super.updateItem(event, isEmpty);
         
   		if (isEmpty || event == null) {

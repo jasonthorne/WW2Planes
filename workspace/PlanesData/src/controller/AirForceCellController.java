@@ -35,7 +35,6 @@ public final class AirForceCellController extends JFXListCell<AirForce> {
 	//update cell with air force data:
 	@Override 
   	protected void updateItem(AirForce airForce, boolean isEmpty) {
-		
   		super.updateItem(airForce, isEmpty);
 	  	
 		if (isEmpty || airForce == null) {

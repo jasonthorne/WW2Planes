@@ -20,14 +20,11 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -141,7 +138,7 @@ public final class FrameController implements Rootable {
     //show data of given event:
     private void showEventData(Event event) {
     	
-    	//create fade out transition for availabilityData tables:
+    	//create fade out transition for availability tables:
     	FadeTransition fadeOutTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
     	fadeOutTables.setFromValue(1);
     	fadeOutTables.setToValue(0);
@@ -180,18 +177,9 @@ public final class FrameController implements Rootable {
 		
 			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent e) {
-	            	//System.out.println(typeData.getPlaneNamesForType(data.getName())); //#########VBox
-	            	//new DialogController(new Pane(new Label("Hullo world!"))).show(rootSP);
-	            	
-	            	ListView listView = new ListView();
-
-	                listView.getItems().addAll(typeData.getPlaneNamesForType(data.getName()));
-	                
-	               // HBox hbox = new HBox(listView);
-	               /// https://stackoverflow.com/questions/17429508/how-do-you-get-javafx-listview-to-be-the-height-of-its-items
-	            	
-	            	new DialogController(new VBox(listView)).show(rootSP);
-	            
+	            	//show dialog on stack pane, passing plane list and name of selected plane type:
+	            	new DialogController(typeData.getPlaneNamesForType(data.getName()),data.getName())
+	            	.show(rootSP);
 	            }
 	        });
     	}
