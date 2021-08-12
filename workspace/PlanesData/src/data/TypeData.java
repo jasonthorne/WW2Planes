@@ -49,7 +49,6 @@ public final class TypeData {
     		planeTypeToNames.get(plane.getType().toString()).add(plane.getName());
     	});
     	
-    	//loop through map's key set:
     	for (String planeType : planeTypeToNames.keySet()) {
     		int planesNum;
     		//if plane type has list entries:
@@ -58,6 +57,7 @@ public final class TypeData {
         		pieChartData.add(new PieChart.Data(planeType,planesNum));
     		}
     	}
-    	return FXCollections.observableArrayList(pieChartData); //return pie chart data
+    	//return pie chart data:
+    	return FXCollections.observableArrayList(pieChartData); 
 	}
 }

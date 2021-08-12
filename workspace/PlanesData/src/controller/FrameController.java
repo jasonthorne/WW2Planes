@@ -21,6 +21,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
@@ -179,8 +180,17 @@ public final class FrameController implements Rootable {
 		
 			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent e) {
-	            	//System.out.println(typeData.getPlaneNamesForType(data.getName())); //#########
-	            	new DialogController(new Pane(new Label("Hullo world!"))).show(rootSP);
+	            	//System.out.println(typeData.getPlaneNamesForType(data.getName())); //#########VBox
+	            	//new DialogController(new Pane(new Label("Hullo world!"))).show(rootSP);
+	            	
+	            	ListView listView = new ListView();
+
+	                listView.getItems().addAll(typeData.getPlaneNamesForType(data.getName()));
+	                
+	               // HBox hbox = new HBox(listView);
+	               /// https://stackoverflow.com/questions/17429508/how-do-you-get-javafx-listview-to-be-the-height-of-its-items
+	            	
+	            	new DialogController(new VBox(listView)).show(rootSP);
 	            
 	            }
 	        });
