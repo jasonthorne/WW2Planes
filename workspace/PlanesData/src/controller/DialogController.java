@@ -37,7 +37,8 @@ public class DialogController implements Rootable {
 	////////
     
     //constructor:
-    DialogController(List<String>planeNames, String planeType){
+    //DialogController(List<String>planeNames, String planeType){
+	DialogController(){ //==================remove if necessary :P
     	
     	
        // loader.setController(rootable); //set this class as the controller
@@ -62,6 +63,20 @@ public class DialogController implements Rootable {
 			e.printStackTrace();
 		}
         
+    	/*
+    	//set heading text with plane type and amount:
+    	headingText.setText(String.valueOf(planeNames.size()) + " " + planeType);
+    	contentDL.setHeading(headingText); //add heading text to heading
+  
+    	//add plane names to vertical box:
+    	planeNames.forEach(planeName-> planeNamesVB.getChildren().add(new Label(planeName)));
+    	contentDL.setBody(planeNamesVB); //add vertical box to body
+    	*/
+   	}
+    
+    //show dialog on given stack pane:
+    ///////////////////void show(StackPane stackPane) {
+    void show(List<String>planeNames, String planeType, StackPane stackPane) {
     	
     	//set heading text with plane type and amount:
     	headingText.setText(String.valueOf(planeNames.size()) + " " + planeType);
@@ -70,10 +85,8 @@ public class DialogController implements Rootable {
     	//add plane names to vertical box:
     	planeNames.forEach(planeName-> planeNamesVB.getChildren().add(new Label(planeName)));
     	contentDL.setBody(planeNamesVB); //add vertical box to body
-   	}
+    	
     
-    //show dialog on given stack pane:
-    void show(StackPane stackPane) { 
     	System.out.println("yo");
     	
     	rootDialog.show(stackPane); 

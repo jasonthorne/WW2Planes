@@ -118,6 +118,8 @@ public final class FrameController implements Rootable {
     private final SpeedData speedData = new SpeedData();
     private final TypeData typeData = new TypeData();
     
+    private DialogController dialogCrtlr = new DialogController();
+    
     
     //load events data from database:
     void loadEventsData(FadeTransition fadeOutPreloader) { 
@@ -177,9 +179,19 @@ public final class FrameController implements Rootable {
 		
 			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent e) {
+	            	
+	            	/*
 	            	//show dialog on stack pane, passing plane list and name of selected plane type:
 	            	new DialogController(typeData.getPlaneNamesForType(data.getName()),data.getName())
 	            	.show(rootSP);
+	            	*/
+	            	/*
+	            	DialogController dc = new DialogController(typeData.getPlaneNamesForType(data.getName()),data.getName());
+	            	dc.show(rootSP);*/
+	            	
+	            	dialogCrtlr.show(typeData.getPlaneNamesForType(data.getName()),
+	            			data.getName(), 
+	            			rootSP);
 	            }
 	        });
     	}
