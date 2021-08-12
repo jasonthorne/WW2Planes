@@ -20,8 +20,6 @@ public class Main {
 		SelectAll.select(Table.EVENTS);
 		SelectAll.select(Table.AIRFORCES);
 		SelectAll.select(Table.PLANES);
-		SelectAll.select(Table.IMAGES);
-		SelectAll.select(Table.AIRFORCE_IMAGES);
 		SelectAll.select(Table.AIRFORCE_PLANES);
 		SelectAll.select(Table.EVENT_PERIODS);
 		SelectAll.select(Table.EVENT_AIRFORCES);

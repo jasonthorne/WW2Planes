@@ -36,24 +36,6 @@ public interface InsertAirForceData {
 			    	callableStatement.execute(); //execute statement
 				}catch(Exception e) { e.printStackTrace(); }
 			    //-------------------------------------------------
-				//add images to 'airforce_images':
-			   
-			    JSONArray images = (JSONArray) airForce.get("images"); //get array of images
-				Iterator<JSONObject> imageIterator = images.iterator(); //iterate through images
-				while (imageIterator.hasNext()) {
-					JSONObject image = (JSONObject) imageIterator.next().get("image"); //get image from imageIterator.next()
-					
-					String imageName = (String) image.get("name");  //get name of image
-					String imagePath = (String) image.get("path");  //get path of image
-					callableStatement = connection.prepareCall("{CALL insert_airforce_image(?,?,?)}"); //create statement
-			        callableStatement.setString(1, airForceName); //set input with name
-			        callableStatement.setString(2, imageName); //set input with image
-			        callableStatement.setString(3, imagePath); //set input with path
-			        try {
-				    	callableStatement.execute(); //execute statement
-					}catch(Exception e) { e.printStackTrace(); }
-				}
-				//-------------------------------------------------
 				//add planes to 'airforce_planes':
 			    
 				JSONArray planes = (JSONArray) airForce.get("planes"); //get array of planes

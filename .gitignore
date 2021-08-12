@@ -1,3 +1,3 @@
 
-# ignore db connection file:
+# ignore db configs file:
 db_configs.properties

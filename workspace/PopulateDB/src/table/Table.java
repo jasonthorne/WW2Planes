@@ -8,8 +8,6 @@ public enum Table {
 	EVENTS("events"),
 	AIRFORCES("airforces"),
 	PLANES("planes"),
-	IMAGES("images"),
-	AIRFORCE_IMAGES("airforce_images"),
 	AIRFORCE_PLANES("airforce_planes"),
 	EVENT_PERIODS("event_periods"),
 	EVENT_AIRFORCES("event_airforces"),

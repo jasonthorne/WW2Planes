@@ -2,14 +2,6 @@
 	{
 		"airforce": {
 			"name": "RAF",
-			"images": [
-				{
-					"image": {
-						"name": "Logo",
-						"path": "resources/img/airforces/logos/raf_logo.png"
-					}
-				}
-		 	],
 			"planes": [
 				{
 					"plane": {
@@ -746,14 +738,6 @@
 	{
 		"airforce": {
 			"name": "Luftwaffe",
-			"images": [
-				{
-					"image": {
-						"name": "Logo",
-						"path": "resources/img/airforces/logos/luftwaffe_logo.png"
-					}
-				}
-		 	],
 			"planes": [
 				{
 					"plane": {
@@ -1463,14 +1447,6 @@
 	{
 		"airforce": {
 			"name": "Soviet",
-			"images": [
-				{
-					"image": {
-						"name": "Logo",
-						"path": "resources/img/airforces/logos/soviet_logo.png"
-					}
-				}
-		 	],
 			"planes": [
 				{
 					"plane": {
@@ -2747,14 +2723,6 @@
 	{
 		"airforce": {
 			"name": "USAAF",
-			"images": [
-				{
-					"image": {
-						"name": "Logo",
-						"path": "resources/img/airforces/logos/usaaf_logo.png"
-					}
-				}
-		 	],
 			"planes": [
 				{
 					"plane": {
@@ -3635,14 +3603,6 @@
 	{
 		"airforce": {
 			"name": "Japan",
-			"images": [
-				{
-					"image": {
-						"name": "Logo",
-						"path": "resources/img/airforces/logos/japan_logo.png"
-					}
-				}
-		 	],
 			"planes": [
 				{
 					"plane": {

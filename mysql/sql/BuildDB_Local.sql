@@ -2,13 +2,6 @@ DROP DATABASE IF EXISTS planes_db;
 CREATE DATABASE planes_db;
 USE planes_db;
 
-/* set time zone: */
-/*SET GLOBAL time_zone = '+1:00'; /* ++++++++++++++++++MIGHT NOT BE NEEDED :P ++++++++++++++ */
-
-/* enabled to throw errors for invalid enum inserts: */
-SET GLOBAL sql_mode = 'STRICT_ALL_TABLES';
-SET SESSION sql_mode = 'STRICT_ALL_TABLES';
-
 /* throw custom error: */
 DELIMITER $$
 CREATE PROCEDURE throw_error (IN message VARCHAR(256))
@@ -72,25 +65,6 @@ END $$
 DELIMITER ;
 
 /*----------------------------------------------------*/
-/* images */
-
-CREATE TABLE images (
-	imageID INT NOT NULL AUTO_INCREMENT,
-	path VARCHAR(64) DEFAULT NULL,
-	PRIMARY KEY (imageID),
-	UNIQUE (path) /* prevent duplicate inserts */
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-
-
-DELIMITER $$
-CREATE PROCEDURE insert_image (IN image_path VARCHAR(64))
-BEGIN
-	/* error thrown here on duplicate image_path insert: */ 
-	INSERT INTO images (path) VALUES (image_path); 
-END $$
-DELIMITER ;
-
-/*----------------------------------------------------*/
 /* airforces involved */
 
 CREATE TABLE airforces( 
@@ -106,35 +80,6 @@ CREATE PROCEDURE insert_airforce (IN airforce_name VARCHAR(64))
 BEGIN
 	/* error thrown here on duplicate airforce_name insert: */ 
 	INSERT INTO airforces (name) VALUES (airforce_name); 
-END $$
-DELIMITER ;
-
-/*----------------------------------------------------*/
-/* airforce images */
-
-CREATE TABLE airforce_images (
-	airforce_imageID INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) DEFAULT NULL,
-	airforceID INT,
-	imageID INT,
-	PRIMARY KEY (airforce_imageID),
-	FOREIGN KEY (airforceID) REFERENCES airforces(airforceID),
-	FOREIGN KEY (imageID) REFERENCES images(imageID),
-	CONSTRAINT airforceID_name UNIQUE (airforceID, name)	/* make combined columns unique */
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-
-
-DELIMITER $$
-CREATE PROCEDURE insert_airforce_image (IN airforce_name VARCHAR(64), IN image_name VARCHAR(64), IN image_path VARCHAR(64))
-BEGIN
-	 /* insert image_path to images: */
-	CALL insert_image(image_path);
-	
-	/* error thrown here on duplicate airforce_image insert: */ 
-	INSERT INTO airforce_images (name, airforceID, imageID) VALUES (
-		image_name,
-		(SELECT airforceID FROM airforces WHERE airforces.name = airforce_name),
-		(SELECT imageID FROM images WHERE images.path = image_path));
 END $$
 DELIMITER ;
 
