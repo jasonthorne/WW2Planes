@@ -25,7 +25,7 @@ public final class AirForceCellController extends JFXListCell<AirForce> {
   		
   		//add press event to build charts using cell's planes:
   		this.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent e) {
+            @Override public void handle(MouseEvent event) {
             	//give name and planes to invoked bi consumer:
             	showChartData.accept(name, planes);
              }

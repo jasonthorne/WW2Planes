@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="rootSP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="rootSP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="bodyAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -27,8 +27,10 @@
                               <ScrollPane fx:id="planesTablesSP" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
                                  <content>
                                     <VBox fx:id="planesTablesVB" alignment="CENTER" fillWidth="false" />
-                                 </content></ScrollPane>
-                           </children></AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
                     </content>
                   </Tab>
                   <Tab fx:id="speedsTab" text="Speeds">
@@ -43,7 +45,8 @@
                                   <NumberAxis fx:id="ySpeedsNA" label="Miles per hour" side="LEFT" />
                                 </yAxis>
                               </BarChart>
-                           </children></AnchorPane>
+                           </children>
+                        </AnchorPane>
                     </content>
                   </Tab>
                   <Tab fx:id="typesTab" text="Types">
@@ -51,6 +54,7 @@
                       <AnchorPane fx:id="typesAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="800.0">
                            <children>
                               <PieChart fx:id="typesPC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="800.0" />
+                              <VBox fx:id="typeNamesVB" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="125.0" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -64,7 +68,8 @@
                         <JFXListView fx:id="airForcesLV" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="800.0">
                            <HBox.margin>
                               <Insets />
-                           </HBox.margin></JFXListView>
+                           </HBox.margin>
+                        </JFXListView>
                      </children>
                      <VBox.margin>
                         <Insets />

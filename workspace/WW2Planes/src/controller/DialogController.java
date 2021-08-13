@@ -29,8 +29,13 @@ public class DialogController implements Rootable {
     	
     }
     
-    ////Parent root = Rootable.getRoot(this, "/view/dialog.fxml"); //root
-   Parent root = Rootable.getRoot(this, "/view/dialog.fxml"); //root
+    
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dialog.fxml"));
+    
+    
+    Parent root;
+    ////Parent root = Rootable.getRoot(this, "/view/dialog.fxml"); //root/////////////
+   //Parent root = Rootable.getRoot(this, "/view/dialog.fxml"); //root
     
     //FXMLLoader loader;
   // Parent root; 
@@ -46,8 +51,8 @@ public class DialogController implements Rootable {
     	
         
 		try {
-			
-			
+			 root = loader.load();
+			 loader.setController(root);
 			/*
 			loader = FXMLLoader.load(getClass().getResource("/view/dialog.fxml"));
 			 root = loader.load();
@@ -60,7 +65,8 @@ public class DialogController implements Rootable {
 	       
 		} catch (Exception e) {
 			
-			e.printStackTrace();
+			//e.printStackTrace();
+			e.getMessage();
 		}
         
     	/*
@@ -77,6 +83,13 @@ public class DialogController implements Rootable {
     //show dialog on given stack pane:
     ///////////////////void show(StackPane stackPane) {
     void show(List<String>planeNames, String planeType, StackPane stackPane) {
+    	
+    	//--------------------
+    	planeNamesVB.getChildren().clear();
+    	//contentDL.getChildren().clear();
+    	
+    	//--------------------------
+    	
     	
     	//set heading text with plane type and amount:
     	headingText.setText(String.valueOf(planeNames.size()) + " " + planeType);
