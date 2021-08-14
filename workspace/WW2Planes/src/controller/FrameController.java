@@ -66,10 +66,10 @@ public final class FrameController implements Rootable {
     private VBox typeVB;
 
     @FXML
-    private VBox typeNamesVB;
+    private VBox planeNamesVB;
     
     @FXML
-    private Text typeHeadingTxt;
+    private Text headingTxt;
     //-------------------------
     @FXML private VBox listViewsVB;
     @FXML private HBox airForcesHB;
@@ -206,28 +206,38 @@ public final class FrameController implements Rootable {
     		//add mouse entered event to show planes of selected type:
 			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent event) {
-	            	
+	            	System.out.println("MOUSE_ENTERED");
 	            	String planeType = data.getName(); //get plane type
 	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType); //get plane names
 	            	
 	            	//set heading text with number of planes and given type:
-	            	typeHeadingTxt.setText(String.valueOf(planeNames.size()) + " " + planeType);
-	            	typeNamesVB.getChildren().add(typeHeadingTxt); //add heading to v box
+	            	headingTxt.setText(String.valueOf(planeNames.size()) + " " + planeType);
+	            	//////////planeNamesVB.getChildren().add(headingTxt); //add heading to v box
+	            	//add plane names to plane names v box:
+	            	planeNames.forEach(planeName-> planeNamesVB.getChildren().add(new Label(planeName)));
 	            	
-	            	//add plane names to type name v box:
-	            	planeNames.forEach(planeName-> typeNamesVB.getChildren().add(new Label(planeName)));
-	            	
-	            	typeNamesVB.setOpacity(1);
-	            	
-	            	System.out.println(planeType);
+	            	//create fade in transition for plane names v box:
+	            	FadeTransition fadeInPlaneNames = new FadeTransition(Duration.millis(300), planeNamesVB);
+	            	fadeInPlaneNames.setFromValue(0);
+	            	fadeInPlaneNames.setToValue(1);
+	            	System.out.println(planeNamesVB.getChildren());
+	            	fadeInPlaneNames.play();
 	             }
 			});
-			
 			
 			//add mouse exited to remove planes of unselected type:
 	    	data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent event) {
-	            	
+	            	System.out.println("MOUSE_EXITED");
+	            	//create fade out transition for plane names v box:
+	            	FadeTransition fadeOutPlaneNames = new FadeTransition(Duration.millis(300), planeNamesVB);
+	            	fadeOutPlaneNames.setFromValue(1);
+	            	fadeOutPlaneNames.setToValue(0);
+	            	fadeOutPlaneNames.setOnFinished(e -> { 
+	            		//after fade out, remove all plane name labels;
+	            		planeNamesVB.getChildren().removeIf(node -> node instanceof Label);
+	            	});
+	            	fadeOutPlaneNames.play();
 	             }
 			});
 			
@@ -307,7 +317,7 @@ public final class FrameController implements Rootable {
 			
 	    	
 		
-			
+			/*
 			
 	    	//EventHandler<MouseEvent> mouseExited = new EventHandler<MouseEvent>() {
 	    	data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
@@ -317,12 +327,12 @@ public final class FrameController implements Rootable {
 	            	 
 	            	popup.hide();
 	            	
-	            	typeNamesVB.getChildren().clear();
+	            	/////////typeNamesVB.getChildren().clear();
 	            	
-	            	typeNamesVB.setOpacity(0);
+	            	//////////typeNamesVB.setOpacity(0);
 	            	
 	            	
-	            
+	            */
 	            	
 	            	
 	            	//+++++++++++++PIE CHART RADIUS SIZE ++++++++++++++++++++
@@ -345,9 +355,9 @@ public final class FrameController implements Rootable {
 	            	
 	            	/////data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, mouseEntered);
 	            	//data.getNode().removeEventHandler(MouseEvent.MOUSE_EXITED, this);
-		            	
+		      /*      	
 		        } 
-	    	});
+	    	});*/
 			
 			
 			
