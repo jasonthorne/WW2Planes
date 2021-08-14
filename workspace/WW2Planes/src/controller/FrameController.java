@@ -3,24 +3,19 @@ package controller;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import data.AvailabilityData;
 import data.SpeedData;
 import data.TypeData;
 import javafx.animation.FadeTransition;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -28,16 +23,12 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.AirForce;
 import model.Event;
@@ -61,25 +52,15 @@ public final class FrameController implements Rootable {
     @FXML private Tab typesTab;
     @FXML private AnchorPane typesAP;
     @FXML private PieChart typesPC;
-    //----------------------
-    @FXML
-    private VBox typeVB;
-
-    @FXML
-    private VBox planeNamesVB;
-    
-    @FXML
-    private Text headingTxt;
-    //-------------------------
+    @FXML private VBox typeVB;
+    @FXML private VBox planeNamesVB;
+    @FXML private Text typeHeadingTxt;
     @FXML private VBox listViewsVB;
     @FXML private HBox airForcesHB;
     @FXML private JFXListView<AirForce> airForcesLV;
     @FXML private HBox eventsHB;
     @FXML private JFXListView<Event> eventsLV;
-    //-------------------------
    
-   
-    //------------------------------
     @FXML
     void initialize() {
     	
@@ -196,7 +177,9 @@ public final class FrameController implements Rootable {
     	typesPC.getData().setAll(typeData.getData(planes)); //set data with types
     	
     	
-    	
+    	//+++++++++++++PIE CHART RADIUS SIZE ++++++++++++++++++++
+    	///https://stackoverflow.com/questions/58262331/how-do-i-increase-the-radius-of-a-javafx-piechart
+    	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
     	//---------------------------------
     	
     	//add mouse events to each pie chart data slice:
@@ -211,8 +194,7 @@ public final class FrameController implements Rootable {
 	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType); //get plane names
 	            	
 	            	//set heading text with number of planes and given type:
-	            	headingTxt.setText(String.valueOf(planeNames.size()) + " " + planeType);
-	            	//////////planeNamesVB.getChildren().add(headingTxt); //add heading to v box
+	            	typeHeadingTxt.setText(String.valueOf(planeNames.size()) + " " + planeType);
 	            	//add plane names to plane names v box:
 	            	planeNames.forEach(planeName-> planeNamesVB.getChildren().add(new Label(planeName)));
 	            	
@@ -220,7 +202,7 @@ public final class FrameController implements Rootable {
 	            	FadeTransition fadeInPlaneNames = new FadeTransition(Duration.millis(300), planeNamesVB);
 	            	fadeInPlaneNames.setFromValue(0);
 	            	fadeInPlaneNames.setToValue(1);
-	            	System.out.println(planeNamesVB.getChildren());
+	            	System.out.println("B4 FADE IN PLAY: " + planeNamesVB.getChildren());
 	            	fadeInPlaneNames.play();
 	             }
 			});
@@ -234,6 +216,7 @@ public final class FrameController implements Rootable {
 	            	fadeOutPlaneNames.setFromValue(1);
 	            	fadeOutPlaneNames.setToValue(0);
 	            	fadeOutPlaneNames.setOnFinished(e -> { 
+	            		System.out.println("AFTER FADE OUT: " + planeNamesVB.getChildren());
 	            		//after fade out, remove all plane name labels;
 	            		planeNamesVB.getChildren().removeIf(node -> node instanceof Label);
 	            	});
@@ -243,217 +226,5 @@ public final class FrameController implements Rootable {
 			
     	});
     	
-    	
-    	
-    	
-    	
-    	
-    	//-----------------------------------##############MAYBE CALL TYPE OBJECT AND PASS EACH NODE IN TO ADD HANDLERS??????
-    	
-		//add press event to each pie chart data slice:
-		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
-		for (PieChart.Data data : typesPC.getData()) {
-			
-			Popup popup = new Popup();
-			
-			
-			//Stage thisStage; // = (Stage) typesAP.getScene().getWindow(); 
-			
-			///////////typeData.addSliceEventHandlers(data);
-			
-			/*
-			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-				@Override public void handle(MouseEvent event) {
-					
-	            	System.out.println("mouseEntered"); 
-	            	
-	            	//https://edencoding.com/stage-controller/
-	            	///Stage thisStage = (Stage) typesAP.getScene().getWindow();   	
-	            	//Stage nodesStage = (Stage) data.getNode().getScene().getWindow();   
-	            	
-	            	String planeType = data.getName();
-	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType);
-	            	
-	            	//-----------------
-	            	
-	            
-	            	
-	            	Text typeHeading = new Text(String.valueOf(planeNames.size()) + " " + planeType);
-	            	typeHeading.setId("type-heading");
-	            	typeNamesVB.getChildren().add(typeHeading);
-	            	
-	            	
-	            	planeNames.forEach(planeName-> typeNamesVB.getChildren().add(new Label(planeName)));
-	            	
-	            	
-	            	typeNamesVB.setStyle("-fx-background-color:white;
-	            			+ "-fx-padding: 10, 10, 10, 10;"
-	            			+ "-fx-font-size: 1.3em;"
-	            			
-	            			
-	            			
-					
-	            			
-	            			);
-	            	
-	            	//data.getChart().setLabelsVisible(false);
-	            	
-	            	//data.getChart().setLabelLineLength(0);
-	            	//--------------------
-	            	
-	            	typeNamesVB.setOpacity(1);
-	            	
-	            	VBox vbox= new VBox();
-	            	planeNames.forEach(planeName-> vbox.getChildren().add(new Label(planeName)));
-	            	
-	            	popup.getContent().setAll(vbox);
-	            	//popup.show(nodesStage);
-	            	
-	            	//data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, mouseExited);
-	            	////data.getNode().removeEventHandler(MouseEvent.MOUSE_ENTERED, this);
-		            	
-		        } 
-	    	}); */
-			
-	    	
-		
-			/*
-			
-	    	//EventHandler<MouseEvent> mouseExited = new EventHandler<MouseEvent>() {
-	    	data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-				@Override public void handle(MouseEvent event) {
-					
-	            	System.out.println("mouseExited");
-	            	 
-	            	popup.hide();
-	            	
-	            	/////////typeNamesVB.getChildren().clear();
-	            	
-	            	//////////typeNamesVB.setOpacity(0);
-	            	
-	            	
-	            */
-	            	
-	            	
-	            	//+++++++++++++PIE CHART RADIUS SIZE ++++++++++++++++++++
-	            	///https://stackoverflow.com/questions/58262331/how-do-i-increase-the-radius-of-a-javafx-piechart
-	            	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	            	
-	            	
-	            	/*
-	            	Stage thisStage = (Stage) typesAP.getScene().getWindow();   	
-	            	
-	            	String planeType = data.getName();
-	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType);
-	            	
-	            	VBox vbox= new VBox();
-	            	planeNames.forEach(planeName-> vbox.getChildren().add(new Label(planeName)));
-	            	
-	            	popup.getContent().setAll(vbox);
-	            	popup.show(thisStage);
-	            	*/
-	            	
-	            	/////data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, mouseEntered);
-	            	//data.getNode().removeEventHandler(MouseEvent.MOUSE_EXITED, this);
-		      /*      	
-		        } 
-	    	});*/
-			
-			
-			
-	       /*     
-			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-	            @Override public void handle(MouseEvent event) {
-	            	
-	            	System.out.println("MOUSE_ENTERED"); 
-	            	
-	            	
-	            	
-	            	//final Stage dialog = new Stage();
-	                //dialog.initModality(Modality.NONE);
-	               // dialog.initOwner(thisStage);
-	               // VBox dialogVbox = new VBox(20);
-	               // dialogVbox.getChildren().add(new Text("This is a Dialog"));
-	               // Scene dialogScene = new Scene(dialogVbox, 300, 200);
-	               // dialog.setScene(dialogScene);
-	              //  dialog.show();
-	            	
-	            	
-	            	
-	            	
-	            	
-	            	String planeType = data.getName();
-	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType);
-	            	
-	            	
-	            
-	            	VBox vbox= new VBox();
-	            	/////////vbox.setStyle("-fx-background-color:white;-fx-border-color: black;-fx-border-width:2;-fx-border-radius:3;-fx-hgap:3;-fx-vgap:5;"); 
-	            	
-	            	vbox.setStyle("-fx-background-color:white;"
-	            			+ "-fx-padding: 10, 10, 10, 10;"
-	            			+ "-fx-font-size: 1.3em;"
-	            			
-	            			
-	            			
-	            			
-	            			
-	            			); 
-	            	
-	            	
-	            	//vbox.setMouseTransparent(true);
-	            	Text typeHeading = new Text(String.valueOf(planeNames.size()) + " " + planeType);
-	            	typeHeading.setId("type-heading");
-	            	vbox.getChildren().add(typeHeading);
-	            	
-	            	
-	            	//popupVB.getChildren().add(new Text(String.valueOf(planeNames.size()) + " " + planeType));
-	            	
-	            	
-	            	//headingText.setText(String.valueOf(planeNames.size()) + " " + planeType);
-	            	
-	               planeNames.forEach(planeName-> vbox.getChildren().add(new Label(planeName)));
-	                
-	            	//vbox.getChildren().add(new Label(planeName));
-	            	
-	            	
-	           
-	                 
-	                // popup.getContent().add(vbox);
-	                 popup.getContent().setAll(vbox);
-	                 
-	                 
-	                 popup.show(thisStage);
-	                 
-	                
-	                 //data.getNode().removeEventHandler(MouseEvent.MOUSE_ENTERED, data.getNode().);
-	                 
-	                 
-	                 
-	               //########### https://edencoding.com/stage-controller/
-	            	
-	                 //https://stackoverflow.com/questions/10527895/popup-window-with-table-view-in-javafx-2-0
-	                 
-	                 //https://www.reddit.com/r/javahelp/comments/2h83tf/javafx_make_a_popup_non_transparent/
-	                 
-	                 
-	                // https://stackoverflow.com/questions/22166610/how-to-create-a-popup-window-in-javafx
-	            	
-	            	
-	            	///////////DialogController dc = new DialogController(); //(typeData.getPlaneNamesForType(data.getName()),data.getName());
-	            	//dc.show(rootSP);
-	            
-	            }
-	        });*/
-			
-			/*
-			//add press event to build charts using cell's planes:
-			data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-	            @Override public void handle(MouseEvent event) {
-	            	System.out.println("MOUSE_EXITED"); 
-	            	popup.hide();
-	             }
-			});*/
-    	}
 	};
 }

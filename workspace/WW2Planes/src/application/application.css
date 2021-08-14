@@ -17,8 +17,6 @@
 }
 
 /* -----------------------------------*/
-
-
 /* speeds bar chart and types pie chart: */
 
 .chart-title {
@@ -27,8 +25,9 @@
 }
 
 /* --------------------------------------*/
+/* pie chart plane types: */
 
-#type-heading {
+#type-heading-text {
 	-fx-font-size: 1.5em;
 	-fx-padding: 10, 10, 10, 10;
 	
