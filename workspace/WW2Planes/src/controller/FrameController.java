@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTabPane;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import data.AvailabilityData;
 import data.SpeedData;
@@ -66,6 +67,9 @@ public final class FrameController implements Rootable {
 
     @FXML
     private VBox typeNamesVB;
+    
+    @FXML
+    private Text typeHeadingTxt;
     //-------------------------
     @FXML private VBox listViewsVB;
     @FXML private HBox airForcesHB;
@@ -190,12 +194,44 @@ public final class FrameController implements Rootable {
     	//show pie chart data:
     	typesPC.setTitle(airForce); //set title with air force
     	typesPC.getData().setAll(typeData.getData(planes)); //set data with types
-    	//################here we loop through data  and get type method to add event handlers #########
+    	
     	
     	
     	//---------------------------------
     	
+    	//add mouse events to each pie chart data slice:
+		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
+    	typesPC.getData().forEach(data ->{
     	
+    		//add mouse entered event to show planes of selected type:
+			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+	            @Override public void handle(MouseEvent event) {
+	            	
+	            	String planeType = data.getName(); //get plane type
+	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType); //get plane names
+	            	
+	            	//set heading text with number of planes and given type:
+	            	typeHeadingTxt.setText(String.valueOf(planeNames.size()) + " " + planeType);
+	            	typeNamesVB.getChildren().add(typeHeadingTxt); //add heading to v box
+	            	
+	            	//add plane names to type name v box:
+	            	planeNames.forEach(planeName-> typeNamesVB.getChildren().add(new Label(planeName)));
+	            	
+	            	typeNamesVB.setOpacity(1);
+	            	
+	            	System.out.println(planeType);
+	             }
+			});
+			
+			
+			//add mouse exited to remove planes of unselected type:
+	    	data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+	            @Override public void handle(MouseEvent event) {
+	            	
+	             }
+			});
+			
+    	});
     	
     	
     	
@@ -213,15 +249,15 @@ public final class FrameController implements Rootable {
 			
 			//Stage thisStage; // = (Stage) typesAP.getScene().getWindow(); 
 			
+			///////////typeData.addSliceEventHandlers(data);
 			
-			
-			
+			/*
 			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
 				@Override public void handle(MouseEvent event) {
 					
 	            	System.out.println("mouseEntered"); 
 	            	
-	            	/**https://edencoding.com/stage-controller/*/
+	            	//https://edencoding.com/stage-controller/
 	            	///Stage thisStage = (Stage) typesAP.getScene().getWindow();   	
 	            	//Stage nodesStage = (Stage) data.getNode().getScene().getWindow();   
 	            	
@@ -230,7 +266,7 @@ public final class FrameController implements Rootable {
 	            	
 	            	//-----------------
 	            	
-	            	
+	            
 	            	
 	            	Text typeHeading = new Text(String.valueOf(planeNames.size()) + " " + planeType);
 	            	typeHeading.setId("type-heading");
@@ -239,15 +275,16 @@ public final class FrameController implements Rootable {
 	            	
 	            	planeNames.forEach(planeName-> typeNamesVB.getChildren().add(new Label(planeName)));
 	            	
-	            	typeNamesVB.setStyle(/*"-fx-background-color:white;"*/
-	            			/*+*/ "-fx-padding: 10, 10, 10, 10;"
+	            	
+	            	typeNamesVB.setStyle("-fx-background-color:white;
+	            			+ "-fx-padding: 10, 10, 10, 10;"
 	            			+ "-fx-font-size: 1.3em;"
 	            			
 	            			
 	            			
 					
 	            			
-	            			); 
+	            			);
 	            	
 	            	//data.getChart().setLabelsVisible(false);
 	            	
@@ -266,7 +303,7 @@ public final class FrameController implements Rootable {
 	            	////data.getNode().removeEventHandler(MouseEvent.MOUSE_ENTERED, this);
 		            	
 		        } 
-	    	});
+	    	}); */
 			
 	    	
 		
