@@ -62,6 +62,9 @@ public final class FrameController implements Rootable {
     @FXML private PieChart typesPC;
     //----------------------
     @FXML
+    private VBox typeVB;
+
+    @FXML
     private VBox typeNamesVB;
     //-------------------------
     @FXML private VBox listViewsVB;
@@ -212,39 +215,61 @@ public final class FrameController implements Rootable {
 			
 			
 			
-			EventHandler<MouseEvent> mouseEntered = new EventHandler<MouseEvent>() {
-			//data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+			
+			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
 				@Override public void handle(MouseEvent event) {
 					
 	            	System.out.println("mouseEntered"); 
 	            	
 	            	/**https://edencoding.com/stage-controller/*/
 	            	///Stage thisStage = (Stage) typesAP.getScene().getWindow();   	
-	            	Stage nodesStage = (Stage) data.getNode().getScene().getWindow();   
+	            	//Stage nodesStage = (Stage) data.getNode().getScene().getWindow();   
 	            	
 	            	String planeType = data.getName();
 	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType);
 	            	
 	            	//-----------------
+	            	
+	            	
+	            	
+	            	Text typeHeading = new Text(String.valueOf(planeNames.size()) + " " + planeType);
+	            	typeHeading.setId("type-heading");
+	            	typeNamesVB.getChildren().add(typeHeading);
+	            	
+	            	
 	            	planeNames.forEach(planeName-> typeNamesVB.getChildren().add(new Label(planeName)));
 	            	
+	            	typeNamesVB.setStyle(/*"-fx-background-color:white;"*/
+	            			/*+*/ "-fx-padding: 10, 10, 10, 10;"
+	            			+ "-fx-font-size: 1.3em;"
+	            			
+	            			
+	            			
+					
+	            			
+	            			); 
 	            	
+	            	//data.getChart().setLabelsVisible(false);
+	            	
+	            	//data.getChart().setLabelLineLength(0);
 	            	//--------------------
+	            	
+	            	typeNamesVB.setOpacity(1);
 	            	
 	            	VBox vbox= new VBox();
 	            	planeNames.forEach(planeName-> vbox.getChildren().add(new Label(planeName)));
 	            	
 	            	popup.getContent().setAll(vbox);
-	            	popup.show(nodesStage);
+	            	//popup.show(nodesStage);
 	            	
 	            	//data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, mouseExited);
-	            	data.getNode().removeEventHandler(MouseEvent.MOUSE_ENTERED, this);
+	            	////data.getNode().removeEventHandler(MouseEvent.MOUSE_ENTERED, this);
 		            	
 		        } 
-	    	};
+	    	});
 			
 	    	
-			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, mouseEntered);
+		
 			
 			
 	    	//EventHandler<MouseEvent> mouseExited = new EventHandler<MouseEvent>() {
@@ -257,6 +282,17 @@ public final class FrameController implements Rootable {
 	            	
 	            	typeNamesVB.getChildren().clear();
 	            	
+	            	typeNamesVB.setOpacity(0);
+	            	
+	            	
+	            
+	            	
+	            	
+	            	//+++++++++++++PIE CHART RADIUS SIZE ++++++++++++++++++++
+	            	///https://stackoverflow.com/questions/58262331/how-do-i-increase-the-radius-of-a-javafx-piechart
+	            	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	            	
+	            	
 	            	/*
 	            	Stage thisStage = (Stage) typesAP.getScene().getWindow();   	
 	            	
@@ -267,10 +303,10 @@ public final class FrameController implements Rootable {
 	            	planeNames.forEach(planeName-> vbox.getChildren().add(new Label(planeName)));
 	            	
 	            	popup.getContent().setAll(vbox);
-	            	popup.show(thisStage);*/
+	            	popup.show(thisStage);
+	            	*/
 	            	
-	            	
-	            	data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, mouseEntered);
+	            	/////data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, mouseEntered);
 	            	//data.getNode().removeEventHandler(MouseEvent.MOUSE_EXITED, this);
 		            	
 		        } 
