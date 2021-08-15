@@ -8,7 +8,7 @@
 - **Database schema:** *mysql > schema > Schema.png*
 - **SQL script for creating database:** *mysql > sql > BuildDB.sql*
 - **Eclipse project for populating database:** *workspace > PopulateDB*
-- **Eclipse project of application:** *workspace > WW"Planes*
+- **Eclipse project of application:** *workspace > WW2Planes*
 
 ### Additional Libraries:
 
