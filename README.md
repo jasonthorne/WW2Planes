@@ -9,8 +9,8 @@
 - **SQL script for building database:** [*mysql > sql > BuildDB.sql*](https://github.com/jasonthorne/WW2Planes/tree/main/mysql/sql)
 - **Eclipse project for populating database:** [*workspace > PopulateDB*](https://github.com/jasonthorne/WW2Planes/tree/main/workspace/PopulateDB)
 - **Eclipse project of application:** [*workspace > WW2Planes*](https://github.com/jasonthorne/WW2Planes/tree/main/workspace/WW2Planes)
-
-### Additional Libraries:
+****
+**Additional libraries used:**
 
 - JDBC for remote MySQL connection through stored procedures.
 - JFoenix Material Design for GUI development.
