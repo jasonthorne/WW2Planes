@@ -1,15 +1,11 @@
 
-
-/* plane availabilities table: -------*/
+/* -----------------------------------*/
+/* plane availabilities table: */
 
 /*https://stackoverflow.com/questions/13455326/javafx-tableview-text-alignment*/
-#plane-col, #block-col {
-    -fx-alignment: CENTER;
-}
+#plane-col, #block-col {-fx-alignment: CENTER;}
 
-#airforce-col {
- 	-fx-background-color: #4682b4;
-}
+#airforce-col {-fx-background-color: #4682b4;}
 
 #airforce-col-label {
 	-fx-text-fill: #ffffff;
@@ -17,19 +13,17 @@
 }
 
 /* -----------------------------------*/
-/* speeds bar chart and types pie chart: */
+/* charts: */
 
 .chart-title {
   -fx-text-fill: #4682b4;
   -fx-font-size: 2em;
 }
 
-/* --------------------------------------*/
-/* pie chart plane types: */
+/* -----------------------------------*/
+/* types pie chart: */
 
-#type-heading-text {
-	-fx-font-size: 1.5em;
-	-fx-padding: 10, 10, 10, 10;
-	
-	
-}
+#type-heading-text {-fx-font-size: 1.8em;}
+#plane-names-v-box {-fx-font-size: 1.2em;}
+
+/* -----------------------------------*/

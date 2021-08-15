@@ -165,6 +165,38 @@ public final class FrameController implements Rootable {
     	showChartData.accept(firstAirForce.getAirForceName(),firstAirForce.getAirForcePlanes());
     }
     
+    //populates and shows plane names v box with names of given type:
+	private void showPlaneNamesVB(String planeType) {
+		//get plane names from plane type:
+    	List<String>planeNames = typeData.getPlaneNamesForType(planeType); 
+    	
+    	//set type heading text with number of planes and given type:
+    	typeHeadingTxt.setText(String.valueOf(planeNames.size()) + " " + planeType);
+    	//add plane names to plane names v box:
+    	planeNames.forEach(planeName-> planeNamesVB.getChildren().add(new Label(planeName)));
+    
+    	//create and play fade in transition for plane names v box:
+    	FadeTransition fadeInPlaneNames = new FadeTransition(Duration.millis(300), planeNamesVB);
+    	fadeInPlaneNames.setFromValue(0);
+    	fadeInPlaneNames.setToValue(1);
+    	fadeInPlaneNames.play();
+	}
+	
+	//resets plane names v box with names of given type:
+	private void resetPlaneNamesVB(String planeType) {
+		//create and play fade out transition for plane names v box:
+    	FadeTransition fadeOutPlaneNames = new FadeTransition(Duration.millis(300), planeNamesVB);
+    	fadeOutPlaneNames.setFromValue(1);
+    	fadeOutPlaneNames.setToValue(0);
+    	fadeOutPlaneNames.setOnFinished(e -> {
+    		
+    		//after fade out, remove all plane name labels;
+    		planeNamesVB.getChildren().removeIf(node -> node instanceof Label);
+    		showPlaneNamesVB(planeType); //fade in plane names of given plane type
+    	});
+    	fadeOutPlaneNames.play();
+	}
+    
     //consumer for showing selected air force's chart data:
     BiConsumer<String,List<Plane>>showChartData = (airForce, planes) -> { 
     	
@@ -175,56 +207,23 @@ public final class FrameController implements Rootable {
     	//show pie chart data:
     	typesPC.setTitle(airForce); //set title with air force
     	typesPC.getData().setAll(typeData.getData(planes)); //set data with types
-    	
-    	
-    	//+++++++++++++PIE CHART RADIUS SIZE ++++++++++++++++++++
-    	///https://stackoverflow.com/questions/58262331/how-do-i-increase-the-radius-of-a-javafx-piechart
-    	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    	//---------------------------------
+    	planeNamesVB.setOpacity(0); //hide plane names v box
+    	planeNamesVB.getChildren().removeIf(node -> node instanceof Label); //remove plane names
     	
     	//add mouse events to each pie chart data slice:
 		/**https://docs.oracle.com/javafx/2/charts/pie-chart.htm*/
     	typesPC.getData().forEach(data ->{
     	
-    		//add mouse entered event to show planes of selected type:
-			data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+    		//add mouse press event to show planes of selected type:
+			data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
 	            @Override public void handle(MouseEvent event) {
-	            	System.out.println("MOUSE_ENTERED");
-	            	String planeType = data.getName(); //get plane type
-	            	List<String>planeNames = typeData.getPlaneNamesForType(planeType); //get plane names
-	            	
-	            	//set heading text with number of planes and given type:
-	            	typeHeadingTxt.setText(String.valueOf(planeNames.size()) + " " + planeType);
-	            	//add plane names to plane names v box:
-	            	planeNames.forEach(planeName-> planeNamesVB.getChildren().add(new Label(planeName)));
-	            	
-	            	//create fade in transition for plane names v box:
-	            	FadeTransition fadeInPlaneNames = new FadeTransition(Duration.millis(300), planeNamesVB);
-	            	fadeInPlaneNames.setFromValue(0);
-	            	fadeInPlaneNames.setToValue(1);
-	            	System.out.println("B4 FADE IN PLAY: " + planeNamesVB.getChildren());
-	            	fadeInPlaneNames.play();
-	             }
+            		//if plane names are present:
+	            	if(planeNamesVB.getChildren().size() > 1) { 
+	            		resetPlaneNamesVB(data.getName()); //reset plane names
+	            	}else { showPlaneNamesVB(data.getName()); } //show plane names
+	            }
 			});
-			
-			//add mouse exited to remove planes of unselected type:
-	    	data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
-	            @Override public void handle(MouseEvent event) {
-	            	System.out.println("MOUSE_EXITED");
-	            	//create fade out transition for plane names v box:
-	            	FadeTransition fadeOutPlaneNames = new FadeTransition(Duration.millis(300), planeNamesVB);
-	            	fadeOutPlaneNames.setFromValue(1);
-	            	fadeOutPlaneNames.setToValue(0);
-	            	fadeOutPlaneNames.setOnFinished(e -> { 
-	            		System.out.println("AFTER FADE OUT: " + planeNamesVB.getChildren());
-	            		//after fade out, remove all plane name labels;
-	            		planeNamesVB.getChildren().removeIf(node -> node instanceof Label);
-	            	});
-	            	fadeOutPlaneNames.play();
-	             }
-			});
-			
     	});
-    	
 	};
+
 }
