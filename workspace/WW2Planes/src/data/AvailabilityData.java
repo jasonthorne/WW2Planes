@@ -84,7 +84,7 @@ public final class AvailabilityData {
 	        
 	        
 	        int currYear = start.getYear(); //holds year values
-			Block currBlock; //holds block values
+	        Block currBlock; //holds block values
 	    	Iterator<Block>blocksIterator; //blocks iterator
 	    	boolean canAdd = false; //flag for adding values
 	    	
@@ -101,17 +101,17 @@ public final class AvailabilityData {
 	    			if(currBlock.equals(start.getBlock()) && currYear == start.getYear()) {canAdd = true;}
 	    				
 	    			if(canAdd) {
-	    				blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column
-	    				blockCol.setId("block-col"); //give block column id for style sheet
-	        			blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
-	        			blockCol.setCellValueFactory(callBack); //set block column cell factory
-	            		yearCol.getColumns().add(blockCol); //add block column to year column
-	            		
-	            		//if found end date:
-	    				if(currBlock.equals(end.getBlock()) && currYear == end.getYear()) {
-	    					airForceCol.getColumns().add(yearCol); //add year column to air force column
-	    					break outerWhile; //break from outer while
-	    				}
+						blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column
+						blockCol.setId("block-col"); //give block column id for style sheet
+						blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
+						blockCol.setCellValueFactory(callBack); //set block column cell factory
+						yearCol.getColumns().add(blockCol); //add block column to year column
+						
+						//if found end date:
+						if(currBlock.equals(end.getBlock()) && currYear == end.getYear()) {
+							airForceCol.getColumns().add(yearCol); //add year column to air force column
+							break outerWhile; //break from outer while
+						}
 	    			}
 	    		}
 	    		airForceCol.getColumns().add(yearCol); //add year column to air force column

@@ -24,10 +24,10 @@ public final class TypeData {
 	//initialize map:
 	private void initPlaneTypeToNames() {
 		
-    	for(Type type : Type.values()) {
-    		//initialize map with plane types, holding empty lists:
-    		planeTypeToNames.put(type.toString(), new ArrayList<String>());
-    	}
+		for(Type type : Type.values()) {
+			//initialize map with plane types, holding empty lists:
+			planeTypeToNames.put(type.toString(), new ArrayList<String>());
+		}
 	}
 	
 	//get list of plane names for given type:
@@ -37,28 +37,28 @@ public final class TypeData {
 
 	//return list of pie chart data for given planes:
 	public ObservableList<PieChart.Data>getData(List<Plane>planes) {
-	
+		
 		//list of pie chart data:
-    	ObservableList<PieChart.Data>pieChartData = FXCollections.observableArrayList();
-    	
-    	initPlaneTypeToNames(); //initialize map
-    	
-    	planes.forEach(plane ->{
-    		//add plane's name to list of other names with same type:
-    		planeTypeToNames.get(plane.getType().toString()).add(plane.getName());
-    	});
-    	
-    	planeTypeToNames.keySet().forEach(planeType ->{
-    		int planesNum;
-    		//if plane type has list entries:
-    		if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
-    			
-    			//Add type and its amount to pie chart data:
-        		pieChartData.add(new PieChart.Data(planeType,planesNum));
-    		}
-    	});
-    	
-    	//return pie chart data:
-    	return FXCollections.observableArrayList(pieChartData); 
+		ObservableList<PieChart.Data>pieChartData = FXCollections.observableArrayList();
+		
+		initPlaneTypeToNames(); //initialize map
+		
+		planes.forEach(plane ->{
+			//add plane's name to list of other names with same type:
+			planeTypeToNames.get(plane.getType().toString()).add(plane.getName());
+		});
+		
+		planeTypeToNames.keySet().forEach(planeType ->{
+			int planesNum;
+			//if plane type has list entries:
+			if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
+				
+				//Add type and its amount to pie chart data:
+				pieChartData.add(new PieChart.Data(planeType,planesNum));
+			}
+		});
+		
+		//return pie chart data:
+		return FXCollections.observableArrayList(pieChartData); 
 	}
 }
