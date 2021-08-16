@@ -42,65 +42,65 @@ public final class AvailabilityData {
 			ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes());
 			//add observable list to table view for planes:
 			TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
-	    	
-	    	//set table view size to it's anchor pane:
-	    	planesTable.setPrefSize(pane.getPrefWidth(), pane.getPrefHeight());
-	    	 
-	    	//set cell sizes with confusing, borrowed code!:
-	    	/**https://stackoverflow.com/questions/27945817/javafx-adapt-tableview-height-to-number-of-rows*/
-	    	planesTable.setFixedCellSize(25);
-	    	planesTable.prefHeightProperty().bind(
-	    			planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(3.0)));
-	    	/** https://stackoverflow.com/questions/28428280/how-to-set-column-width-in-tableview-in-javafx */
-	    	planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-	    	
-	    	//create air force column:
-	    	TableColumn<Plane, String> airForceCol = new TableColumn<>();
-	    	airForceCol.setId("airforce-col"); //give id for style sheet
-	    	Label airForceLbl = new Label(airForce.getAirForceName()); //label for styled content
-	    	airForceLbl.setId("airforce-col-label"); //give id for style sheet
-	    	airForceCol.setGraphic(airForceLbl); //add label to column
-	    	
-	    	//create plane column:
-	    	TableColumn<Plane,String> planeCol = new TableColumn<>("Plane");
-	    	planeCol.setId("plane-col"); //give id for style sheet
-	    	planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name")); //set cell factory
-	    	airForceCol.getColumns().add(planeCol); //add plane column to air force column
-	    	
-	    	//year and block columns:
-	    	TableColumn<Plane,String> yearCol;
-	    	TableColumn<Plane,String> blockCol;  
-	    	
-	    	//call back for populating block column cells with plane period availabilities:
-	    	Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>> callBack = 
-	                new Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>>() {
-	            @Override
-	            public ObservableValue<String> call(TableColumn.CellDataFeatures<Plane, String> param) {
-	            	 return new SimpleStringProperty(
-	            			 param.getValue().getAvailabilities().get(
-	            					 param.getTableColumn().getUserData()).toString());		
-	            }
-	        };/** https://stackoverflow.com/questions/21639108/javafx-tableview-objects-with-maps */
-	        
-	        
-	        int currYear = start.getYear(); //holds year values
-	        Block currBlock; //holds block values
-	    	Iterator<Block>blocksIterator; //blocks iterator
-	    	boolean canAdd = false; //flag for adding values
-	    	
-	    	outerWhile:
-	    	while(currYear <= end.getYear()) { //loop through years
-	    		
-	    		yearCol = new TableColumn<>(String.valueOf(currYear)); //create year column
-	    		blocksIterator = Arrays.asList(Block.values()).iterator(); //(re)set blocks iterator
-	    		
-	    		while(blocksIterator.hasNext()) { //loop through blocks
-	    			currBlock = blocksIterator.next(); //advance to next block
-	    			
-	    			//if found start date, allow adding of values:
-	    			if(currBlock.equals(start.getBlock()) && currYear == start.getYear()) {canAdd = true;}
-	    				
-	    			if(canAdd) {
+			
+			//set table view size to it's anchor pane:
+			planesTable.setPrefSize(pane.getPrefWidth(), pane.getPrefHeight());
+			 
+			//set cell sizes with confusing, borrowed code!:
+			/**https://stackoverflow.com/questions/27945817/javafx-adapt-tableview-height-to-number-of-rows*/
+			planesTable.setFixedCellSize(25);
+			planesTable.prefHeightProperty().bind(
+					planesTable.fixedCellSizeProperty().multiply(Bindings.size(planesTable.getItems()).add(3.0)));
+			/** https://stackoverflow.com/questions/28428280/how-to-set-column-width-in-tableview-in-javafx */
+			planesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+			
+			//create air force column:
+			TableColumn<Plane, String> airForceCol = new TableColumn<>();
+			airForceCol.setId("airforce-col"); //give id for style sheet
+			Label airForceLbl = new Label(airForce.getAirForceName()); //label for styled content
+			airForceLbl.setId("airforce-col-label"); //give id for style sheet
+			airForceCol.setGraphic(airForceLbl); //add label to column
+			
+			//create plane column:
+			TableColumn<Plane,String> planeCol = new TableColumn<>("Plane");
+			planeCol.setId("plane-col"); //give id for style sheet
+			planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name")); //set cell factory
+			airForceCol.getColumns().add(planeCol); //add plane column to air force column
+			
+			//year and block columns:
+			TableColumn<Plane,String> yearCol;
+			TableColumn<Plane,String> blockCol;  
+
+			//call back for populating block column cells with plane period availabilities:
+			Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>> callBack = 
+			        new Callback<TableColumn.CellDataFeatures<Plane, String>, ObservableValue<String>>() {
+			    @Override
+			    public ObservableValue<String> call(TableColumn.CellDataFeatures<Plane, String> param) {
+			    	 return new SimpleStringProperty(
+			    			 param.getValue().getAvailabilities().get(
+			    					 param.getTableColumn().getUserData()).toString());		
+			    }
+			};/** https://stackoverflow.com/questions/21639108/javafx-tableview-objects-with-maps */
+			
+			
+			int currYear = start.getYear(); //holds year values
+			Block currBlock; //holds block values
+			Iterator<Block>blocksIterator; //blocks iterator
+			boolean canAdd = false; //flag for adding values
+			
+			outerWhile:
+			while(currYear <= end.getYear()) { //loop through years
+				
+				yearCol = new TableColumn<>(String.valueOf(currYear)); //create year column
+				blocksIterator = Arrays.asList(Block.values()).iterator(); //(re)set blocks iterator
+				
+				while(blocksIterator.hasNext()) { //loop through blocks
+					currBlock = blocksIterator.next(); //advance to next block
+					
+					//if found start date, allow adding of values:
+					if(currBlock.equals(start.getBlock()) && currYear == start.getYear()) {canAdd = true;}
+					
+					if(canAdd) {
 						blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column
 						blockCol.setId("block-col"); //give block column id for style sheet
 						blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
@@ -112,13 +112,13 @@ public final class AvailabilityData {
 							airForceCol.getColumns().add(yearCol); //add year column to air force column
 							break outerWhile; //break from outer while
 						}
-	    			}
-	    		}
-	    		airForceCol.getColumns().add(yearCol); //add year column to air force column
-	    		currYear++; //advance to next year
-	    	}
-	    	planesTable.getColumns().add(airForceCol); //add air force column to table
-	    	planesTables.add(planesTable); //add table to tables
+					}
+				}
+				airForceCol.getColumns().add(yearCol); //add year column to air force column
+				currYear++; //advance to next year
+			}
+			planesTable.getColumns().add(airForceCol); //add air force column to table
+			planesTables.add(planesTable); //add table to tables
 		});
 		return new ArrayList<TableView<Plane>>(planesTables); //return planes tables
 	}
