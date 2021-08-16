@@ -1,6 +1,6 @@
 # WW2 Planes
 
-## A JavaFX application, displaying views of data pertaining to WW2 aircraft.
+## A JavaFX application, displaying views of data for WW2 aircraft.
 
 ### Contents:
 
