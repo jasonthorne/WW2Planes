@@ -18,26 +18,26 @@ public interface InsertAirForceData {
 			
 			//create statement:
 			CallableStatement callableStatement = null; 
-		
+			
 			//read json file to object reference, using json parser: 
-	        Object object = new JSONParser().parse(new FileReader("resources/json/db_data/airforces/airforces.json"));
-	        JSONArray airForces = (JSONArray) object; //cast object to json array of air forces
-	        Iterator<JSONObject> airForceIterator = airForces.iterator(); //iterate through air forces
+			Object object = new JSONParser().parse(new FileReader("resources/json/db_data/airforces/airforces.json"));
+			JSONArray airForces = (JSONArray) object; //cast object to json array of air forces
+			Iterator<JSONObject> airForceIterator = airForces.iterator(); //iterate through air forces
 	        
 			while (airForceIterator.hasNext()) {
 				JSONObject airForce = (JSONObject) airForceIterator.next().get("airforce"); //get air force from iterator.next()
-			    //-------------------------------------------------
-			    //add air force to 'airforces':
-			    
+				//-------------------------------------------------
+				//add air force to 'airforces':
+				
 				String airForceName = (String) airForce.get("name");  //get name of air force
 				callableStatement = connection.prepareCall("{CALL insert_airforce(?)}"); //create statement
-		        callableStatement.setString(1, airForceName); //set input with name
-			    try {
-			    	callableStatement.execute(); //execute statement
+				callableStatement.setString(1, airForceName); //set input with name
+				try {
+					callableStatement.execute(); //execute statement
 				}catch(Exception e) { e.printStackTrace(); }
-			    //-------------------------------------------------
+				//-------------------------------------------------
 				//add planes to 'airforce_planes':
-			    
+				
 				JSONArray planes = (JSONArray) airForce.get("planes"); //get array of planes
 				Iterator<JSONObject> planeIterator = planes.iterator(); //iterate through planes
 				while (planeIterator.hasNext()) {
@@ -47,12 +47,12 @@ public interface InsertAirForceData {
 					String planeType = (String) plane.get("type");  //get type of plane
 					int planeSpeed = Integer.parseInt((String) plane.get("speed"));  //get speed of plane
 					callableStatement = connection.prepareCall("{CALL insert_airforce_plane(?,?,?,?)}"); //create statement
-			        callableStatement.setString(1, airForceName); //set input with air force
-			        callableStatement.setString(2, planeName); //set input with plane
-			        callableStatement.setString(3, planeType); //set input with type
-			        callableStatement.setInt(4, planeSpeed); //set input with speed
-			        try {
-				    	callableStatement.execute(); //execute statement
+					callableStatement.setString(1, airForceName); //set input with air force
+					callableStatement.setString(2, planeName); //set input with plane
+					callableStatement.setString(3, planeType); //set input with type
+					callableStatement.setInt(4, planeSpeed); //set input with speed
+					try {
+						callableStatement.execute(); //execute statement
 					}catch(Exception e) { e.printStackTrace(); }
 					//-------------------------------------------------
 					//add plane's periods and statuses to 'plane_availabilities':
@@ -69,13 +69,13 @@ public interface InsertAirForceData {
 						String status = (String) periodStatus.get("status"); //get status from periodStatus
 						callableStatement = connection.prepareCall("{CALL insert_plane_availability(?,?,?,?,?)}"); //create statement
 						callableStatement.setString(1, airForceName); //set input with air force
-				        callableStatement.setString(2, planeName); //set input with plane
-				        callableStatement.setString(3, block); //set input with block
-				        callableStatement.setInt(4, year); //set input with year
-				        callableStatement.setString(5, status); //set input with status
-				        try {
-					    	callableStatement.execute(); //execute statement
-				        }catch(Exception e) { e.printStackTrace(); }
+						callableStatement.setString(2, planeName); //set input with plane
+						callableStatement.setString(3, block); //set input with block
+						callableStatement.setInt(4, year); //set input with year
+						callableStatement.setString(5, status); //set input with status
+						try {
+							callableStatement.execute(); //execute statement
+						}catch(Exception e) { e.printStackTrace(); }
 					}
 				} //planeIterator
 			} //airForceIterator
