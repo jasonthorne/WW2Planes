@@ -1,6 +1,6 @@
 # WW2 Planes
 
-## A JavaFX application, displaying views of data, pertaining to WW2 aircraft.
+## A JavaFX application, displaying views of data pertaining to WW2 aircraft.
 
 ### Contents:
 
@@ -10,8 +10,8 @@
 - **Eclipse project for populating database:** [*workspace > PopulateDB*](https://github.com/jasonthorne/WW2Planes/tree/main/workspace/PopulateDB)
 - **Eclipse project of application:** [*workspace > WW2Planes*](https://github.com/jasonthorne/WW2Planes/tree/main/workspace/WW2Planes)
 ****
-**Additional libraries used:**
+### Additional libraries:
 
 - JDBC for remote MySQL connection through stored procedures.
-- JFoenix Material Design for GUI development.
-- JSON.simple for populating of database.
+- [JFoenix Material Design](https://github.com/sshahine/JFoenix) for GUI development.
+- [JSON.simple](https://code.google.com/archive/p/json-simple/) for populating of database.
