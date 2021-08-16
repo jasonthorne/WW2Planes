@@ -39,7 +39,7 @@ public final class AvailabilityData {
 		event.getAirForces().forEach(airForce ->{
 			
 			//make observable list of planes from air force planes:
-	    	ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes());
+			ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes());
 	    	//add observable list to table view for planes:
 	    	TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
 	    	
