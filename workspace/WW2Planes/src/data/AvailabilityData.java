@@ -40,8 +40,8 @@ public final class AvailabilityData {
 			
 			//make observable list of planes from air force planes:
 			ObservableList<Plane> observPlanes = FXCollections.observableArrayList(airForce.getAirForcePlanes());
-	    	//add observable list to table view for planes:
-	    	TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
+			//add observable list to table view for planes:
+			TableView<Plane> planesTable = new TableView<Plane>(observPlanes);
 	    	
 	    	//set table view size to it's anchor pane:
 	    	planesTable.setPrefSize(pane.getPrefWidth(), pane.getPrefHeight());
