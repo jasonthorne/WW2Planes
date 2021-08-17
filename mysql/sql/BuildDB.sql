@@ -88,8 +88,8 @@ DELIMITER ;
 CREATE TABLE planes(
 	planeID INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64) DEFAULT NULL,
-    type ENUM ('Fighter','Bomber','Fighter-bomber') NOT NULL,
-    speed INT DEFAULT 0,
+	type ENUM ('Fighter','Bomber','Fighter-bomber') NOT NULL,
+	speed INT DEFAULT 0,
 	PRIMARY KEY (planeID),
 	UNIQUE (name) /* prevent duplicate inserts */
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -381,7 +381,7 @@ BEGIN
 	/* create query string: */
 	SET @query = CONCAT('SELECT * FROM ', table_name, ';'); 
 	
-    /* prepare and execute statement: */
+	/* prepare and execute statement: */
 	PREPARE statement FROM @query;
 	EXECUTE statement;
 	DEALLOCATE PREPARE statement;

@@ -18,5 +18,4 @@ public class Main extends Application {
 		preloaderCtrlr.showStage(); //show its stage:
 	}
 
-
 }
