@@ -5,6 +5,114 @@
 			"planes": [
 				{
 					"plane": {
+						"name": "Blenheim IV",
+						"type": "Bomber",
+						"speed": "266",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Defiant I",
+						"type": "Fighter",
+						"speed": "304",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
 						"name": "Hurricane I",
 						"type": "Fighter",
 						"speed": "324",
@@ -124,6 +232,114 @@
 										"year": "1943"
 									},
 									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Lancaster BI",
+						"type": "Bomber",
+						"speed": "286",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
 								}
 							}
 						]
@@ -1380,6 +1596,330 @@
 				},
 				{
 					"plane": {
+						"name": "He111 H",
+						"type": "Bomber",
+						"speed": "273",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Ju87 B",
+						"type": "Bomber",
+						"speed": "242",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Ju87 D",
+						"type": "Bomber",
+						"speed": "250",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Ju88 A",
+						"type": "Bomber",
+						"speed": "292",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
 						"name": "Me 262 A",
 						"type": "Fighter",
 						"speed": "540",
@@ -2071,6 +2611,123 @@
 				},
 				{
 					"plane": {
+						"name": "Petlyakov Pe-2",
+						"type": "Bomber",
+						"speed": "361",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
 						"name": "Polikarpov I-15",
 						"type": "Fighter",
 						"speed": "220",
@@ -2244,6 +2901,114 @@
 										"year": "1942"
 									},
 									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Tupolev Tu-2",
+						"type": "Bomber",
+						"speed": "328",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
 								}
 							}
 						]
@@ -2724,6 +3489,132 @@
 		"airforce": {
 			"name": "USAAF",
 			"planes": [
+				{
+					"plane": {
+						"name": "B-17F",
+						"type": "Bomber",
+						"speed": "318",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "B-17G",
+						"type": "Bomber",
+						"speed": "287",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
 				{
 					"plane": {
 						"name": "F4F Wildcat",
@@ -3770,6 +4661,186 @@
 										"year": "1945"
 									},
 									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "G4M",
+						"type": "Bomber",
+						"speed": "266",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1940"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1941"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1942"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1943"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Common"
+								}
+							}
+						]
+					}
+				},
+				{
+					"plane": {
+						"name": "Ki-67 Hiryu",
+						"type": "Bomber",
+						"speed": "334",
+						"period_statuses": [
+							{
+								"period_status":{
+									"period": {
+										"block": "Late",
+										"year": "1944"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Early",
+										"year": "1945"
+									},
+									"status": "Limited"
+								}
+							},
+							{
+								"period_status":{
+									"period": {
+										"block": "Mid",
+										"year": "1945"
+									},
+									"status": "Limited"
 								}
 							}
 						]
