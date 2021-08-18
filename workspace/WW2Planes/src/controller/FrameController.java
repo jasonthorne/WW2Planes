@@ -122,7 +122,7 @@ public final class FrameController implements Rootable {
 	private final AvailabilityData availabilityData = new AvailabilityData();
 	private final SpeedData speedData = new SpeedData();
 	private final TypeData typeData = new TypeData();
-
+	
 	
 	//load events data from database:
 	void loadEventsData(FadeTransition fadeOutPreloader) { 
@@ -134,8 +134,8 @@ public final class FrameController implements Rootable {
 					observEvents.addAll(database.SelectEvents.select());
 					//set air forces with first event's air forces:
 					observAirForces.setAll(observEvents.get(0).getAirForces());
-					fadeOutPreloader.play(); //fade out preloader:
-    	    	}catch(Exception e) { e.printStackTrace(); }
+					fadeOutPreloader.play(); //fade out preloader
+				}catch(Exception e) { e.printStackTrace(); }
 			}).start();
 		}
 	}

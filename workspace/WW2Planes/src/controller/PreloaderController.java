@@ -42,28 +42,33 @@ public final class PreloaderController implements Rootable {
 			fadeIn.setFromValue(0);
 			fadeIn.setToValue(1);
 			
-			//create fade out transition for root stack pane:
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), rootSP);
-			fadeOut.setFromValue(1);
-			fadeOut.setToValue(0);
-			
-			//after fade out, change to frame view:
-			fadeOut.setOnFinished(event -> {
+			//after fade in, prepare fade out:
+			fadeIn.setOnFinished(event -> {
 				
-				Parent frameRoot = Rootable.getRoot(frameCtrlr, "/view/frame.fxml"); //get frame root
-				Scene scene = new Scene(frameRoot); //create new scene with root
-				scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm()); //add styles
-				stage.setScene(scene); //add scene to stage
+				//create fade out transition for root stack pane:
+				FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), rootSP);
+				fadeOut.setFromValue(1);
+				fadeOut.setToValue(0);
 				
-				//create fade in transition for frame root:
-				FadeTransition fadeInFrame = new FadeTransition(Duration.seconds(1), frameRoot);
-				fadeInFrame.setFromValue(0);
-				fadeInFrame.setToValue(1);
-				fadeInFrame.play();
+				//after fade out, change to frame view:
+				fadeOut.setOnFinished(e -> {
+					
+					Parent frameRoot = Rootable.getRoot(frameCtrlr, "/view/frame.fxml"); //get frame root
+					Scene scene = new Scene(frameRoot); //create new scene with root
+					scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm()); //add styles
+					stage.setScene(scene); //add scene to stage
+					
+					//create & play fade in transition for frame root:
+					FadeTransition fadeInFrame = new FadeTransition(Duration.seconds(1), frameRoot);
+					fadeInFrame.setFromValue(0);
+					fadeInFrame.setToValue(1);
+					fadeInFrame.play();
+				});
+				
+				//load data, passing fade out transition:
+				frameCtrlr.loadEventsData(fadeOut);
 			});
 			
-			//load data, passing fade out transition:
-			frameCtrlr.loadEventsData(fadeOut);
 			stage.show(); //show stage
 			fadeIn.play(); //play fade in
 		}
