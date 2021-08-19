@@ -75,6 +75,8 @@ public final class FrameController implements Rootable {
 		airForcesLV.setItems(observAirForces);
 		//set air forces list view to create AirForceCellControllers:
 		airForcesLV.setCellFactory(AirForceCellController ->  new AirForceCellController(showChartData));
+		//preselect first air force in list view:
+		airForcesLV.getSelectionModel().select(0);
 		
 		//add change listener to events list view:
 		/**https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2	*/

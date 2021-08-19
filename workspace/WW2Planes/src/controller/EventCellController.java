@@ -2,14 +2,14 @@ package controller;
 
 import com.jfoenix.controls.JFXListCell;
 
-import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
 import model.Event;
 
 public final class EventCellController extends JFXListCell<Event> {
 	
-	//root fxml element:
-	@FXML private AnchorPane rootAP;
+	//constructor:
+	EventCellController(){
+		this.setId("event-cell"); //give id for style sheet
+	}
 	
 	//update cell with event name:
 	@Override  
