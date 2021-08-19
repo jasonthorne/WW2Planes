@@ -27,19 +27,23 @@
 #plane-names-v-box {-fx-font-size: 1.2em;}
 
 /* -----------------------------------*/
+/* list views: */
+
+.list-view {
+	-fx-background-insets: 0;
+	-fx-background-color: transparent;
+	-fx-padding: 0;
+}
+
+/* -----------------------------------*/
 /* air force and event cells: */
 
 #airforce-cell,  #event-cell {-fx-background-color: #b5ffff;}
 #airforce-cell:hover, #event-cell:hover {-fx-background-color: #80d8ff;}
 
 #airforce-cell:selected:focused, #event-cell:selected:focused {
-	-fx-background-color: #4682b4;
+	-fx-background-color: #49a7cc;
 	-fx-text-fill: #ffffff;
 }
 
-/* remove default list view border & background: */
-.list-view {
-	-fx-background-insets: 0;
-	-fx-background-color: transparent;
-	-fx-padding: 0;
-}
+/* -----------------------------------*/
