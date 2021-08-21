@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -21,15 +22,16 @@ public final class PreloaderController implements Rootable {
 	@FXML private Label titleLbl;
 	@FXML private JFXSpinner loadingSpinner;
 	
-	private final Stage stage = new Stage(); //stage
+	private final Stage stage; //stage
 	
 	//frame.fxml controller:
 	private final FrameController frameCtrlr = new FrameController();
 	
 	//constructor:
-	public PreloaderController() {
+	public PreloaderController(Stage stage) {
+		this.stage = stage; //set stage
 		Scene scene = new Scene(Rootable.getRoot(this, "/view/preloader.fxml")); //add root to scene
-		stage.setScene(scene); //add scene to stage
+		this.stage.setScene(scene); //add scene to stage
 	}
 	
 	//show stage:
