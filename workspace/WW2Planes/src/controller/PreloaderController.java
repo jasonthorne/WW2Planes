@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -21,6 +20,7 @@ public final class PreloaderController implements Rootable {
 	@FXML private AnchorPane bodyAP;
 	@FXML private Label titleLbl;
 	@FXML private JFXSpinner loadingSpinner;
+	@FXML private Label loadingLbl;
 	
 	private final Stage stage; //stage
 	

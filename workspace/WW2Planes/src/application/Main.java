@@ -12,14 +12,14 @@ public class Main extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage stage) {
 		
 		//set stage's icon and title:
-		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("iconTest.png")));
-		primaryStage.setTitle("WW2 Planes");
+		stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
+		stage.setTitle("WW2 Planes");
 		
 		//create preloader controller with stage:
-		final PreloaderController preloaderCtrlr = new PreloaderController(primaryStage);
+		final PreloaderController preloaderCtrlr = new PreloaderController(stage);
 		preloaderCtrlr.showStage(); //show stage using controller
 	}
 }

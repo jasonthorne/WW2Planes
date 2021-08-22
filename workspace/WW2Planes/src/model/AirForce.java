@@ -16,7 +16,7 @@ public final class AirForce {
 	
 	public String getAirForceName() { return name; } //get air force name
 
-	public List<Plane> getAirForcePlanes() { //get air force planes:
+	public List<Plane> getAirForcePlanes() { //get air force planes
 		return new ArrayList<Plane>(planes);
 	} 
 	
