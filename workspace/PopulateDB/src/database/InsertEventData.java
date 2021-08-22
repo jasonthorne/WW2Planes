@@ -36,7 +36,7 @@ public interface InsertEventData {
 					callableStatement.execute(); //execute statement
 				}catch(Exception e) { e.printStackTrace(); }
 				//-------------------------------------------------
-				//add event, air force & home advantage status to 'event_airforces':
+				//add event & air force to 'event_airforces':
 				
 				JSONArray airForces = (JSONArray) event.get("airforces"); //get array of air forces
 				Iterator<JSONObject> airForceIterator = airForces.iterator(); //iterate through airForces
