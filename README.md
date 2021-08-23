@@ -4,7 +4,7 @@
 
 ### Contents:
 
-- **Runnable exe of application:** [*export > application > application.exe*](https://github.com/jasonthorne/WW2Planes/tree/main/export/application)
+- **Application:** [*export > application > application.exe*](https://github.com/jasonthorne/WW2Planes/tree/main/export/application)
 - **Database schema:** [*mysql > schema > Schema.png*](https://github.com/jasonthorne/WW2Planes/tree/main/mysql/schema)
 - **SQL script for building database:** [*mysql > sql > BuildDB.sql*](https://github.com/jasonthorne/WW2Planes/tree/main/mysql/sql)
 - **Eclipse project for populating database:** [*workspace > PopulateDB*](https://github.com/jasonthorne/WW2Planes/tree/main/workspace/PopulateDB)
