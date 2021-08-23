@@ -15,3 +15,10 @@
 - JDBC for remote MySQL connection through stored procedures.
 - [JFoenix Material Design](https://github.com/sshahine/JFoenix) for GUI development.
 - [JSON.simple](https://code.google.com/archive/p/json-simple/) for populating of database.
+****
+### Launch application:
+
+1. Download and run [***Application.exe***](https://github.com/jasonthorne/WW2Planes/tree/main/export/application), to extract application folder.
+2. Within application folder: Run ***WW2Planes.exe*** to launch.
+
+**Note:** *Provided with bundled JRE, enabling it to be launched on all Windows machines.*
