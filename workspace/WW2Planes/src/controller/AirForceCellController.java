@@ -18,7 +18,7 @@ public final class AirForceCellController extends JFXListCell<AirForce> {
 	//constructor:
 	AirForceCellController(BiConsumer<String, List<Plane>>showChartData) {
 		
-		this.setId("airforce-cell"); //give id for style sheet
+		this.setId("airforce-cell"); //give id for css sheet
 		
 		//add press event to build charts using cell's planes:
 		this.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
