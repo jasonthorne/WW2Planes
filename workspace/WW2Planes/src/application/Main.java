@@ -1,5 +1,8 @@
 package application;
 
+import java.io.IOException;
+import java.net.URL;
+
 import controller.PreloaderController;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -12,10 +15,10 @@ public class Main extends Application {
 	}
 
 	@Override
-	public void start(Stage stage) {
+	public void start(Stage stage) throws IOException {
 		
 		//set stage's icon and title:
-		stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
+		stage.getIcons().add(new Image(getClass().getResourceAsStream("/image/plane.png")));
 		stage.setTitle("WW2 Planes");
 		
 		//create preloader controller with stage:

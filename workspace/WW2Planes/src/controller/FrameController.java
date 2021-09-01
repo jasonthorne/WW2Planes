@@ -126,7 +126,7 @@ public final class FrameController implements Rootable {
 	private final TypeData typeData = new TypeData();
 	
 	
-	//load events data from database:
+	//load events data from connection:
 	void loadEventsData(FadeTransition fadeOutPreloader) { 
 		//if events data is empty:
 		if (observEvents.isEmpty()) { 
