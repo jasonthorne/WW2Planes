@@ -17,8 +17,8 @@
 - [JSON.simple](https://code.google.com/archive/p/json-simple/) for populating of database.
 ****
 ### How to launch:
-[test](https://github.com/jasonthorne/WW2Planes/raw/main/export/application/Application.exe)
-1. Download and run [***Application.exe***](https://github.com/jasonthorne/WW2Planes/tree/main/export/application), to extract application folder.
+
+1. Run ***Application.exe***, to extract application folder. [(***Download here***)](https://github.com/jasonthorne/WW2Planes/raw/main/export/application/Application.exe).  
 2. Within application folder, run ***WW2Planes.exe*** to launch.
 
 **Note:** *Can be run on all Windows machines, due to bundled JRE.*
