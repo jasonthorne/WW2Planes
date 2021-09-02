@@ -12,7 +12,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -109,12 +108,9 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Hyperlink fx:id="gitHL" contentDisplay="GRAPHIC_ONLY" StackPane.alignment="TOP_RIGHT">
+      <Hyperlink fx:id="repoHL" contentDisplay="GRAPHIC_ONLY" StackPane.alignment="TOP_RIGHT">
          <graphic>
-            <ImageView id="git-ilink-image" fx:id="gitIV" fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Downloads/GitHub-Mark/GitHub-Mark/PNG/GitHub-Mark-Light-32px.png" />
-               </image>
+            <ImageView id="repo-image-view" fx:id="repoIV" fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" opacity="0.85" pickOnBounds="true" preserveRatio="true">
                <viewport>
                   <Rectangle2D />
                </viewport>
@@ -123,6 +119,9 @@
          <font>
             <Font size="20.0" />
          </font>
+         <StackPane.margin>
+            <Insets right="5.0" />
+         </StackPane.margin>
       </Hyperlink>
    </children>
 </StackPane>

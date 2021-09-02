@@ -20,9 +20,12 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -60,10 +63,12 @@ public final class FrameController implements Rootable {
 	@FXML private JFXListView<AirForce> airForcesLV;
 	@FXML private HBox eventsHB;
 	@FXML private JFXListView<Event> eventsLV;
+	@FXML private Hyperlink repoHL;
+	@FXML private ImageView repoIV;
 	
 	@FXML
 	void initialize() {
-		
+	
 		//set events list view observable events:
 		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventCellControllers:
@@ -111,6 +116,9 @@ public final class FrameController implements Rootable {
 			if(!availabilitiesTab.isSelected()) { fadeInAirForces.play(); 
 			} else { fadeOutAirForces.play(); }
 		});
+		
+		//set repository link image:
+		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/git-hub.png")));
 		
 		//show first event's data:
 		showEventData(observEvents.get(0));
