@@ -68,7 +68,7 @@ public final class FrameController implements Rootable {
 	
 	@FXML
 	void initialize() {
-	
+		
 		//set events list view observable events:
 		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventCellControllers:
@@ -117,11 +117,10 @@ public final class FrameController implements Rootable {
 			} else { fadeOutAirForces.play(); }
 		});
 		
-		//set repository link image:
-		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/git-hub.png")));
-		
 		//show first event's data:
 		showEventData(observEvents.get(0));
+		//add image to repository link's image view:
+		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/octocat.png")));
 	}
 	
 	//observable lists:

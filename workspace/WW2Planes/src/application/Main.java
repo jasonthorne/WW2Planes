@@ -15,7 +15,7 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		
 		//set stage's icon and title:
-		stage.getIcons().add(new Image(getClass().getResourceAsStream("/img/plane.png")));
+		stage.getIcons().add(new Image(getClass().getResourceAsStream("/img/spitfire.png")));
 		stage.setTitle("WW2 Planes");
 		
 		//create preloader controller with stage:
