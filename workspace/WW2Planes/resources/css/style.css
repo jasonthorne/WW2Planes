@@ -47,3 +47,9 @@
 }
 
 /* -----------------------------------*/
+/* image view of repository link: */
+
+#repo-image-view:hover {-fx-opacity: 0.0; /* ++++++++++++++ HMMM.... */
+-fx-background-color: #49a7cc;}
+
+/* -----------------------------------*/

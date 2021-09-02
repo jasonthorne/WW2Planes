@@ -1,6 +1,9 @@
 package controller;
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.List;
+import java.util.Properties;
 import java.util.function.BiConsumer;
 
 import com.jfoenix.controls.JFXListView;
@@ -119,8 +122,22 @@ public final class FrameController implements Rootable {
 		
 		//show first event's data:
 		showEventData(observEvents.get(0));
-		//add image to repository link's image view:
+		
+		//add image to hyperlink's image view:
 		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/octocat.png")));
+		
+		//set hyperlink to launch in default browser:
+		repoHL.setOnAction(event -> {
+			if(Desktop.isDesktopSupported()){
+				try {
+					//load url properties file:
+					Properties urlProperties = new Properties(); 
+					urlProperties.load(getClass().getResourceAsStream("/url/urls.properties"));
+					//launch default browser with repository url:
+					Desktop.getDesktop().browse(new URI(urlProperties.getProperty("repo_url")));
+				}catch(Exception e) { e.printStackTrace(); }
+			}
+		});
 	}
 	
 	//observable lists:
