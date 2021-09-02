@@ -56,14 +56,14 @@ public final class AvailabilityData {
 			
 			//create air force column:
 			TableColumn<Plane, String> airForceCol = new TableColumn<>();
-			airForceCol.setId("airforce-col"); //give id for css sheet
+			airForceCol.setId("airforce-col"); //give id for style sheet
 			Label airForceLbl = new Label(airForce.getAirForceName()); //label for styled content
-			airForceLbl.setId("airforce-col-label"); //give id for css sheet
+			airForceLbl.setId("airforce-col-label"); //give id for style sheet
 			airForceCol.setGraphic(airForceLbl); //add label to column
 			
 			//create plane column:
 			TableColumn<Plane,String> planeCol = new TableColumn<>("Plane");
-			planeCol.setId("plane-col"); //give id for css sheet
+			planeCol.setId("plane-col"); //give id for style sheet
 			planeCol.setCellValueFactory(new PropertyValueFactory<Plane,String>("name")); //set cell factory
 			airForceCol.getColumns().add(planeCol); //add plane column to air force column
 			
@@ -102,7 +102,7 @@ public final class AvailabilityData {
 					
 					if(canAdd) {
 						blockCol = new TableColumn<>(String.valueOf(currBlock)); //create block column
-						blockCol.setId("block-col"); //give block column id for css sheet
+						blockCol.setId("block-col"); //give block column id for style sheet
 						blockCol.setUserData(new Period(currBlock, currYear)); //add period to block column
 						blockCol.setCellValueFactory(callBack); //set block column cell factory
 						yearCol.getColumns().add(blockCol); //add block column to year column

@@ -8,7 +8,7 @@ public final class EventCellController extends JFXListCell<Event> {
 	
 	//constructor:
 	EventCellController(){
-		this.setId("event-cell"); //give id for css sheet
+		this.setId("event-cell"); //give id for style sheet
 	}
 	
 	//update cell with event name:
