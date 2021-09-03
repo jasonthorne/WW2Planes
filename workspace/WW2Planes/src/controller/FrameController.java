@@ -132,7 +132,7 @@ public final class FrameController implements Rootable {
 				try {
 					//load url properties file:
 					Properties urlProperties = new Properties(); 
-					urlProperties.load(getClass().getResourceAsStream("/url/urls.properties"));
+					urlProperties.load(getClass().getResourceAsStream("/url/url.properties"));
 					//launch default browser with repository url:
 					Desktop.getDesktop().browse(new URI(urlProperties.getProperty("repo")));
 				}catch(Exception e) { e.printStackTrace(); }
