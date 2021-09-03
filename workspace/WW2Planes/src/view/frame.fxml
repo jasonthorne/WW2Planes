@@ -110,7 +110,7 @@
       </AnchorPane>
       <Hyperlink fx:id="repoHL" contentDisplay="GRAPHIC_ONLY" StackPane.alignment="TOP_RIGHT">
          <graphic>
-            <ImageView id="repo-image-view" fx:id="repoIV" fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="repo-image-view" fx:id="repoIV" fitHeight="24.0" fitWidth="24.0" nodeOrientation="INHERIT" onMouseEntered="#test" opacity="0.85" pickOnBounds="true" preserveRatio="true">
                <viewport>
                   <Rectangle2D />
                </viewport>
