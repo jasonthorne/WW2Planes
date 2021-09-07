@@ -2,6 +2,7 @@ package application;
 
 import controller.PreloaderController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -17,6 +18,15 @@ public class Main extends Application {
 		//set stage's icon and title:
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("/img/spitfire.png")));
 		stage.setTitle("WW2 Planes");
+		
+		stage.setOnCloseRequest(event ->{
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println("Stage is closing"); 
+				}
+			});
+       });
 		
 		//create preloader controller with stage:
 		final PreloaderController preloaderCtrlr = new PreloaderController(stage);
