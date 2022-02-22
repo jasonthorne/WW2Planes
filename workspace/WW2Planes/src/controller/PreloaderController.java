@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -21,6 +22,14 @@ public final class PreloaderController implements Rootable {
 	@FXML private JFXSpinner loadingSpinner;
 	@FXML private Label loadingLbl;
 	
+	@FXML
+	void initialize() {
+		System.out.println("yo");
+		///titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
+		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
+		
+	}
+	
 	private final Stage stage; //stage
 	
 	//frame.fxml controller:
@@ -28,8 +37,30 @@ public final class PreloaderController implements Rootable {
 	
 	//constructor:
 	public PreloaderController(Stage stage) {
+		
+		/*
+		Font font = Font.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45);
+	      //Setting the font
+	      text.setFont(font);
+	      
+	      getClass().getResourceAsStream("/img/spitfire.png")));
+	      
+	      
+		 */
+		
+		//=======================
+		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
+		/////titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fon
+		
+		
+		
+		//=====================
 		this.stage = stage; //set stage
 		Scene scene = new Scene(Rootable.getRoot(this, "/view/preloader.fxml")); //add root to scene
+		
+		//--------
+		////////scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm()); //add styles
+		//--------
 		this.stage.setScene(scene); //add scene to stage
 	}
 	
