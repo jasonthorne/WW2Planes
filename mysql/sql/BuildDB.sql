@@ -1,5 +1,5 @@
 
-USE sql4429711;
+USE ww2planes_db;
 
 /* throw custom error: */
 DELIMITER $$
