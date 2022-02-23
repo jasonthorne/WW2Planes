@@ -1,5 +1,9 @@
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import com.jfoenix.controls.JFXSpinner;
 
 import javafx.animation.FadeTransition;
@@ -23,10 +27,33 @@ public final class PreloaderController implements Rootable {
 	@FXML private Label loadingLbl;
 	
 	@FXML
-	void initialize() {
+	void initialize() throws FileNotFoundException {
 		System.out.println("yo");
 		///titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
 		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
+		
+		//Font.createFont(Font.TRUETYPE_FONT, new File("Vectorb.ttf"));
+		//getClass().getResourceAsStream("Vectorb.ttf")
+		
+		
+		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/font/raf-ww2.ttf"), 64));
+		
+		//titleLbl.setFont(Font.loadFont("file:resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fon
+		
+		////File file = new File(this.getClass().getResource("resources/font/raf-ww2.ttf").getFile());
+		
+		//titleLbl.setFont(file);//.setFont(Font.loadFont(getClass().getResource(file), 64));
+		///////////l.setFont(Font.loadFont(getClass().getResourceAsStream("/WW2Planes/resources/font/Rockinline.ttf), 80));
+		
+		
+		//////titleLbl = l;
+		
+		titleLbl.setText("yo dawg!");
+		
+		//+++++++++++++++works, but not in jar 
+		//titleLbl.setFont(Font.loadFont(new FileInputStream(new File("../WW2Planes/resources/font/Rockinline.ttf")), 80));
+				
+		
 		
 	}
 	
@@ -35,8 +62,17 @@ public final class PreloaderController implements Rootable {
 	//frame.fxml controller:
 	private final FrameController frameCtrlr = new FrameController();
 	
+	
+	Label l = new Label();
+	
+	
+	
+	
 	//constructor:
 	public PreloaderController(Stage stage) {
+		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/font/raf-ww2.ttf"), 14));
+		
+		///titleLbl.setFont(Font.loadFont(getClass().getResource("/resources/fonts/Rockinline.ttf").getPath(), 10));
 		
 		/*
 		Font font = Font.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45);
@@ -50,7 +86,7 @@ public final class PreloaderController implements Rootable {
 		
 		//=======================
 		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
-		/////titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fon
+		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fon
 		
 		
 		
@@ -62,6 +98,12 @@ public final class PreloaderController implements Rootable {
 		////////scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm()); //add styles
 		//--------
 		this.stage.setScene(scene); //add scene to stage
+		
+		///titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/font/raf-ww2.ttf"), 64));
+		//titleLbl.setFont(Font.loadFont("/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fon
+		//text.setFont(Font.loadFont("file:resources/fonts/isadoracyr.ttf", 120));
+		
+		
 	}
 	
 	//show stage:

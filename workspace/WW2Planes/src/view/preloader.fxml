@@ -11,10 +11,10 @@
       <AnchorPane fx:id="bodyAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <children>
             <Label fx:id="titleLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="156.0" prefHeight="100.0" prefWidth="400.0" text="WW2 Planes" textAlignment="CENTER">
-               <font>
-                  <Font name="Onyx" size="64.0" />
-               </font>
-            </Label>
+               <!--<font>
+                 
+               </font>-->
+           	</Label>
             <JFXSpinner fx:id="loadingSpinner" layoutX="375.0" layoutY="342.0" prefHeight="50.0" prefWidth="50.0" />
             <Label fx:id="loadingLbl" layoutX="353.0" layoutY="410.0" text="Loading Data" textFill="#909090">
                <font>
