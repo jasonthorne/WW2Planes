@@ -20,51 +20,20 @@ public final class PreloaderController implements Rootable {
 	@FXML private Label titleLbl;
 	@FXML private JFXSpinner loadingSpinner;
 	@FXML private Label loadingLbl;
-	
+
 	private final Stage stage; //stage
-	
+
 	//frame.fxml controller:
 	private final FrameController frameCtrlr = new FrameController();
-	
+
 	//constructor:
 	public PreloaderController(Stage stage) {
-		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/font/raf-ww2.ttf"), 14));
-		
-		///titleLbl.setFont(Font.loadFont(getClass().getResource("/resources/fonts/Rockinline.ttf").getPath(), 10));
-		
-		/*
-		Font font = Font.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45);
-	      //Setting the font
-	      text.setFont(font);
-	      
-	      getClass().getResourceAsStream("/img/spitfire.png")));
-	      
-	      
-		 */
-		System.out.println("yo2");
-		//=======================
-		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
-		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fon
-		
-		//System.setProperty("prism.lcdtext", "false");
-		
-		//=====================
 		this.stage = stage; //set stage
 		Scene scene = new Scene(Rootable.getRoot(this, "/view/preloader.fxml")); //add root to scene
-		
-		//--------
 		scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm()); //add styles
-		//--------
 		this.stage.setScene(scene); //add scene to stage
-		
-		///titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/font/raf-ww2.ttf"), 64));
-		//titleLbl.setFont(Font.loadFont("/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fon
-		//text.setFont(Font.loadFont("file:resources/fonts/isadoracyr.ttf", 120));
-		/////////Font font = Font.loadFont( Main.class.getClassLoader().getResourceAsStream("/font/Rockinline.ttf"), 80);
-		//System.out.println(font); // Prints "null"
-		
 	}
-	
+
 	//show stage:
 	public void showStage() {
 		

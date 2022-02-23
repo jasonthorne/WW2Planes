@@ -102,7 +102,7 @@ public final class FrameController implements Rootable {
 		
 		//create selection event for availabilities tab:
 		availabilitiesTab.setOnSelectionChanged (event -> {
-		
+			
 			//create fade in transition for air forces list view:
 			FadeTransition fadeInAirForces = new FadeTransition(Duration.millis(300), airForcesLV);
 			fadeInAirForces.setFromValue(0);
@@ -119,13 +119,13 @@ public final class FrameController implements Rootable {
 			if(!availabilitiesTab.isSelected()) { fadeInAirForces.play(); 
 			} else { fadeOutAirForces.play(); }
 		});
-		
+
 		//show first event's data:
 		showEventData(observEvents.get(0));
-		
+
 		//add image to hyperlink's image view:
 		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/octocat.png")));
-		
+
 		//set hyperlink to launch in default browser:
 		repoHL.setOnAction(event -> {
 			if(Desktop.isDesktopSupported()){
