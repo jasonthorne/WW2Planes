@@ -1,11 +1,8 @@
 package controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import com.jfoenix.controls.JFXSpinner;
 
+import application.Main;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -27,7 +24,7 @@ public final class PreloaderController implements Rootable {
 	@FXML private Label loadingLbl;
 	
 	@FXML
-	void initialize() throws FileNotFoundException {
+	void initialize() {
 		System.out.println("yo");
 		///titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
 		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
@@ -47,6 +44,8 @@ public final class PreloaderController implements Rootable {
 		
 		
 		//////titleLbl = l;
+		//Font font = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( "/application/stratum.ttf"), 10);
+		
 		
 		titleLbl.setText("yo dawg!");
 		
@@ -83,7 +82,7 @@ public final class PreloaderController implements Rootable {
 	      
 	      
 		 */
-		
+		System.out.println("yo2");
 		//=======================
 		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
 		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fon
@@ -95,14 +94,15 @@ public final class PreloaderController implements Rootable {
 		Scene scene = new Scene(Rootable.getRoot(this, "/view/preloader.fxml")); //add root to scene
 		
 		//--------
-		////////scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm()); //add styles
+		scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm()); //add styles
 		//--------
 		this.stage.setScene(scene); //add scene to stage
 		
 		///titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/font/raf-ww2.ttf"), 64));
 		//titleLbl.setFont(Font.loadFont("/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fon
 		//text.setFont(Font.loadFont("file:resources/fonts/isadoracyr.ttf", 120));
-		
+		/////////Font font = Font.loadFont( Main.class.getClassLoader().getResourceAsStream("/font/Rockinline.ttf"), 80);
+		//System.out.println(font); // Prints "null"
 		
 	}
 	
