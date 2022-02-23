@@ -2,7 +2,6 @@ package controller;
 
 import com.jfoenix.controls.JFXSpinner;
 
-import application.Main;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -10,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -23,49 +21,10 @@ public final class PreloaderController implements Rootable {
 	@FXML private JFXSpinner loadingSpinner;
 	@FXML private Label loadingLbl;
 	
-	@FXML
-	void initialize() {
-		System.out.println("yo");
-		///titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
-		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
-		
-		//Font.createFont(Font.TRUETYPE_FONT, new File("Vectorb.ttf"));
-		//getClass().getResourceAsStream("Vectorb.ttf")
-		
-		
-		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/font/raf-ww2.ttf"), 64));
-		
-		//titleLbl.setFont(Font.loadFont("file:resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fon
-		
-		////File file = new File(this.getClass().getResource("resources/font/raf-ww2.ttf").getFile());
-		
-		//titleLbl.setFont(file);//.setFont(Font.loadFont(getClass().getResource(file), 64));
-		///////////l.setFont(Font.loadFont(getClass().getResourceAsStream("/WW2Planes/resources/font/Rockinline.ttf), 80));
-		
-		
-		//////titleLbl = l;
-		//Font font = Font.loadFont( Main.class.getClassLoader().getResourceAsStream( "/application/stratum.ttf"), 10);
-		
-		
-		titleLbl.setText("yo dawg!");
-		
-		//+++++++++++++++works, but not in jar 
-		//titleLbl.setFont(Font.loadFont(new FileInputStream(new File("../WW2Planes/resources/font/Rockinline.ttf")), 80));
-				
-		
-		
-	}
-	
 	private final Stage stage; //stage
 	
 	//frame.fxml controller:
 	private final FrameController frameCtrlr = new FrameController();
-	
-	
-	Label l = new Label();
-	
-	
-	
 	
 	//constructor:
 	public PreloaderController(Stage stage) {
@@ -87,7 +46,7 @@ public final class PreloaderController implements Rootable {
 		//titleLbl.setFont(Font.loadFont("/resources/font/raf-ww2.ttf", 64.0)); //.loadFont("file:resources/fonts/TenaliRamakrishna-Regular.ttf", 45));
 		//titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/font/raf-ww2.ttf"), 64.0)); //.loadFont("file:resources/fon
 		
-		
+		//System.setProperty("prism.lcdtext", "false");
 		
 		//=====================
 		this.stage = stage; //set stage

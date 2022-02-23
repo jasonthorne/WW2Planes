@@ -1,16 +1,16 @@
-/*
+/* -----------------------------------*/
+/* custom font: */
+
 @font-face {
 	font-family: 'RAF_WW2_851ATH';
  	src: url('/font/raf-ww2.ttf');
 }
 
-#titleLbl {
-    -fx-font-family: 'RAF_WW2_851ATH';
-    -fx-font-size: 64.0;
-}
-*/
+#titleLbl {-fx-font-family: 'RAF_WW2_851ATH';}
+/*https://stackoverflow.com/questions/24254000/how-to-force-anti-aliasing-in-javafx-fonts?*/
+.text {-fx-font-smoothing-type: gray;}
 
-
+/*
 @font-face {
     font-family: 'Rockinline';
     src: url('/font/Rockinline.ttf');
@@ -20,10 +20,7 @@
  	-fx-font-family: 'Rockinline';
      -fx-font-size: 64.0;
 }
-
-
-
-
+*/
 
 /* -----------------------------------*/
 /* plane availabilities table: */
