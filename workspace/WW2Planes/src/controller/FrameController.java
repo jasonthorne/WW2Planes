@@ -178,17 +178,34 @@ public final class FrameController implements Rootable {
 	
 	
 	//load events data from connection:
-	void loadEventsData(FadeTransition fadeOutPreloader) { 
+	void loadEventsData(FadeTransition fadeOutPreloader) {
+		
+		try {
+			
+			service.submit(()->{
+				observEvents.addAll(database.SelectEvents.select());
+				System.out.println("hullo1");
+				//System.out.println(observEvents);
+			});
+			
+			service.submit(()->{
+				observAirForces.setAll(observEvents.get(0).getAirForces());
+				System.out.println("hullo2");
+				//System.out.println(observAirForces);
+			});
+			
+			service.submit(()->{
+				fadeOutPreloader.play(); //fade out preloader
+				System.out.println("hullo3");
+			});
+			
+		}finally{if(!service.isShutdown()){service.shutdown();}}
 		
 		
-		service.submit(()->{
-			observEvents.addAll(database.SelectEvents.select());
-			System.out.println("hullo");
-		});
-		service.submit(()->observAirForces.setAll(observEvents.get(0).getAirForces()));
-		service.submit(()->fadeOutPreloader.play()); //fade out preloader
 		
+		//service.submit(()->fadeOutPreloader.play()); //fade out preloader
 		
+	
 		
 		
 		/*
