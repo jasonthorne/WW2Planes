@@ -1,12 +1,17 @@
 /* -----------------------------------*/
-/* custom font: */
+/* preloader gradient: */
+
+#preloader-body-ap {-fx-background-color: linear-gradient(to right, #80d8ff, #b5ffff);}
+
+/* -----------------------------------*/
+/* preloader custom font: */
 
 @font-face {
 	font-family: 'RAF_WW2_851ATH';
  	src: url('/font/raf-ww2.ttf');
 }
 
-#titleLbl {-fx-font-family: 'RAF_WW2_851ATH';}
+#preloader-title-label {-fx-font-family: 'RAF_WW2_851ATH';}
 /*https://stackoverflow.com/questions/24254000/how-to-force-anti-aliasing-in-javafx-fonts?*/
 .text {-fx-font-smoothing-type: gray;}
 

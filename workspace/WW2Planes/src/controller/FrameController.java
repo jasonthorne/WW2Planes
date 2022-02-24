@@ -4,6 +4,10 @@ import java.awt.Desktop;
 import java.net.URI;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.function.BiConsumer;
 
 import com.jfoenix.controls.JFXListView;
@@ -71,7 +75,7 @@ public final class FrameController implements Rootable {
 	
 	@FXML
 	void initialize() {
-		
+		System.out.println("bum"); ///////+++++++++++++++
 		//set events list view observable events:
 		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventCellControllers:
@@ -121,7 +125,8 @@ public final class FrameController implements Rootable {
 		});
 
 		//show first event's data:
-		showEventData(observEvents.get(0));
+		////////////////showEventData(observEvents.get(0));
+		
 
 		//add image to hyperlink's image view:
 		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/octocat.png")));
@@ -141,7 +146,7 @@ public final class FrameController implements Rootable {
 	}
 	
 	//observable lists:
-	private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
+	/////////////private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
 	private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
 	
 	//data processing objects:
@@ -149,7 +154,7 @@ public final class FrameController implements Rootable {
 	private final SpeedData speedData = new SpeedData();
 	private final TypeData typeData = new TypeData();
 	
-	
+	/*
 	//load events data from connection:
 	void loadEventsData(FadeTransition fadeOutPreloader) { 
 		//if events data is empty:
@@ -164,6 +169,41 @@ public final class FrameController implements Rootable {
 				}catch(Exception e) { e.printStackTrace(); }
 			}).start();
 		}
+	}*/
+	
+	private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
+	ExecutorService service = Executors.newSingleThreadExecutor(); 
+	/////Future<Boolean> futureEvents = service.submit(() -> observEvents.addAll(database.SelectEvents.select()));
+	//++++++++++++++use for flagging if successfull ++++++++++++++++++++
+	
+	
+	//load events data from connection:
+	void loadEventsData(FadeTransition fadeOutPreloader) { 
+		
+		
+		service.submit(()->{
+			observEvents.addAll(database.SelectEvents.select());
+			System.out.println("hullo");
+		});
+		service.submit(()->observAirForces.setAll(observEvents.get(0).getAirForces()));
+		service.submit(()->fadeOutPreloader.play()); //fade out preloader
+		
+		
+		
+		
+		/*
+		//if events data is empty:
+		if (observEvents.isEmpty()) { 
+			new Thread(() -> { //fire new thread:
+				try {
+					//load events data:
+					//observEvents.addAll(database.SelectEvents.select());
+					//set air forces with first event's air forces:
+					//observAirForces.setAll(observEvents.get(0).getAirForces());
+					//fadeOutPreloader.play(); //fade out preloader
+				}catch(Exception e) { e.printStackTrace(); }
+			}).start();
+		}*/
 	}
 	
 	//show data of given event:
