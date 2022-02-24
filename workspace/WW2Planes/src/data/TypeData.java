@@ -23,7 +23,6 @@ public final class TypeData {
 	
 	//initialize map:
 	private void initPlaneTypeToNames() {
-		
 		for(Type type : Type.values()) {
 			//initialize map with plane types, holding empty lists:
 			planeTypeToNames.put(type.toString(), new ArrayList<String>());
@@ -51,8 +50,7 @@ public final class TypeData {
 		planeTypeToNames.keySet().forEach(planeType ->{
 			int planesNum;
 			//if plane type has list entries:
-			if((planesNum = planeTypeToNames.get(planeType).size()) > 0){
-				
+			if((planesNum = planeTypeToNames.get(planeType).size())>0){
 				//Add type and its amount to pie chart data:
 				pieChartData.add(new PieChart.Data(planeType,planesNum));
 			}

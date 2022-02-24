@@ -75,7 +75,7 @@ public final class FrameController implements Rootable {
 	
 	@FXML
 	void initialize() {
-		System.out.println("bum"); ///////+++++++++++++++
+		System.out.println("bum"); ///////++++++++++++++++++++++
 		//set events list view observable events:
 		eventsLV.setItems(observEvents); 
 		//set events list view cellFactory to create EventCellControllers:
@@ -125,7 +125,7 @@ public final class FrameController implements Rootable {
 		});
 
 		//show first event's data:
-		////////////////showEventData(observEvents.get(0));
+		////showEventData(observEvents.get(0));
 		
 
 		//add image to hyperlink's image view:
@@ -146,7 +146,7 @@ public final class FrameController implements Rootable {
 	}
 	
 	//observable lists:
-	/////////////private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
+	private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
 	private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
 	
 	//data processing objects:
@@ -171,8 +171,8 @@ public final class FrameController implements Rootable {
 		}
 	}*/
 	
-	private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
-	ExecutorService service = Executors.newSingleThreadExecutor(); 
+	///////////private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
+	
 	/////Future<Boolean> futureEvents = service.submit(() -> observEvents.addAll(database.SelectEvents.select()));
 	//++++++++++++++use for flagging if successfull ++++++++++++++++++++
 	
@@ -180,26 +180,36 @@ public final class FrameController implements Rootable {
 	//load events data from connection:
 	void loadEventsData(FadeTransition fadeOutPreloader) {
 		
+		ExecutorService service = Executors.newSingleThreadExecutor(); 
 		try {
-			
 			service.submit(()->{
 				observEvents.addAll(database.SelectEvents.select());
 				System.out.println("hullo1");
-				//System.out.println(observEvents);
+				System.out.println(observEvents);
+				////////////////+++++++++++showEventData(observEvents.get(0));
 			});
 			
 			service.submit(()->{
+				System.out.println("hullo2A");
+				///////////////showEventData(observEvents.get(0));
 				observAirForces.setAll(observEvents.get(0).getAirForces());
-				System.out.println("hullo2");
-				//System.out.println(observAirForces);
+				
+				System.out.println("hullo2B");
+				System.out.println(observAirForces);
+			});
+			
+			service.submit(()->{
+				showEventData(observEvents.get(0));
+				System.out.println("hullo3");
 			});
 			
 			service.submit(()->{
 				fadeOutPreloader.play(); //fade out preloader
-				System.out.println("hullo3");
+				System.out.println("hullo4");
 			});
 			
-		}finally{if(!service.isShutdown()){service.shutdown();}}
+		}finally{ //shutdown service:
+			if(!service.isShutdown()){service.shutdown();}}
 		
 		
 		
@@ -214,18 +224,20 @@ public final class FrameController implements Rootable {
 			new Thread(() -> { //fire new thread:
 				try {
 					//load events data:
-					//observEvents.addAll(database.SelectEvents.select());
+					observEvents.addAll(database.SelectEvents.select());
 					//set air forces with first event's air forces:
-					//observAirForces.setAll(observEvents.get(0).getAirForces());
-					//fadeOutPreloader.play(); //fade out preloader
+					observAirForces.setAll(observEvents.get(0).getAirForces());
+					fadeOutPreloader.play(); //fade out preloader
 				}catch(Exception e) { e.printStackTrace(); }
 			}).start();
 		}*/
+		
+		System.out.println("sdfdfdfd");
 	}
 	
 	//show data of given event:
 	private void showEventData(Event event) {
-		
+		System.out.println("ADDED EVENT: " + event);
 		//create fade out transition for availability tables:
 		FadeTransition fadeOutTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
 		fadeOutTables.setFromValue(1);
