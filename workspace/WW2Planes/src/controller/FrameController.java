@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.Desktop;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
@@ -31,6 +32,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -125,7 +127,7 @@ public final class FrameController implements Rootable {
 		});
 
 		//show first event's data:
-		////showEventData(observEvents.get(0));
+		//////+++++++++++++++++++++++++++showEventData(observEvents.get(0));
 		
 
 		//add image to hyperlink's image view:
@@ -185,7 +187,7 @@ public final class FrameController implements Rootable {
 			service.submit(()->{
 				observEvents.addAll(database.SelectEvents.select());
 				System.out.println("hullo1");
-				System.out.println(observEvents);
+				////////////System.out.println(observEvents);
 				////////////////+++++++++++showEventData(observEvents.get(0));
 			});
 			
@@ -195,12 +197,13 @@ public final class FrameController implements Rootable {
 				observAirForces.setAll(observEvents.get(0).getAirForces());
 				
 				System.out.println("hullo2B");
-				System.out.println(observAirForces);
+				///////////System.out.println(observAirForces);
 			});
 			
 			service.submit(()->{
-				showEventData(observEvents.get(0));
 				System.out.println("hullo3");
+				///showEventData(observEvents.get(0)); ////////////////////////change
+				//System.out.println("hullo3");
 			});
 			
 			service.submit(()->{
@@ -237,7 +240,7 @@ public final class FrameController implements Rootable {
 	
 	//show data of given event:
 	private void showEventData(Event event) {
-		System.out.println("ADDED EVENT: " + event);
+		System.out.println("ADDED EVENT: " + event); //+++++++++++++++++++++++++++++++++++++++++++
 		//create fade out transition for availability tables:
 		FadeTransition fadeOutTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
 		fadeOutTables.setFromValue(1);
@@ -245,8 +248,11 @@ public final class FrameController implements Rootable {
 		
 		//after fade out, build new tables from event, then fade back in:
 		fadeOutTables.setOnFinished(e -> {
-			
+			//////////////System.out.println("IM HERE A");
 			planesTablesVB.getChildren().setAll(availabilityData.getData(event, availabilitiesAP)); //add new tables
+			/////////availabilityData.getData(event, availabilitiesAP); //++++++++++++++
+			////////////ArrayList<TableView<Plane>> test = new ArrayList<TableView<Plane>>(availabilityData.getData(event, availabilitiesAP));
+			///////////////System.out.println(test);
 			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
 			fadeInTables.setFromValue(0);
 			fadeInTables.setToValue(1);
