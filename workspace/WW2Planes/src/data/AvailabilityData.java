@@ -26,7 +26,7 @@ public final class AvailabilityData {
 	
 	//return list of plane availabilities tables:
 	public List<TableView<Plane>>getData(Event event, Pane pane) {
-		System.out.println("+++++++++++" + event);
+		
 		//use tree set to sort periods by period's compareTo:
 		TreeSet<Period> sortedPeriods = new TreeSet<Period>(event.getPeriods());
 		Period start = sortedPeriods.first(); //get start period

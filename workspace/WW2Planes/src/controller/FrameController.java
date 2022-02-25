@@ -77,9 +77,10 @@ public final class FrameController implements Rootable {
 	
 	@FXML
 	void initialize() {
+		System.out.println(observEvents);
 		System.out.println("bum"); ///////++++++++++++++++++++++
 		//set events list view observable events:
-		eventsLV.setItems(observEvents); 
+		eventsLV.setItems(observEvents);
 		//set events list view cellFactory to create EventCellControllers:
 		eventsLV.setCellFactory(EventCellController -> new EventCellController());
 		//preselect first event in list view:
@@ -127,8 +128,7 @@ public final class FrameController implements Rootable {
 		});
 
 		//show first event's data:
-		//////+++++++++++++++++++++++++++showEventData(observEvents.get(0));
-		
+		//////////showEventData(observEvents.get(0));
 
 		//add image to hyperlink's image view:
 		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/octocat.png")));
@@ -184,17 +184,20 @@ public final class FrameController implements Rootable {
 		
 		ExecutorService service = Executors.newSingleThreadExecutor(); 
 		try {
-			service.submit(()->{
+			service.submit(()->{ //++++++++++++++++++++++++++++++++++++++++RETURN OBSERVABLE EVENTS at pos 0!
 				observEvents.addAll(database.SelectEvents.select());
 				System.out.println("hullo1");
 				////////////System.out.println(observEvents);
 				////////////////+++++++++++showEventData(observEvents.get(0));
 			});
 			
+			
 			service.submit(()->{
 				System.out.println("hullo2A");
+				/////////////////System.out.println("OBSERV EVENTS: " + observEvents);
 				///////////////showEventData(observEvents.get(0));
 				observAirForces.setAll(observEvents.get(0).getAirForces());
+				////////////System.out.println("OBSERV af: " + observAirForces);
 				
 				System.out.println("hullo2B");
 				///////////System.out.println(observAirForces);
@@ -202,7 +205,7 @@ public final class FrameController implements Rootable {
 			
 			service.submit(()->{
 				System.out.println("hullo3");
-				///showEventData(observEvents.get(0)); ////////////////////////change
+				////showEventData(observEvents.get(0)); ////////////////////////change
 				//System.out.println("hullo3");
 			});
 			
@@ -211,13 +214,17 @@ public final class FrameController implements Rootable {
 				System.out.println("hullo4");
 			});
 			
+			/*service.submit(()->{
+				showEventData(observEvents.get(0));
+			});*/
+			
 		}finally{ //shutdown service:
 			if(!service.isShutdown()){service.shutdown();}}
 		
 		
 		
 		//service.submit(()->fadeOutPreloader.play()); //fade out preloader
-		
+		System.out.println("OBSERV EVENTS: " + observEvents);
 	
 		
 		
@@ -240,7 +247,7 @@ public final class FrameController implements Rootable {
 	
 	//show data of given event:
 	private void showEventData(Event event) {
-		System.out.println("ADDED EVENT: " + event); //+++++++++++++++++++++++++++++++++++++++++++
+		
 		//create fade out transition for availability tables:
 		FadeTransition fadeOutTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
 		fadeOutTables.setFromValue(1);
@@ -248,11 +255,8 @@ public final class FrameController implements Rootable {
 		
 		//after fade out, build new tables from event, then fade back in:
 		fadeOutTables.setOnFinished(e -> {
-			//////////////System.out.println("IM HERE A");
+			
 			planesTablesVB.getChildren().setAll(availabilityData.getData(event, availabilitiesAP)); //add new tables
-			/////////availabilityData.getData(event, availabilitiesAP); //++++++++++++++
-			////////////ArrayList<TableView<Plane>> test = new ArrayList<TableView<Plane>>(availabilityData.getData(event, availabilitiesAP));
-			///////////////System.out.println(test);
 			FadeTransition fadeInTables = new FadeTransition(Duration.millis(300), availabilitiesAP);
 			fadeInTables.setFromValue(0);
 			fadeInTables.setToValue(1);
