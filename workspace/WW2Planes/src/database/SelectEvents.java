@@ -70,7 +70,7 @@ public interface SelectEvents {
 					
 					//create list for air force planes:
 					List<Plane>airForcePlanes = new ArrayList<>();
-			
+					
 					//set statement input with air force id:
 					planesStatement.setInt(1, airForcesRS.getInt("airforce_ID")); 
 					planesRS = planesStatement.executeQuery(); //execute planes query

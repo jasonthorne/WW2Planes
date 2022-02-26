@@ -77,7 +77,6 @@ public final class FrameController implements Rootable {
 	
 	@FXML
 	void initialize() {
-		System.out.println(observEvents);
 		System.out.println("bum"); ///////++++++++++++++++++++++
 		//set events list view observable events:
 		eventsLV.setItems(observEvents);
@@ -128,7 +127,7 @@ public final class FrameController implements Rootable {
 		});
 
 		//show first event's data:
-		//////////showEventData(observEvents.get(0));
+		////////////showEventData(observEvents.get(0));
 
 		//add image to hyperlink's image view:
 		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/octocat.png")));
@@ -148,7 +147,7 @@ public final class FrameController implements Rootable {
 	}
 	
 	//observable lists:
-	private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
+	private final ObservableList<Event>observEvents = FXCollections.observableArrayList(); //events
 	private final ObservableList<AirForce>observAirForces = FXCollections.observableArrayList(); //air forces
 	
 	//data processing objects:
@@ -182,41 +181,44 @@ public final class FrameController implements Rootable {
 	//load events data from connection:
 	void loadEventsData(FadeTransition fadeOutPreloader) {
 		
+		
+		
+		fadeOutPreloader.setOnFinished(event ->{
+			System.out.println("after fade out - from FC");
+		});
+		
 		ExecutorService service = Executors.newSingleThreadExecutor(); 
 		try {
 			service.submit(()->{ //++++++++++++++++++++++++++++++++++++++++RETURN OBSERVABLE EVENTS at pos 0!
 				observEvents.addAll(database.SelectEvents.select());
-				System.out.println("hullo1");
+				//System.out.println("hullo1");
 				////////////System.out.println(observEvents);
-				////////////////+++++++++++showEventData(observEvents.get(0));
+				
 			});
 			
 			
 			service.submit(()->{
 				System.out.println("hullo2A");
-				/////////////////System.out.println("OBSERV EVENTS: " + observEvents);
-				///////////////showEventData(observEvents.get(0));
 				observAirForces.setAll(observEvents.get(0).getAirForces());
-				////////////System.out.println("OBSERV af: " + observAirForces);
-				
-				System.out.println("hullo2B");
-				///////////System.out.println(observAirForces);
+				//initialize();
 			});
 			
 			service.submit(()->{
-				System.out.println("hullo3");
-				////showEventData(observEvents.get(0)); ////////////////////////change
+				
+				
+				
 				//System.out.println("hullo3");
 			});
 			
 			service.submit(()->{
 				fadeOutPreloader.play(); //fade out preloader
-				System.out.println("hullo4");
+				//System.out.println("hullo4");
 			});
 			
-			/*service.submit(()->{
+			service.submit(()->{
+				System.out.println("fadeout done");
 				showEventData(observEvents.get(0));
-			});*/
+			});
 			
 		}finally{ //shutdown service:
 			if(!service.isShutdown()){service.shutdown();}}
@@ -224,7 +226,7 @@ public final class FrameController implements Rootable {
 		
 		
 		//service.submit(()->fadeOutPreloader.play()); //fade out preloader
-		System.out.println("OBSERV EVENTS: " + observEvents);
+		//System.out.println("OBSERV EVENTS: " + observEvents);
 	
 		
 		
@@ -242,7 +244,7 @@ public final class FrameController implements Rootable {
 			}).start();
 		}*/
 		
-		System.out.println("sdfdfdfd");
+		
 	}
 	
 	//show data of given event:
