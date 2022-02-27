@@ -77,7 +77,6 @@ public final class FrameController implements Rootable {
 	
 	@FXML
 	void initialize() {
-		System.out.println("bum"); ///////++++++++++++++++++++++
 		//set events list view observable events:
 		eventsLV.setItems(observEvents);
 		//set events list view cellFactory to create EventCellControllers:
