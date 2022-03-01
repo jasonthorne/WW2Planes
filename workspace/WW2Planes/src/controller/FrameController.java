@@ -126,7 +126,7 @@ public final class FrameController implements Rootable {
 		});
 
 		//show first event's data:
-		////////////showEventData(observEvents.get(0));
+		showEventData(observEvents.get(0));
 
 		//add image to hyperlink's image view:
 		repoIV.setImage(new Image(getClass().getResourceAsStream("/img/octocat.png")));
@@ -171,79 +171,21 @@ public final class FrameController implements Rootable {
 		}
 	}*/
 	
-	///////////private final ObservableList<Event>observEvents = FXCollections.observableArrayList();  //events
-	
-	/////Future<Boolean> futureEvents = service.submit(() -> observEvents.addAll(database.SelectEvents.select()));
-	//++++++++++++++use for flagging if successfull ++++++++++++++++++++
-	
-	
 	//load events data from connection:
 	void loadEventsData(FadeTransition fadeOutPreloader) {
-		
-		
-		
-		fadeOutPreloader.setOnFinished(event ->{
-			System.out.println("after fade out - from FC");
-		});
-		
-		ExecutorService service = Executors.newSingleThreadExecutor(); 
-		try {
-			service.submit(()->{ //++++++++++++++++++++++++++++++++++++++++RETURN OBSERVABLE EVENTS at pos 0!
-				observEvents.addAll(database.SelectEvents.select());
-				//System.out.println("hullo1");
-				////////////System.out.println(observEvents);
-				
-			});
-			
-			
-			service.submit(()->{
-				System.out.println("hullo2A");
-				observAirForces.setAll(observEvents.get(0).getAirForces());
-				//initialize();
-			});
-			
-			service.submit(()->{
-				
-				
-				
-				//System.out.println("hullo3");
-			});
-			
-			service.submit(()->{
-				fadeOutPreloader.play(); //fade out preloader
-				//System.out.println("hullo4");
-			});
-			
-			service.submit(()->{
-				System.out.println("fadeout done");
-				showEventData(observEvents.get(0));
-			});
-			
-		}finally{ //shutdown service:
-			if(!service.isShutdown()){service.shutdown();}}
-		
-		
-		
-		//service.submit(()->fadeOutPreloader.play()); //fade out preloader
-		//System.out.println("OBSERV EVENTS: " + observEvents);
-	
-		
-		
-		/*
 		//if events data is empty:
-		if (observEvents.isEmpty()) { 
-			new Thread(() -> { //fire new thread:
-				try {
-					//load events data:
-					observEvents.addAll(database.SelectEvents.select());
-					//set air forces with first event's air forces:
-					observAirForces.setAll(observEvents.get(0).getAirForces());
-					fadeOutPreloader.play(); //fade out preloader
-				}catch(Exception e) { e.printStackTrace(); }
-			}).start();
-		}*/
-		
-		
+		if (observEvents.isEmpty()) {
+			ExecutorService service = Executors.newSingleThreadExecutor(); //executor service
+			try {
+				//load events data:
+				service.execute(()->observEvents.addAll(database.SelectEvents.select()));
+				//set air forces with first event's air forces:
+				service.execute(()->observAirForces.setAll(observEvents.get(0).getAirForces()));
+				//fade out pre-loader:
+				service.execute(()->fadeOutPreloader.play());
+			}finally{ //shutdown service:
+				if(!service.isShutdown()){service.shutdown();}}
+		}
 	}
 	
 	//show data of given event:
