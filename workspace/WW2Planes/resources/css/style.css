@@ -1,9 +1,4 @@
 /* -----------------------------------*/
-/* preloader gradient: */
-
-#preloader-body-ap {-fx-background-color: linear-gradient(to right, #80d8ff, #b5ffff);}
-
-/* -----------------------------------*/
 /* preloader custom font: */
 
 @font-face {

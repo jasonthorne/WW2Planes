@@ -2,13 +2,10 @@ package controller;
 
 import java.awt.Desktop;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.function.BiConsumer;
 
 import com.jfoenix.controls.JFXListView;
@@ -32,7 +29,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -154,34 +150,17 @@ public final class FrameController implements Rootable {
 	private final SpeedData speedData = new SpeedData();
 	private final TypeData typeData = new TypeData();
 	
-	/*
-	//load events data from connection:
-	void loadEventsData(FadeTransition fadeOutPreloader) { 
-		//if events data is empty:
-		if (observEvents.isEmpty()) { 
-			new Thread(() -> { //fire new thread:
-				try {
-					//load events data:
-					observEvents.addAll(database.SelectEvents.select());
-					//set air forces with first event's air forces:
-					observAirForces.setAll(observEvents.get(0).getAirForces());
-					fadeOutPreloader.play(); //fade out preloader
-				}catch(Exception e) { e.printStackTrace(); }
-			}).start();
-		}
-	}*/
-	
 	//load events data from connection:
 	void loadEventsData(FadeTransition fadeOutPreloader) {
 		//if events data is empty:
 		if (observEvents.isEmpty()) {
 			ExecutorService service = Executors.newSingleThreadExecutor(); //executor service
 			try {
-				//load events data:
+				//first load events data:
 				service.execute(()->observEvents.addAll(database.SelectEvents.select()));
-				//set air forces with first event's air forces:
+				//then set air forces with first event's air forces:
 				service.execute(()->observAirForces.setAll(observEvents.get(0).getAirForces()));
-				//fade out pre-loader:
+				//then fade out pre-loader:
 				service.execute(()->fadeOutPreloader.play());
 			}finally{ //shutdown service:
 				if(!service.isShutdown()){service.shutdown();}}
