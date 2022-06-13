@@ -1,13 +1,5 @@
 
-/* ===============+++++++++++++=========== */
-DROP DATABASE IF EXISTS ww2planes_db;
-CREATE DATABASE ww2planes_db;
-/* ====================+++++++++++++====== */
-
 USE ww2planes_db;
-
-/* set time zone: =====================================*/
-SET GLOBAL time_zone = '+1:00';
 
 /* throw custom error: */
 DELIMITER $$
